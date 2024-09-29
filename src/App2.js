@@ -1,21 +1,77 @@
-import { Fab, Box, Typography, AppBar, Toolbar, Button, Paper } from '@mui/material';
+import { Fab, Box, Typography, AppBar, Toolbar, Button, Paper, Menu, MenuItem } from '@mui/material';
+import { styled, alpha } from '@mui/material/styles';
 import { Home as HomeIcon, Info as DetailsIcon, Photo as GalleryIcon, EventAvailable as RsvpIcon } from '@mui/icons-material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React from 'react';
 import Home from './components/Home';
 import Details from './components/Details';
 import Gallery from './components/Gallery';
+import Schedule from './components/Schedule';
 import Rsvp from './components/Rsvp';
 import { useTheme } from '@mui/material/styles';
 
+
+const StyledMenu = styled((props) => (
+  <Menu
+    elevation={0}
+    anchorOrigin={{
+      vertical: 'bottom',
+      horizontal: 'right',
+    }}
+    transformOrigin={{
+      vertical: 'top',
+      horizontal: 'right',
+    }}
+    {...props}
+  />
+))(({ theme }) => ({
+  '& .MuiPaper-root': {
+    borderRadius: 6,
+    marginTop: theme.spacing(1),
+    minWidth: 180,
+    color: 'rgb(55, 65, 81)',
+    boxShadow:
+      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+    '& .MuiMenu-list': {
+      padding: '4px 0',
+    },
+    '& .MuiMenuItem-root': {
+      '& .MuiSvgIcon-root': {
+        fontSize: 18,
+        color: theme.palette.text.secondary,
+        marginRight: theme.spacing(1.5),
+      },
+      '&:active': {
+        backgroundColor: alpha(
+          theme.palette.primary.main,
+          theme.palette.action.selectedOpacity,
+        ),
+      },
+    },
+    ...theme.applyStyles('dark', {
+      color: theme.palette.grey[300],
+    }),
+  },
+}));
+
 const App = () => {
   const theme = useTheme();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   return (
     <Router>
       <Box>
 
         {/* floating circular buttons as navigation ????*/}
-        {/* <Box
+        {/*</Box><Box
           sx={{
             position: 'fixed',
             top: '6%',
@@ -85,7 +141,7 @@ const App = () => {
           >
             <RsvpIcon />
           </Fab>
-        </Box> */}
+        </Box>*/}
 
         {/* Traditional nav bar as navigation ??? */}
         <AppBar
@@ -120,9 +176,12 @@ const App = () => {
                 Home
               </Button>
               <Button
+              aria-controls={open ? 'details-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={open ? 'true' : undefined}
+              disableElevation
+              onClick={handleClick}
                 color="inherit"
-                component={Link}
-                to="/details"
                 sx={{
                   color: 'black',
                   fontSize: '1.5rem',
@@ -135,6 +194,27 @@ const App = () => {
               >
                 Details
               </Button>
+              <StyledMenu id="details-menu"
+                MenuListProps={{ 'aria-labelledby': 'demo-customized-button',}}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}>
+                <MenuItem onClick={handleClose} disableRipple
+                  component={Link}
+                  to="/details">
+                  Details Orig
+                </MenuItem>
+                <MenuItem onClick={handleClose} disableRipple
+                  component={Link}
+                  to="/schedule">
+                  Schedule
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} disableRipple
+                  component={Link}
+                  to="/schedule">
+                  FAQ
+                  </MenuItem>
+                </StyledMenu>
               <Button
                 color="inherit"
                 component={Link}
@@ -177,6 +257,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/details" element={<Details />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/schedule" element={<Schedule />} />
             <Route path="/rsvp" element={<Rsvp />} />
           </Routes>
         </Paper>
