@@ -21,10 +21,6 @@ const Home = () => {
   const [name, setName] = useState('');
   const [isValid, setIsValid] = useState(false);
 
-  // valid code for demonstration purposes
-  const validCode = '2';
-
-
   // gets the code out of the textbox
   const handleInputChange = (event) => {
     setCode(event.target.value);
