@@ -14,8 +14,9 @@ const Rsvp = () => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        RSVP
+        
       </Typography>
+
       <form onSubmit={handleSubmit}>
         <TextField
           label="Your Name"
@@ -36,9 +37,8 @@ const Rsvp = () => {
           onChange={(e) => setAttending(e.target.value)}
           required
         >
-          <option value="">Select</option>
-          <option value="yes">Yes</option>
-          <option value="no">No</option>
+          <option value="yes">Let's Go</option>
+          <option value="no">I hate you guys</option>
         </TextField>
         <Box sx={{
           display: "flex",

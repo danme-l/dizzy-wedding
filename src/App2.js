@@ -27,34 +27,34 @@ const StyledMenu = styled((props) => (
     }}
     {...props}
   />
-))(({ theme }) => ({
-  '& .MuiPaper-root': {
-    borderRadius: 6,
-    marginTop: theme.spacing(1),
-    minWidth: 180,
-    color: 'rgb(55, 65, 81)',
-    boxShadow:
-      'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
-    '& .MuiMenu-list': {
-      padding: '4px 0',
+    ))(({ theme }) => ({
+      '& .MuiPaper-root': {
+        borderRadius: 6,
+        marginTop: theme.spacing(1),
+        minWidth: 180,
+        color: 'rgb(55, 65, 81)',
+        boxShadow:
+          'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+        '& .MuiMenu-list': {
+          padding: '4px 0',
+        },
+        '& .MuiMenuItem-root': {
+          '& .MuiSvgIcon-root': {
+            fontSize: 18,
+            color: theme.palette.text.secondary,
+            marginRight: theme.spacing(1.5),
+          },
+          '&:active': {
+            backgroundColor: alpha(
+              theme.palette.primary.main,
+              theme.palette.action.selectedOpacity,
+            ),
+          },
+        },
+        ...theme.applyStyles('dark', {
+          color: theme.palette.grey[300],
+        }),
     },
-    '& .MuiMenuItem-root': {
-      '& .MuiSvgIcon-root': {
-        fontSize: 18,
-        color: theme.palette.text.secondary,
-        marginRight: theme.spacing(1.5),
-      },
-      '&:active': {
-        backgroundColor: alpha(
-          theme.palette.primary.main,
-          theme.palette.action.selectedOpacity,
-        ),
-      },
-    },
-    ...theme.applyStyles('dark', {
-      color: theme.palette.grey[300],
-    }),
-  },
 }));
 
 const App = () => {
@@ -73,80 +73,7 @@ const App = () => {
     <Router>
       <Box>
 
-        {/* floating circular buttons as navigation ????*/}
-        {/*</Box><Box
-          sx={{
-            position: 'fixed',
-            top: '6%',
-            right: '20px',
-            padding: '20px',
-            transform: 'translateY(-50%)',
-            display: 'flex',
-            flexDirection: 'row',
-            gap: '20px',
-            zIndex: 10,
-            overflow: 'hidden',
-          }}
-        >
-          <Fab
-            color="primary"
-            component={Link}
-            to="/"
-            sx={{
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.2)',
-                backgroundColor: 'secondary.main',
-              },
-            }}
-          >
-            <HomeIcon />
-          </Fab>
-          <Fab
-            color="primary"
-            component={Link}
-            to="/details"
-            sx={{
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.2)',
-                backgroundColor: 'secondary.main',
-              },
-            }}
-          >
-            <DetailsIcon />
-          </Fab>
-          <Fab
-            color="primary"
-            component={Link}
-            to="/gallery"
-            sx={{
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.2)',
-                backgroundColor: 'secondary.main',
-              },
-            }}
-          >
-            <GalleryIcon />
-          </Fab>
-          <Fab
-            color="primary"
-            component={Link}
-            to="/rsvp"
-            sx={{
-              transition: 'transform 0.3s',
-              '&:hover': {
-                transform: 'scale(1.2)',
-                backgroundColor: 'secondary.main',
-              },
-            }}
-          >
-            <RsvpIcon />
-          </Fab>
-        </Box>*/}
-
-        {/* Traditional nav bar as navigation ??? */}
+        {/* SECTION Nav bar */}
         <AppBar
           position="sticky"
           sx={{
@@ -278,7 +205,7 @@ const App = () => {
           </Toolbar>
         </AppBar>
 
-        {/* Content */}
+        {/* SECTION Content */}
         <Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
             <Route path="/" element={<Home />} />
