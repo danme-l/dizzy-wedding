@@ -43,14 +43,18 @@ const Schedule = () => {
       <Typography variant="h4" gutterBottom>
         Schedule
       </Typography>
+
       <Container>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
           <Tab label="Rehearsal" {...a11yProps(0)} />
           <Tab label="Wedding Day" {...a11yProps(1)} />
         </Tabs>
+
+        {/* Ally Prop 0: Rehearsal */}
         <CustomTabPanel value={value} index={0}>
           <TableContainer>
             <Table stickyHeader>
+               {/* SECTION table Head */}
                 <TableHead>
                     <TableRow>
                         <TableCell>
@@ -61,6 +65,7 @@ const Schedule = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
+                {/* SECTION table body */}
                 <TableBody>
                   <TableRow>
                     <TableCell>
@@ -74,9 +79,12 @@ const Schedule = () => {
             </Table>
           </TableContainer>
         </CustomTabPanel>
+
+        {/* Ally Prop 1: Wedding Day */}
         <CustomTabPanel value={value} index={1}>
         <TableContainer>
             <Table stickyHeader>
+                {/* SECTION table Head */}
                 <TableHead>
                     <TableRow>
                         <TableCell>
@@ -87,6 +95,7 @@ const Schedule = () => {
                         </TableCell>
                     </TableRow>
                 </TableHead>
+                {/* SECTION table body */}
                 <TableBody>
                   <TableRow>
                     <TableCell>
@@ -101,8 +110,11 @@ const Schedule = () => {
           </TableContainer>
         </CustomTabPanel>
       </Container>
+
+      {/* SECTION Add to Calendar Button */}
       <Container>
       <Button
+        variant='outlined'
         sx={{
           color: 'black',
           fontSize: '1rem',

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Box, Grid, Typography, Paper, TextField, Button, Container} from '@mui/material';
+import { Box, Grid, Typography, TextField, Button, Container} from '@mui/material';
 
 // temporary
 const validCodes = {
@@ -19,7 +19,6 @@ const Home = () => {
   // to be hooked up to a database eventually 
   const [code, setCode] = useState(0)
   const [name, setName] = useState('');
-  const [isValid, setIsValid] = useState(false);
 
   // gets the code out of the textbox
   const handleInputChange = (event) => {
@@ -28,7 +27,8 @@ const Home = () => {
 
   // sets the user code as the State
   // feature desire: the code will query a db where there will be a guest-code mapping 
-  // from there, 
+  // from there, the user will be able to see information specific to their attendance
+  // eg: wedding party will see rehearsal dinner, morning of information
   const handleSubmit = () => {
     if (validCodes[code]) {
       setName(validCodes[code]);
@@ -46,22 +46,27 @@ const Home = () => {
     month: 'long',
     day: 'numeric',
   };
-  // date calculator
+
+  // date calculator to get number of days until the wedding
   const dateCalculate = (target) => {
     const now = new Date();
     const totalDays = Math.floor((target - now) / (1000 * 60 * 60 * 24));
 
-    const years = Math.floor(totalDays / 365);
-    const months = Math.floor((totalDays % 365) / 30);
-    const days = totalDays % 30;
-
-    // return `${years} year, ${months} months, ${days} days`;
     return `${totalDays} days`
   };
 
 
   return (
     <Container>
+      {/* 
+      TODO: this needs to be moved to <App>.
+      Temporary: if else handles user access controls.
+      If there is any of the above codes (1-8), it'll let you in. 
+      Eventually these codes will be hashes (?) where the user will enter the code
+      and a db will be queried getting specific information and generating content 
+      specific to that user
+      */}
+      {/* if no current name is in the state, show this code-entry box */}
       {!name ? (
         <Box>
           <Typography variant="h4" gutterBottom>
@@ -80,6 +85,7 @@ const Home = () => {
           </Box>
         </Box>
       ) :  
+      // if there is a name, show the content
       (<Grid container spacing={1}>
         <Grid item xs={12} md={6}>
           <Box sx={{
