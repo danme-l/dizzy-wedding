@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Container, Typography, TextField, Button } from '@mui/material';
+import { Container, Typography, Box, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
+
 
 const Rsvp = () => {
   const [name, setName] = useState('');
@@ -39,10 +40,16 @@ const Rsvp = () => {
           <option value="yes">Let's Go</option>
           <option value="no">I hate you guys</option>
         </TextField>
-        
-        <Button type="submit" variant="contained" color="primary">
-          Submit
-        </Button>
+        <Box sx={{
+          display: "flex",
+          flexDirection: "column"
+        }}>
+          {/*TODO: add required textfield for plus one if checked*/}
+          <FormControlLabel control={<Checkbox color="secondary" />} label="Plus One"></FormControlLabel>
+          <Button type="submit" variant="contained" color="primary" sx={{m: "0% auto"}}>
+            Submit
+          </Button>
+        </Box>
       </form>
     </Container>
   );
