@@ -8,6 +8,7 @@ const Gallery = () => {
         Our Gallery
       </Typography>
       <Typography variant="body1">Photos will be added here!</Typography>
+      {/* TODO add guest photo submission box? Or go by email/text to avoid size limitations */}
     </Container>
   );
 };
