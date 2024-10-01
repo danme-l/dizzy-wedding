@@ -7,7 +7,10 @@ import Home from './components/Home';
 import Details from './components/Details';
 import Gallery from './components/Gallery';
 import Schedule from './components/Schedule';
+import FAQ from './components/FAQ';
 import Rsvp from './components/Rsvp';
+import OurStory from './components/OurStory';
+import AboutUs from './components/AboutUs';
 import { useTheme } from '@mui/material/styles';
 
 
@@ -195,7 +198,7 @@ const App = () => {
                 Details
               </Button>
               <StyledMenu id="details-menu"
-                MenuListProps={{ 'aria-labelledby': 'demo-customized-button',}}
+                MenuListProps={{ 'aria-labelledby': 'details-button',}}
                 anchorEl={anchorEl}
                 open={open}
                 onClose={handleClose}>
@@ -211,26 +214,50 @@ const App = () => {
                   </MenuItem>
                   <MenuItem onClick={handleClose} disableRipple
                   component={Link}
-                  to="/schedule">
+                  to="/faq">
                   FAQ
+                </MenuItem>
+              </StyledMenu>
+              <Button
+                aria-controls={open ? 'about-menu' : undefined}
+                aria-haspopup="true"
+                aria-expanded={open ? 'true' : undefined}
+                disableElevation
+                onClick={handleClick}
+                  color="inherit"
+                  sx={{
+                    color: 'black',
+                    fontSize: '1.5rem',
+                    fontStyle: 'italic',
+                    textTransform: 'none',
+                    '&:hover': {
+                      backgroundColor: theme.palette.primary.main, // Highlight on hover
+                    },
+                  }}
+              >
+                About Us
+              </Button>
+              <StyledMenu id="about-menu"
+                MenuListProps={{ 'aria-labelledby': 'about-button',}}
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}>
+                <MenuItem onClick={handleClose} disableRipple
+                  component={Link}
+                  to="/ourstory">
+                  Our Story
+                </MenuItem>
+                <MenuItem onClick={handleClose} disableRipple
+                  component={Link}
+                  to="/gallery">
+                  Gallery
+                  </MenuItem>
+                  <MenuItem onClick={handleClose} disableRipple
+                  component={Link}
+                  to="/aboutus">
+                  About Us
                   </MenuItem>
                 </StyledMenu>
-              <Button
-                color="inherit"
-                component={Link}
-                to="/gallery"
-                sx={{
-                  color: 'black',
-                  fontSize: '1.5rem',
-                  fontStyle: 'italic',
-                  textTransform: 'none',
-                  '&:hover': {
-                    backgroundColor: theme.palette.primary.main, // Highlight on hover
-                  },
-                }}
-              >
-                Gallery
-              </Button>
               <Button
                 color="inherit"
                 component={Link}
@@ -257,8 +284,11 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/details" element={<Details />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/ourstory" element={<OurStory />} />
+            <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/rsvp" element={<Rsvp />} />
+            <Route path="/faq" element={<FAQ />} />s
           </Routes>
         </Paper>
       </Box>
