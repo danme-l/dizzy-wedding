@@ -3,13 +3,17 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
     palette: {
       primary: {
-        main: '#5E8BF2', // navy
+        main: '#0a2749', // navy
       },
       secondary: {
-        main: '#6A3805', // bronze
+        main: '#C28E61', // bronze
+      },
+      tertiary: {
+        main: '#69482C', //dark brown
       },
       background: {
-        default: '#f9f9f9', // Light background
+        default: '#cdcdc3', // Light background
+        secondary: '#afc0be', //Light blue
         paper: '#ffffff', // White background for paper components
       },
     },
