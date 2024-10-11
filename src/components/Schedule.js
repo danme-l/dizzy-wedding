@@ -1,6 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Typography, Tabs, Tab, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
+import { Padding } from '@mui/icons-material';
+
+const rehearsalSchedule = [
+    {time: '7:30', activity:"Get up"},
+    {time: '8:00', activity:"Watch videos"},
+    {time: '9:30', activity:"Double Check everything"}
+];
+const weddingSchedule = [
+    {time: '7:30', activity:"Get up"},
+    {time: '8:00', activity:"Freak Out"},
+    {time: '10:30', activity:"Brunch"},
+    {time: '1:00', activity:"First Look"},
+    {time: '3:30', activity:"Ceremony Begins"},
+    {time: '4:00', activity:"Cocktail Hour Begins"},
+    {time: '5:30', activity:"Dinner Begins"},
+    {time: '8:00', activity:"Father Daughter Dance"},
+    {time: '8:02', activity:"Mother Son Dance"},
+    {time: '11:00', activity:"Late Night Snack"},
+    {time: '1:00', activity:"Clean Up"}
+ ];
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -44,17 +64,25 @@ const Schedule = () => {
         Schedule
       </Typography>
 
-      <Container>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+      <Container style={{padding: 0}}>
+        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{m:0}}>
           <Tab label="Rehearsal" {...a11yProps(0)} />
           <Tab label="Wedding Day" {...a11yProps(1)} />
         </Tabs>
 
         {/* Ally Prop 0: Rehearsal */}
-        <CustomTabPanel value={value} index={0}>
+        <CustomTabPanel value={value} index={0} 
+          style={{
+            padding: 0
+          }}>
           <TableContainer>
             <Table stickyHeader>
                {/* SECTION table Head */}
+               {/*hard code column widths*/}
+               <colgroup>
+                <col style={{width:'30%'}}/>
+                <col style={{width:'70%'}}/>
+              </colgroup>
                 <TableHead>
                     <TableRow>
                         <TableCell>
@@ -67,24 +95,33 @@ const Schedule = () => {
                 </TableHead>
                 {/* SECTION table body */}
                 <TableBody>
-                  <TableRow>
+                {rehearsalSchedule.map((event, index) => (
+                  <TableRow key={index}>
                     <TableCell>
-                      7:30
+                      {event.time}
                     </TableCell>
                     <TableCell>
-                      Dinner
+                      {event.activity}
                     </TableCell>
                   </TableRow> 
+                ))}
                 </TableBody>
             </Table>
           </TableContainer>
         </CustomTabPanel>
 
         {/* Ally Prop 1: Wedding Day */}
-        <CustomTabPanel value={value} index={1}>
+        <CustomTabPanel value={value} index={1}
+            style={{
+                padding: 0
+            }}>
         <TableContainer>
-            <Table stickyHeader>
+            <Table stickyHeader sx={{ overflow: 'scroll' }}>
                 {/* SECTION table Head */}
+                <colgroup>
+                <col style={{width:'30%'}}/>
+                <col style={{width:'70%'}}/>
+              </colgroup>
                 <TableHead>
                     <TableRow>
                         <TableCell>
@@ -97,29 +134,27 @@ const Schedule = () => {
                 </TableHead>
                 {/* SECTION table body */}
                 <TableBody>
-                  <TableRow>
+                {weddingSchedule.map((event, index) => (
+                  <TableRow key={index}>
                     <TableCell>
-                      7:30
+                      {event.time}
                     </TableCell>
                     <TableCell>
-                      Arrive At Venue
+                      {event.activity}
                     </TableCell>
                   </TableRow> 
+                ))}
                 </TableBody>
             </Table>
           </TableContainer>
         </CustomTabPanel>
       </Container>
 
-      {/* SECTION Add to Calendar Button */}
-      <Container>
+      {/* SECTION Add to Calendar Button  and align it with the rest of the ontainer*/}
+      <Container justifyContent='flex-center'>
       <Button
         variant='outlined'
         sx={{
-          color: 'black',
-          fontSize: '1rem',
-          fontStyle: 'italic',
-          textTransform: 'none',
           margin: '2rem -2rem'
         }}
       >
