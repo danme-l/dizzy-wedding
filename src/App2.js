@@ -1,4 +1,5 @@
-import {Box, Typography, AppBar, Toolbar, Button, Paper, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
+import { useState, useEffect } from 'react';
+import {Box, Typography, TextField, AppBar, Toolbar, Button, Paper, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
 import {IconButton, ListItem, ListItemButton, Divider} from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -23,6 +24,17 @@ const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const detailsMenuArr = ["Details", "Schedule", "FAQ"];
 const aboutusMenuArr = ["Our Story", "Gallery", "About Us"];
 
+// guests (temporary)
+const validCodes = {
+  '1': 'Laura Clark and Jeff Meleras, Parents of the Groom',
+  '2': 'Claudine Michaud and Adnan Hadziomerovic, Parents of the Bride',
+  '3': 'Tommy Wallis',
+  '4': 'Lara Kercoglu',
+  '5': 'Caroline Meleras',
+  '6': 'Jacob Meleras, Best Man',
+  '7': 'Ariane Hadziomerovic, Maid of Honour',
+  '8': 'Alexa Hadziomerovic, Maid of Honour',
+};
 
 const StyledMenu = styled((props) => (
   <Menu
@@ -364,6 +376,43 @@ const App = () => {
   const theme = useTheme();
   const [openMenu, setOpenMenu] = React.useState(false);
 
+  // **SECTION** guest validation
+  // to be hooked up to a database eventually 
+  {/* 
+  Temporary: if else handles user access controls.
+  If there is any of the above codes (1-8), it'll let you in. 
+  Eventually these codes will be hashes (?) where the user will enter the code
+  and a db will be queried getting specific information and generating content 
+  specific to that user
+  */}
+  const [code, setCode] = useState(0)
+  const [name, setName] = useState('');
+
+  // assume name in non-production environments
+  // useEffect(() => {
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     // random name
+  //     setName('Let\'ss go');
+  //   }
+  // }, []);
+
+  // gets the code out of the textbox
+  const handleInputChange = (event) => {
+    setCode(event.target.value);
+  };
+
+  // sets the user code as the State
+  // feature desire: the code will query a db where there will be a guest-code mapping 
+  // from there, the user will be able to see information specific to their attendance
+  // eg: wedding party will see rehearsal dinner, morning of information
+  const handleSubmit = () => {
+    if (validCodes[code]) {
+      setName(validCodes[code]);
+    } else {
+      alert('Invalid code. Please try again.');
+    }
+  };
+
 
   return (
     <Router>
@@ -397,7 +446,28 @@ const App = () => {
           SmallMenu(theme, openMenu, setOpenMenu)}
         <div><image href="https://img.freepik.com/premium-photo/dusty-blue-floral-boho-navy-blue-cream-gold-bouquet_887552-29123.jpg?w=1800"/></div>
         {/* SECTION Content */}
-        <Paper elevation={3} sx={{m: 3, p: 2}}>
+
+        {!name ? (
+          <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
+            <Box>
+            <Typography variant="h4" gutterBottom>
+              Enter Your Code
+            </Typography>
+            <Box  sx={{display:'flex', p:2, gap: 2}}>
+              <TextField
+                label="Invite Code"
+                variant="outlined"
+                value={code}
+                onChange={handleInputChange}
+                />
+              <Button variant="contained" color="primary" onClick={handleSubmit}>
+                Submit
+              </Button>
+              </Box>
+            </Box>
+          </Box>
+      ) : 
+        (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/details" element={<Details />} />
@@ -409,6 +479,7 @@ const App = () => {
             <Route path="/faq" element={<FAQ />} />s
           </Routes>
         </Paper>
+        )}
       </Box>
     </Router>
   );
