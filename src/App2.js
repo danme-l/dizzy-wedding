@@ -1,11 +1,11 @@
-import { Box, Typography, AppBar, Toolbar, Button, Paper, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
+import {Box, Typography, AppBar, Toolbar, Button, Paper, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
 import {IconButton, ListItem, ListItemButton, Divider} from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import { styled, alpha } from '@mui/material/styles';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Home as HomeIcon, Info as DetailsIcon, Photo as GalleryIcon, EventAvailable as RsvpIcon, ChevronLeft, ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
+import {ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
@@ -42,7 +42,6 @@ const StyledMenu = styled((props) => (
         borderRadius: 6,
         marginTop: theme.spacing(1),
         minWidth: 180,
-        color: 'rgb(55, 65, 81)',
         boxShadow:
           'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
         '& .MuiMenu-list': {
@@ -76,7 +75,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-end',
 }));
 
-function SmallMenuIcon2(openMenu, setOpenMenu){
+function SmallMenuIcon(openMenu, setOpenMenu){
   //const [openMenu, setState] = React.useState(false);
   const handleDrawerClose = () => {
     setOpenMenu(false);
@@ -87,23 +86,21 @@ function SmallMenuIcon2(openMenu, setOpenMenu){
   
   return (
     <IconButton
-            //color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={[
-              {
-                mr: 0,
-              },
-              //state && { display: 'none' },
-            ]}
-          >
-            <MenuIcon />
-          </IconButton>
+      aria-label="open drawer"
+      onClick={handleDrawerOpen}
+      edge="start"
+      sx={[
+        {
+          mr: 0,
+        },
+        //state && { display: 'none' },
+      ]}>
+      <MenuIcon />
+    </IconButton>
   );
 };
 
-function SmallMenu2(theme, openMenu, setOpenMenu) {
+function SmallMenu(theme, openMenu, setOpenMenu) {
   const handleDrawerClose = () => {
     setOpenMenu(false);
   };
@@ -131,7 +128,7 @@ function SmallMenu2(theme, openMenu, setOpenMenu) {
         </IconButton>
       </DrawerHeader>
       <Divider />
-      <List>
+      <List disablePadding>
           <ListItem key='Home' disablePadding>
             <ListItemButton
               component={Link}
@@ -141,65 +138,100 @@ function SmallMenu2(theme, openMenu, setOpenMenu) {
                 fontStyle: 'italic',
                 textTransform: 'none',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.main, // Highlight on hover
+                  backgroundColor: theme.palette.background.default, // Highlight on hover
                 },
               }}>
               <ListItemText primary={'Home'} />
               
             </ListItemButton>
           </ListItem>
-      </List>
-      <Divider/>
-      <List>
-          <ListItem key='Details' disablePadding>
-            <ListItemButton
-              component={Link}
-              to="/details"
-              sx={{
-                fontSize: '1.5rem',
-                fontStyle: 'italic',
-                textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: theme.palette.primary.main, // Highlight on hover
-                },
-              }}>
-              <ListItemText primary={'Details'} />
-              <ChevronRight/>
-            </ListItemButton>
-          </ListItem>
-      </List>
-      <Divider/>
-      <List>
-          <ListItem key='AboutUs' disablePadding>
-            <ListItemButton
-            component={Link}
-            to="/aboutus"
-            sx={{
-              fontSize: '1.5rem',
-              fontStyle: 'italic',
-              textTransform: 'none',
-              '&:hover': {
-                backgroundColor: theme.palette.primary.main, // Highlight on hover
-              },
+        <Divider/>
+        <ListItem key='Details' disablePadding sx={{width: "100%"}}>
+          <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
+            sx={{'&:before': {
+              display: 'none',
+            }
             }}>
-              <ListItemText primary={'About Us'} />
-              <ChevronRight/>
-            </ListItemButton>
-          </ListItem>
-      </List>
+            <AccordionSummary
+              expandIcon={<ArrowDropDownIcon />}
+              aria-controls="panel1-content"
+              id="panel1-header">
+              <Typography
+                disableElevation
+                color="inherit"
+                sx={{
+                  fontStyle: 'italic',
+                  textTransform: 'none',
+                }}>
+                  Details
+                </Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {detailsMenuArr.map((text, index) => (
+              <Button key={text}
+                component={Link}
+                fullWidth={true}
+                sx={{
+                  justifyContent: 'flex-start',
+                  '&:hover': {
+                  backgroundColor: theme.palette.background.default, // Highlight on hover
+                },}}
+                to={'/' + text.replace(/\s/g, '').toLowerCase()}>
+                {text}
+              </Button>
+              ))}
+            </AccordionDetails>
+          </Accordion>
+        </ListItem>
       <Divider/>
-      <List>
+          <ListItem key='AboutUs' disablePadding>
+            <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
+              sx={{'&:before': {
+                display: 'none',
+              }}}>
+              <AccordionSummary
+                expandIcon={<ArrowDropDownIcon />}
+                aria-controls="panel2-content"
+                id="panel2-header">
+                <Typography
+                  disableElevation
+                  color="inherit"
+                  sx={{
+                    fontStyle: 'italic',
+                    textTransform: 'none',
+                  }}>
+                  About Us
+                </Typography>
+              </AccordionSummary>
+              <AccordionDetails>
+                {aboutusMenuArr.map((text, index) => (
+                  <Button key={text}
+                    component={Link}
+                    fullWidth={true}
+                    sx={{
+                      justifyContent: 'flex-start',
+                      '&:hover': {
+                      backgroundColor: theme.palette.background.default, // Highlight on hover
+                    },}}
+                    to={'/' + text.replace(/\s/g, '').toLowerCase()}>
+                    {text}
+                  </Button>
+                ))}
+              </AccordionDetails>
+            </Accordion>
+          </ListItem>
+
+      <Divider/>
           <ListItem key='RSVP' disablePadding>
             <ListItemButton 
               component={Link}
               to="/rsvp"
               sx={{
-                backgroundColor: theme.palette.background.default,
-                fontSize: '1.5rem',
+                backgroundColor: theme.palette.background.secondary,
                 fontStyle: 'italic',
                 textTransform: 'none',
                 '&:hover': {
-                  backgroundColor: theme.palette.primary.main, // Highlight on hover
+                  backgroundColor: theme.palette.background.default, // Highlight on hover
                 },
               }}>
               <ListItemText primary={'RSVP'} />
@@ -207,138 +239,6 @@ function SmallMenu2(theme, openMenu, setOpenMenu) {
           </ListItem>
       </List>
     </Drawer>
-  );
-};
-
-function SmallMenu(theme){
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  return (
-    <Box>
-      <Button
-        aria-controls={open ? 'main-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        disableElevation
-        onClick={handleClick}
-        color="inherit"
-        sx={{
-          color: 'black',
-          fontSize: '1.5rem',
-          fontStyle: 'italic',
-          textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
-          },
-        }}
-      >
-        <MenuIcon />
-      </Button>
-      <StyledMenu
-        id="main-menu"
-        MenuListProps={{ 'aria-labelledby': 'main-button',}}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}>
-      <Button
-        component={Link}
-        to="/"
-        sx={{
-          color: 'black',
-          fontSize: '1.5rem',
-          fontStyle: 'italic',
-          textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
-          },
-        }}
-      >
-      Home
-      </Button>
-      <Accordion style={{m: 0, boxShadow: "none",}} square={true} disableGutters={true}>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-          sx={{m: '0',}}
-        >
-          <Typography
-        disableElevation
-        color="inherit"
-        sx={{
-          color: 'black',
-          fontSize: '1.5rem',
-          fontStyle: 'italic',
-          textTransform: 'none',
-          m: '0',
-        }}
-      >
-      Details
-      </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        {detailsMenuArr.map((text, index) => (
-          <Button key={text} disableRipple
-          component={Link}
-          to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-          {text}
-        </Button>
-        ))}
-        </AccordionDetails>
-      </Accordion>
-      <Accordion style={{m:0, boxShadow: "none",}} square={true} disableGutters={true}>
-        <AccordionSummary
-          expandIcon={<ArrowDropDownIcon />}
-          aria-controls="panel1-content"
-          id="panel1-header"
-        >
-          <Typography
-        disableElevation
-        color="inherit"
-        sx={{
-          color: 'black',
-          fontSize: '1.5rem',
-          fontStyle: 'italic',
-          textTransform: 'none',
-        }}
-        >
-        About Us
-      </Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-        {aboutusMenuArr.map((text, index) => (
-          <Button key={text} disableRipple
-            component={Link}
-            to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-            {text}
-          </Button>
-        ))}
-        </AccordionDetails>
-      </Accordion>
-      <Button
-        color="inherit"
-        component={Link}
-        to="/rsvp"
-        sx={{
-          color: 'black',
-          fontSize: '1.5rem',
-          fontStyle: 'italic',
-          textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
-          },
-        }}>
-        RSVP
-      </Button>
-      </StyledMenu>
-    </Box>
   );
 };
 
@@ -366,32 +266,32 @@ function LargeMenu(theme) {
       <Button
         component={Link}
         to="/"
+        color="inherit"
         sx={{
-          color: 'black',
-          fontSize: '1.5rem',
+          fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
           '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
+            backgroundColor: theme.palette.background.default, // Highlight on hover
           },
-        }}
-      >
-      Home
+        }}>
+        Home
       </Button>
+      {/*Maybe do a hover brings on the menu as well?*/}
       <Button
         aria-controls={open ? 'details-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        endIcon={<ArrowDropDownIcon />}
         disableElevation
         onClick={handleClick}
         color="inherit"
         sx={{
-          color: 'black',
-          fontSize: '1.5rem',
-           fontStyle: 'italic',
+          fontSize: "1.5em",
+          fontStyle: 'italic',
           textTransform: 'none',
           '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
+            backgroundColor: theme.palette.background.default, // Highlight on hover
           },
         }}
       >
@@ -402,15 +302,15 @@ function LargeMenu(theme) {
         aria-haspopup="true"
         aria-expanded={open2 ? 'true' : undefined}
         disableElevation
+        endIcon={<ArrowDropDownIcon />}
         onClick={handleClick2}
         color="inherit"
         sx={{
-          color: 'black',
-          fontSize: '1.5rem',
+          fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
           '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
+            backgroundColor: theme.palette.background.default, // Highlight on hover
           },
         }}
         >
@@ -447,12 +347,11 @@ function LargeMenu(theme) {
         component={Link}
         to="/rsvp"
         sx={{
-          color: 'black',
-          fontSize: '1.5rem',
+          fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
           '&:hover': {
-            backgroundColor: theme.palette.primary.main, // Highlight on hover
+            backgroundColor: theme.palette.background.default, // Highlight on hover
           },
         }}>
         RSVP
@@ -473,13 +372,10 @@ const App = () => {
         {/* SECTION Nav bar */}
         <AppBar
           position="sticky"
+          color="black"
           sx={{
             backgroundColor: 'transparent',
             boxShadow: 'none', 
-            [theme.breakpoints.down("sm")]: {
-              fontSize: "2rem",
-              m: '0',
-            },
           }}
         >
           <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -492,14 +388,14 @@ const App = () => {
             {/* Links on the right */}
             {/*Use media query to determine if this should show up */}
             {useMediaQuery(theme.breakpoints.down('md')) ? 
-              SmallMenu(theme) : LargeMenu(theme)}
+              SmallMenuIcon(openMenu, setOpenMenu) : LargeMenu(theme)}
             
           </Toolbar>
         </AppBar>
         {/* add drawer for small menu here*/}
-        {/*useMediaQuery(theme.breakpoints.down('md')) && 
-          SmallMenu(theme, openMenu, setOpenMenu)*/}
-
+        {useMediaQuery(theme.breakpoints.down('md')) && 
+          SmallMenu(theme, openMenu, setOpenMenu)}
+        <div><image href="https://img.freepik.com/premium-photo/dusty-blue-floral-boho-navy-blue-cream-gold-bouquet_887552-29123.jpg?w=1800"/></div>
         {/* SECTION Content */}
         <Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>

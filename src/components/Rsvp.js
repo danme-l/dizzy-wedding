@@ -13,8 +13,9 @@ const Rsvp = () => {
 
   return (
     <Container>
+
       <Typography variant="h4" gutterBottom>
-        
+        RSVP
       </Typography>
 
       <form onSubmit={handleSubmit}>
