@@ -52,13 +52,13 @@ export default function ImageDisplay() {
 
 
 const itemData = [
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/DSC_0090.jpg', title:'Pumpkin Patch'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/DSC_0112.jpg', title:'Pumpkin Patch'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_4172.jpg', title:'Peggy\'s Cove, Nova Scotia'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_0009.jpg', title:'Epernay, Champagne, France'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_0045.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_0357.jpg', title:'Hat Street, Panama City, Panama'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_4174.jpg', title:'Bay of Fundy, New Brunswick'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_8657.jpg', title:'Volcan Masaya, Nicaragua'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/IMG_9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion (yeah we hiked that bitch too)'}
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0090.jpg', title:'Pumpkin Patch'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0112.jpg', title:'Pumpkin Patch'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4172.jpg', title:'Peggy\'s Cove, Nova Scotia'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0009.jpg', title:'Epernay, Champagne, France'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0045.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0357.jpg', title:'Hat Street, Panama City, Panama'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4174.jpg', title:'Bay of Fundy, New Brunswick'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_8657.jpg', title:'Volcan Masaya, Nicaragua'},
+  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion (yeah we hiked that bitch too)'}
 ];
