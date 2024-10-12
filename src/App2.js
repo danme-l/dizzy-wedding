@@ -378,23 +378,16 @@ const App = () => {
 
   // **SECTION** guest validation
   // to be hooked up to a database eventually 
-  {/* 
-  Temporary: if else handles user access controls.
-  If there is any of the above codes (1-8), it'll let you in. 
-  Eventually these codes will be hashes (?) where the user will enter the code
-  and a db will be queried getting specific information and generating content 
-  specific to that user
-  */}
   const [code, setCode] = useState(0)
   const [name, setName] = useState('');
 
   // assume name in non-production environments
-  // useEffect(() => {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     // random name
-  //     setName('Let\'ss go');
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      // random name
+      setName('Let\'ss go');
+    }
+  }, []);
 
   // gets the code out of the textbox
   const handleInputChange = (event) => {
@@ -412,7 +405,6 @@ const App = () => {
       alert('Invalid code. Please try again.');
     }
   };
-
 
   return (
     <Router>
@@ -441,12 +433,15 @@ const App = () => {
             
           </Toolbar>
         </AppBar>
+
         {/* add drawer for small menu here*/}
         {useMediaQuery(theme.breakpoints.down('md')) && 
           SmallMenu(theme, openMenu, setOpenMenu)}
-        <div><image href="https://img.freepik.com/premium-photo/dusty-blue-floral-boho-navy-blue-cream-gold-bouquet_887552-29123.jpg?w=1800"/></div>
+        <div>
+          <image href="https://img.freepik.com/premium-photo/dusty-blue-floral-boho-navy-blue-cream-gold-bouquet_887552-29123.jpg?w=1800"/>
+        </div>
+        
         {/* SECTION Content */}
-
         {!name ? (
           <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
             <Box>
@@ -469,7 +464,7 @@ const App = () => {
       ) : 
         (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home name={name} />} />
             <Route path="/details" element={<Details />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/ourstory" element={<OurStory />} />

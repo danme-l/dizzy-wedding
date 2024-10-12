@@ -1,42 +1,8 @@
 import React, {useState} from 'react';
 import { Box, Grid, Typography, TextField, Button, Container} from '@mui/material';
 
-// temporary
-const validCodes = {
-  '1': 'Laura Clark and Jeff Meleras, Parents of the Groom',
-  '2': 'Claudine Michaud and Adnan Hadziomerovic, Parents of the Bride',
-  '3': 'Tommy Wallis',
-  '4': 'Lara Kercoglu',
-  '5': 'Caroline Meleras',
-  '6': 'Jacob Meleras, Best Man',
-  '7': 'Ariane Hadziomerovic, Maid of Honour',
-  '8': 'Alexa Hadziomerovic, Maid of Honour',
-};
 
-
-const Home = () => {
-  // // **SECTION** guest validation
-  // // to be hooked up to a database eventually 
-  // const [code, setCode] = useState(0)
-  // const [name, setName] = useState('');
-
-  // // gets the code out of the textbox
-  // const handleInputChange = (event) => {
-  //   setCode(event.target.value);
-  // };
-
-  // // sets the user code as the State
-  // // feature desire: the code will query a db where there will be a guest-code mapping 
-  // // from there, the user will be able to see information specific to their attendance
-  // // eg: wedding party will see rehearsal dinner, morning of information
-  // const handleSubmit = () => {
-  //   if (validCodes[code]) {
-  //     setName(validCodes[code]);
-  //   } else {
-  //     alert('Invalid code. Please try again.');
-  //   }
-  // };
-  
+const Home = ({ name }) => {
 
   // **SECTION** Date Stuff
   const weddingDate = new Date('10 January 2026 12:00 EST');
@@ -65,7 +31,7 @@ const Home = () => {
             gap: 1
           }}>
             <Typography variant='h2'>
-              Welcome
+              Welcome, {name}!
             </Typography>
             <Typography variant="h1"> 
               The Marriage of Isabel Haziomeric & Daniel Meleras
