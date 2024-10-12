@@ -19,6 +19,7 @@ import Rsvp from './components/Rsvp';
 import OurStory from './components/OurStory';
 import AboutUs from './components/AboutUs';
 import { useTheme } from '@mui/material/styles';
+import './global.css'
 
 const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const detailsMenuArr = ["Details", "Schedule", "FAQ"];
@@ -52,7 +53,8 @@ const StyledMenu = styled((props) => (
     ))(({ theme }) => ({
       '& .MuiPaper-root': {
         borderRadius: 6,
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(.5),
+        borderTop: '0.2em solid #0a2749',
         minWidth: 180,
         boxShadow:
           'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
@@ -151,15 +153,13 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
         {/* ITEM 1: Home */}
           <ListItem key='Home' disablePadding>
             <ListItemButton
+              onClick={handleDrawerClose}
               component={Link}
               to="/"
               sx={{
                 fontSize: '1.5rem',
                 fontStyle: 'italic',
                 textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: theme.palette.background.default, // Highlight on hover
-                },
               }}>
               <ListItemText primary={'Home'} />
               
@@ -195,11 +195,9 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
                 <Button key={text}
                   component={Link}
                   fullWidth={true}
+                  onClick={handleDrawerClose}
                   sx={{
-                    justifyContent: 'flex-start',
-                    '&:hover': {
-                    backgroundColor: theme.palette.background.default, // Highlight on hover
-                  },}}
+                    justifyContent: 'flex-start',}}
                   to={'/' + text.replace(/\s/g, '').toLowerCase()}>
                   {text}
                 </Button>
@@ -235,12 +233,10 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
                 {aboutusMenuArr.map((text, index) => (
                   <Button key={text}
                     component={Link}
+                    onClick={handleDrawerClose}
                     fullWidth={true}
                     sx={{
-                      justifyContent: 'flex-start',
-                      '&:hover': {
-                      backgroundColor: theme.palette.background.default, // Highlight on hover
-                    },}}
+                      justifyContent: 'flex-start',}}
                     to={'/' + text.replace(/\s/g, '').toLowerCase()}>
                     {text}
                   </Button>
@@ -254,14 +250,12 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
           <ListItem key='RSVP' disablePadding>
             <ListItemButton 
               component={Link}
+              onClick={handleDrawerClose}
               to="/rsvp"
               sx={{
                 backgroundColor: theme.palette.background.secondary,
                 fontStyle: 'italic',
                 textTransform: 'none',
-                '&:hover': {
-                  backgroundColor: theme.palette.background.default, // Highlight on hover
-                },
               }}>
               <ListItemText primary={'RSVP'} />
             </ListItemButton>
@@ -311,9 +305,6 @@ function LargeMenu(theme) {
           fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.background.default, // Highlight on hover
-          },
         }}>
         Home
       </Button>
@@ -332,9 +323,6 @@ function LargeMenu(theme) {
           fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.background.default, // Highlight on hover
-          },
         }}
       >
       Details
@@ -353,9 +341,6 @@ function LargeMenu(theme) {
           fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.background.default, // Highlight on hover
-          },
         }}
         >
         About Us
@@ -369,7 +354,7 @@ function LargeMenu(theme) {
         onClose={handleClose}>
         {/* iterate over the details menu to create menu items */}
         {detailsMenuArr.map((text, index) => (
-          <MenuItem key={text} onClick={handleClose} disableRipple
+          <MenuItem key={text} onClick={handleClose}
           component={Link}
           to={'/' + text.replace(/\s/g, '').toLowerCase()}>
           {text}
@@ -385,7 +370,7 @@ function LargeMenu(theme) {
         onClose={handleClose2}>
         {/* iterate over the about us menu to create menu items */}
         {aboutusMenuArr.map((text, index) => (
-          <MenuItem key={text} onClick={handleClose2} disableRipple
+          <MenuItem key={text} onClick={handleClose2}
             component={Link}
             to={'/' + text.replace(/\s/g, '').toLowerCase()}>
             {text}
@@ -402,9 +387,6 @@ function LargeMenu(theme) {
           fontSize: "1.5em",
           fontStyle: 'italic',
           textTransform: 'none',
-          '&:hover': {
-            backgroundColor: theme.palette.background.default, // Highlight on hover
-          },
         }}>
         RSVP
       </Button>
@@ -455,8 +437,9 @@ const App = () => {
           position="sticky"
           color="black"
           sx={{
-            backgroundColor: 'transparent',
             boxShadow: 'none', 
+            p: '1em 0',
+            backgroundImage: 'url(static/images/limewash.jpg)',
           }}
         >
           <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -478,10 +461,7 @@ const App = () => {
         {/* add drawer for small menu here*/}
         {useMediaQuery(theme.breakpoints.down('md')) && 
           SmallMenu(theme, openMenu, setOpenMenu)}
-        <div>
-          <image href="https://img.freepik.com/premium-photo/dusty-blue-floral-boho-navy-blue-cream-gold-bouquet_887552-29123.jpg?w=1800"/>
-        </div>
-        
+
         {/* SECTION Content */}
         {!name ? (
           <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>

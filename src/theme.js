@@ -45,6 +45,19 @@ const theme = createTheme({
         textTransform: 'none', // Prevent uppercase transformation
       },
     },
+    components: {
+      MuiButtonBase: {
+        styleOverrides: {
+          root: {
+                "&:hover": {
+              border: 'solid',
+              borderColor: "#C28E61",
+            }
+            
+          }
+        }
+      }
+    }
   });
   
 
