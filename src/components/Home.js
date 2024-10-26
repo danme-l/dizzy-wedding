@@ -23,7 +23,7 @@ const Home = ({ name }) => {
 
   //adding JS to flip the card upon click
   const handletwist = () => {
-   document.getElementById('card').classList.toggle('is-flipped');
+    document.getElementById('card').classList.toggle('is-flipped');
   };
 
   return (
