@@ -95,7 +95,7 @@ const App = () => {
             <Route path="/ourstory" element={<OurStory />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/rsvp" element={<Rsvp />} />
+            <Route path="/rsvp" element={<Rsvp defaultName={name}/>} />
             <Route path="/faq" element={<FAQ />} />s
           </Routes>
         </Paper>

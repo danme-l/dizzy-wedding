@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Container, Typography, Box, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
 
 
-const Rsvp = () => {
+const Rsvp = ({defaultName}) => {
   const [name, setName] = useState('');
   const [attending, setAttending] = useState('');
 
@@ -24,7 +24,7 @@ const Rsvp = () => {
           variant="outlined"
           fullWidth
           margin="normal"
-          value={name}
+          value={defaultName}
           onChange={(e) => setName(e.target.value)}
           required
         />

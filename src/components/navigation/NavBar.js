@@ -57,319 +57,311 @@ const StyledMenu = styled((props) => (
       },
   }));
   
-  const DrawerHeader = styled('div')(({ theme }) => ({
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  }));
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
   
-  function SmallMenuIcon(openMenu, setOpenMenu){
-    //const [openMenu, setState] = React.useState(false);
-    const handleDrawerClose = () => {
-      setOpenMenu(false);
-    };
-    const handleDrawerOpen = () => {
-      setOpenMenu(true);
-    };
-    
-    return (
-      <IconButton
-        aria-label="open drawer"
-        onClick={handleDrawerOpen}
-        edge="start"
-        sx={[
-          {
-            mr: 0,
-          },
-          //state && { display: 'none' },
-        ]}>
-        <MenuIcon />
-      </IconButton>
-    );
+const MenuButtonLarge = styled((props) => (
+  <Button
+    color='inherit'
+        sx={{
+          fontSize: "1.5em",
+          fontStyle: 'italic',
+          textTransform: 'none',
+        }}
+        {...props}/>
+    ))(({ theme }) => ({
+      "&:hover": {
+        border: 'solid',
+        borderColor: "#C28E61",
+      }
+}));
+
+function SmallMenuIcon(openMenu, setOpenMenu){
+  //const [openMenu, setState] = React.useState(false);
+  const handleDrawerClose = () => {
+    setOpenMenu(false);
+  };
+  const handleDrawerOpen = () => {
+    setOpenMenu(true);
   };
   
+  return (
+    <IconButton
+      aria-label="open drawer"
+      onClick={handleDrawerOpen}
+      edge="start"
+      sx={[
+        {
+          mr: 0,
+        },
+        //state && { display: 'none' },
+      ]}>
+      <MenuIcon />
+    </IconButton>
+  );
+};
+  
   // **SECTION** small menu appears on phones 
-  function SmallMenu(theme, openMenu, setOpenMenu) {
-    // open, close handlers
-    const handleDrawerClose = () => {
-      setOpenMenu(false);
-    };
-    const handleDrawerOpen = () => {
-      setOpenMenu(true);
-    };
-  
-  
-    return (
-      <Drawer
-        sx={{
-          flexShrink: 0,
+function SmallMenu(theme, openMenu, setOpenMenu) {
+  // open, close handlers
+  const handleDrawerClose = () => {
+    setOpenMenu(false);
+  };
+  const handleDrawerOpen = () => {
+    setOpenMenu(true);
+  };
+
+
+  return (
+    <Drawer
+      sx={{
+        flexShrink: 0,
+        //width: '100',
+        '& .MuiDrawer-paper': {
           //width: '100',
-          '& .MuiDrawer-paper': {
-            //width: '100',
-            boxSizing: 'border-box',
-          },
-        }}
-        variant="persistent"
-        anchor="right"
-        open={openMenu}
-      >
-        {/* drawer header, containing the close button */}
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronRight />
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-  
-        {/* navigation list */}
-        <List disablePadding>
-  
-          {/* ITEM 1: Home */}
-            <ListItem key='Home' disablePadding>
-              <ListItemButton
-                onClick={handleDrawerClose}
-                component={Link}
-                to="/"
-                sx={{
-                  fontSize: '1.5rem',
-                  fontStyle: 'italic',
-                  textTransform: 'none',
-                }}>
-                <ListItemText primary={'Home'} />
-                
-              </ListItemButton>
-            </ListItem>
-            <Divider/>
-  
-            {/* ITEM 2: details */}
-            <ListItem key='Details' disablePadding sx={{width: "100%"}}>
-              <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
-                sx={{'&:before': {
-                  display: 'none',
-                }
-                }}>
-                <AccordionSummary
-                  expandIcon={<ArrowDropDownIcon />}
-                  aria-controls="panel1-content"
-                  id="panel1-header">
-                  <Typography
-                    disableElevation
-                    color="inherit"
-                    sx={{
-                      fontStyle: 'italic',
-                      textTransform: 'none',
-                    }}>
-                      Details
-                    </Typography>
-                </AccordionSummary>
-  
-                {/* submenu, iterating over the details and creating links */}
-                <AccordionDetails>
-                  {detailsMenuArr.map((text, index) => (
+          boxSizing: 'border-box',
+        },
+      }}
+      variant="persistent"
+      anchor="right"
+      open={openMenu}
+    >
+      {/* drawer header, containing the close button */}
+      <DrawerHeader>
+        <IconButton onClick={handleDrawerClose}>
+          <ChevronRight />
+        </IconButton>
+      </DrawerHeader>
+      <Divider />
+
+      {/* navigation list */}
+      <List disablePadding>
+
+        {/* ITEM 1: Home */}
+          <ListItem key='Home' disablePadding>
+            <ListItemButton
+              onClick={handleDrawerClose}
+              component={Link}
+              to="/"
+              sx={{
+                fontSize: '1.5rem',
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'Home'} />
+              
+            </ListItemButton>
+          </ListItem>
+          <Divider/>
+
+          {/* ITEM 2: details */}
+          <ListItem key='Details' disablePadding sx={{width: "100%"}}>
+            <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
+              sx={{'&:before': {
+                display: 'none',
+              }
+              }}>
+              <AccordionSummary
+                expandIcon={<ArrowDropDownIcon />}
+                aria-controls="panel1-content"
+                id="panel1-header">
+                <Typography
+                  disableElevation
+                  color="inherit"
+                  sx={{
+                    fontStyle: 'italic',
+                    textTransform: 'none',
+                  }}>
+                    Details
+                  </Typography>
+              </AccordionSummary>
+
+              {/* submenu, iterating over the details and creating links */}
+              <AccordionDetails>
+                {detailsMenuArr.map((text, index) => (
+                <Button key={text}
+                  component={Link}
+                  fullWidth={true}
+                  onClick={handleDrawerClose}
+                  sx={{
+                    justifyContent: 'flex-start',}}
+                  to={'/' + text.replace(/\s/g, '').toLowerCase()}>
+                  {text}
+                </Button>
+                ))}
+              </AccordionDetails>
+            </Accordion>
+          </ListItem>
+          <Divider/>
+
+          {/* ITEM 3: about us */}
+          <ListItem key='AboutUs' disablePadding>
+            <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
+              sx={{'&:before': {
+                display: 'none',
+              }}}>
+              <AccordionSummary
+                expandIcon={<ArrowDropDownIcon />}
+                aria-controls="panel2-content"
+                id="panel2-header">
+                <Typography
+                  disableElevation
+                  color="inherit"
+                  sx={{
+                    fontStyle: 'italic',
+                    textTransform: 'none',
+                  }}>
+                  About Us
+                </Typography>
+              </AccordionSummary>
+
+              {/* submenu, iterating over the details and creating links */}
+              <AccordionDetails>
+                {aboutusMenuArr.map((text, index) => (
                   <Button key={text}
                     component={Link}
-                    fullWidth={true}
                     onClick={handleDrawerClose}
+                    fullWidth={true}
                     sx={{
                       justifyContent: 'flex-start',}}
                     to={'/' + text.replace(/\s/g, '').toLowerCase()}>
                     {text}
                   </Button>
-                  ))}
-                </AccordionDetails>
-              </Accordion>
-            </ListItem>
-            <Divider/>
-  
-            {/* ITEM 3: about us */}
-            <ListItem key='AboutUs' disablePadding>
-              <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
-                sx={{'&:before': {
-                  display: 'none',
-                }}}>
-                <AccordionSummary
-                  expandIcon={<ArrowDropDownIcon />}
-                  aria-controls="panel2-content"
-                  id="panel2-header">
-                  <Typography
-                    disableElevation
-                    color="inherit"
-                    sx={{
-                      fontStyle: 'italic',
-                      textTransform: 'none',
-                    }}>
-                    About Us
-                  </Typography>
-                </AccordionSummary>
-  
-                {/* submenu, iterating over the details and creating links */}
-                <AccordionDetails>
-                  {aboutusMenuArr.map((text, index) => (
-                    <Button key={text}
-                      component={Link}
-                      onClick={handleDrawerClose}
-                      fullWidth={true}
-                      sx={{
-                        justifyContent: 'flex-start',}}
-                      to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-                      {text}
-                    </Button>
-                  ))}
-                </AccordionDetails>
-              </Accordion>
-            </ListItem>
-            <Divider/>
-  
-            {/* ITEM 4: rsvp */}
-            <ListItem key='RSVP' disablePadding>
-              <ListItemButton 
-                component={Link}
-                onClick={handleDrawerClose}
-                to="/rsvp"
-                sx={{
-                  backgroundColor: theme.palette.background.secondary,
-                  fontStyle: 'italic',
-                  textTransform: 'none',
-                }}>
-                <ListItemText primary={'RSVP'} />
-              </ListItemButton>
-            </ListItem>
-  
-        </List>
-      </Drawer>
-    );
-  };
+                ))}
+              </AccordionDetails>
+            </Accordion>
+          </ListItem>
+          <Divider/>
+
+          {/* ITEM 4: rsvp */}
+          <ListItem key='RSVP' disablePadding>
+            <ListItemButton 
+              component={Link}
+              onClick={handleDrawerClose}
+              to="/rsvp"
+              sx={{
+                backgroundColor: theme.palette.background.secondary,
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'RSVP'} />
+            </ListItemButton>
+          </ListItem>
+
+      </List>
+    </Drawer>
+  );
+};
   
   // **SECTION** large menu appears on large screens such as laptops, iPads
-  function LargeMenu(theme) {
-    //const theme = useTheme();
-  
-    // state, handlers for the details dropdown
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
-  
-    const handleClick = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
-  
-    // state, handlers for the about us dropdown
-    const [anchorEl2, setAnchorEl2] = React.useState(null);
-    const open2 = Boolean(anchorEl2);
-  
-    const handleClick2 = (event2) => {
-      setAnchorEl2(event2.currentTarget);
-    };
-    const handleClose2 = () => {
-      setAnchorEl2(null);
-    };
-  
-    return (
-      // Container for the nav buttons 
-      <Box>
-  
-        {/* SECTION Home */}
-        <Button
-          component={Link}
-          to="/"
-          color="inherit"
-          sx={{
-            fontSize: "1.5em",
-            fontStyle: 'italic',
-            textTransform: 'none',
-          }}>
-          Home
-        </Button>
-        {/*Maybe do a hover brings on the menu as well?*/}
-  
-        {/* SECTION details button, including dropdown */}
-        <Button
-          aria-controls={open ? 'details-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open ? 'true' : undefined}
-          endIcon={<ArrowDropDownIcon />}
-          disableElevation
-          onClick={handleClick}
-          color="inherit"
-          sx={{
-            fontSize: "1.5em",
-            fontStyle: 'italic',
-            textTransform: 'none',
-          }}
+function LargeMenu(theme) {
+  //const theme = useTheme();
+
+  // state, handlers for the details dropdown
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  // state, handlers for the about us dropdown
+  const [anchorEl2, setAnchorEl2] = React.useState(null);
+  const open2 = Boolean(anchorEl2);
+
+  const handleClick2 = (event2) => {
+    setAnchorEl2(event2.currentTarget);
+  };
+  const handleClose2 = () => {
+    setAnchorEl2(null);
+  };
+
+  return (
+    // Container for the nav buttons 
+    <Box>
+
+      {/* SECTION Home */}
+      <MenuButtonLarge
+        component={Link}
+        to="/">
+        Home
+      </MenuButtonLarge>
+      {/*Maybe do a hover brings on the menu as well?*/}
+
+      {/* SECTION details button, including dropdown */}
+      <MenuButtonLarge
+        aria-controls={open ? 'details-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open ? 'true' : undefined}
+        endIcon={<ArrowDropDownIcon />}
+        disableElevation
+        onClick={handleClick}
+      >
+      Details
+      </MenuButtonLarge>
+
+      {/* SECTION about us button, including dropdown */}
+      <MenuButtonLarge
+        aria-controls={open2 ? 'about-menu' : undefined}
+        aria-haspopup="true"
+        aria-expanded={open2 ? 'true' : undefined}
+        disableElevation
+        endIcon={<ArrowDropDownIcon />}
+        onClick={handleClick2}
         >
-        Details
-        </Button>
-  
-        {/* SECTION about us button, including dropdown */}
-        <Button
-          aria-controls={open2 ? 'about-menu' : undefined}
-          aria-haspopup="true"
-          aria-expanded={open2 ? 'true' : undefined}
-          disableElevation
-          endIcon={<ArrowDropDownIcon />}
-          onClick={handleClick2}
-          color="inherit"
-          sx={{
-            fontSize: "1.5em",
-            fontStyle: 'italic',
-            textTransform: 'none',
-          }}
-          >
-          About Us
-        </Button>
-  
-        {/* SECTION details menu */}
-        <StyledMenu id="details-menu"
-          MenuListProps={{ 'aria-labelledby': 'details-button',}}
-          anchorEl={anchorEl}
-          open={open}
-          onClose={handleClose}>
-          {/* iterate over the details menu to create menu items */}
-          {detailsMenuArr.map((text, index) => (
-            <MenuItem key={text} onClick={handleClose}
+        About Us
+      </MenuButtonLarge>
+
+      {/* SECTION details menu */}
+      <StyledMenu id="details-menu"
+        MenuListProps={{ 'aria-labelledby': 'details-button',}}
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}>
+        {/* iterate over the details menu to create menu items */}
+        {detailsMenuArr.map((text, index) => (
+          <MenuItem key={text} onClick={handleClose}
+          component={Link}
+          to={'/' + text.replace(/\s/g, '').toLowerCase()}>
+          {text}
+        </MenuItem>
+        ))}
+      </StyledMenu>
+
+      {/* SECTION about us menu */}
+      <StyledMenu id="about-menu"
+        MenuListProps={{ 'aria-labelledby': 'about-button',}}
+        anchorEl={anchorEl2}
+        open={open2}
+        onClose={handleClose2}>
+        {/* iterate over the about us menu to create menu items */}
+        {aboutusMenuArr.map((text, index) => (
+          <MenuItem key={text} onClick={handleClose2}
             component={Link}
             to={'/' + text.replace(/\s/g, '').toLowerCase()}>
             {text}
           </MenuItem>
-          ))}
-        </StyledMenu>
-  
-        {/* SECTION about us menu */}
-        <StyledMenu id="about-menu"
-          MenuListProps={{ 'aria-labelledby': 'about-button',}}
-          anchorEl={anchorEl2}
-          open={open2}
-          onClose={handleClose2}>
-          {/* iterate over the about us menu to create menu items */}
-          {aboutusMenuArr.map((text, index) => (
-            <MenuItem key={text} onClick={handleClose2}
-              component={Link}
-              to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-              {text}
-            </MenuItem>
-          ))}
-        </StyledMenu>
-  
-        {/* SECTION rsvp button */}
-        <Button
-          color="inherit"
-          component={Link}
-          to="/rsvp"
-          sx={{
-            fontSize: "1.5em",
-            fontStyle: 'italic',
-            textTransform: 'none',
-          }}>
-          RSVP
-        </Button>
-      </Box>
-    );
-  };
+        ))}
+      </StyledMenu>
+
+      {/* SECTION rsvp button */}
+      <MenuButtonLarge
+        component={Link}
+        to="/rsvp">
+        RSVP
+      </MenuButtonLarge>
+    </Box>
+  );
+};
   
 
 

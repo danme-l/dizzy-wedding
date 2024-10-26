@@ -56,6 +56,20 @@ const FAQ = () => {
       <Accordion>
         <AccordionSummary
           expandIcon={<ArrowDropDownIcon />}
+          aria-controls="panel5-content"
+          id="panel5-header"
+        >
+          <Typography variant="body1">Is there a registry?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            No, just give us money.
+          </Typography>
+        </AccordionDetails>
+      </Accordion> 
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ArrowDropDownIcon />}
           aria-controls="panel4-content"
           id="panel4-header"
         >
