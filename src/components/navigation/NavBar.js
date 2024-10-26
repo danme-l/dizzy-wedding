@@ -1,4 +1,4 @@
-import {Box, Container, Typography, AppBar, Toolbar, Button, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
+import {Box, Typography, AppBar, Toolbar, Button, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
 import {IconButton, ListItem, ListItemButton, Divider, useTheme} from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
@@ -377,17 +377,14 @@ const NavBar = () => {
     const theme = useTheme();
     const [openMenu, setOpenMenu] = React.useState(false);
 
-
   return (
-    <Container>
-      {/* SECTION Nav bar */}
       <AppBar
           position="sticky"
           color="black"
           sx={{
             boxShadow: 'none', 
             p: '1em 0',
-            // backgroundImage: 'url(static/images/limewash.jpg)',
+            backgroundImage: 'url(static/images/limewash.jpg)',
           }}
         >
           <Toolbar sx={{ justifyContent: 'space-between' }}>
@@ -402,15 +399,12 @@ const NavBar = () => {
             {/*Use media query to determine if this should show up */}
             {useMediaQuery(theme.breakpoints.down('md')) ? 
               SmallMenuIcon(openMenu, setOpenMenu) : LargeMenu(theme)}
-            
           </Toolbar>
+            
+          {/* add drawer for small menu here*/}
+          {useMediaQuery(theme.breakpoints.down('md')) && 
+            SmallMenu(theme, openMenu, setOpenMenu)}
         </AppBar>
-
-        {/* add drawer for small menu here*/}
-        {useMediaQuery(theme.breakpoints.down('md')) && 
-          SmallMenu(theme, openMenu, setOpenMenu)}
-
-    </Container>
   );
 };
 
