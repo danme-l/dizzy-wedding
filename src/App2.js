@@ -12,6 +12,7 @@ import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
 import { useTheme } from '@mui/material/styles';
 import NavBar from './components/navigation/NavBar';
+import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import './global.css'
 
 // guests (temporary)
@@ -27,35 +28,24 @@ const validCodes = {
 };
 
 const App = () => {
-  const theme = useTheme();
-  
-  // **SECTION** guest validation
-  // to be hooked up to a database eventually 
-  const [code, setCode] = useState(0)
   const [name, setName] = useState('');
+  const [userValid, setUserValid] = useState(false);
+  const [code, setCode] = useState('');
+  const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
 
-  // assume name in non-production environments
-  useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      // random name
-      setName('Let\'ss go');
-    }
-  }, []);
-
-  // gets the code out of the textbox
   const handleInputChange = (event) => {
     setCode(event.target.value);
   };
 
-  // sets the user code as the State
-  // feature desire: the code will query a db where there will be a guest-code mapping 
-  // from there, the user will be able to see information specific to their attendance
-  // eg: wedding party will see rehearsal dinner, morning of information
-  const handleSubmit = () => {
-    if (validCodes[code]) {
-      setName(validCodes[code]);
-    } else {
-      alert('Invalid code. Please try again.');
+  const handleSubmit = async () => {
+    if (code) {
+      const isValidUser = await fetchGuestGroup(code);
+      if (isValidUser) {
+        setUserValid(true);
+      } else {
+        setUserValid(false);
+        alert("You sure you're invited to this?");
+      }
     }
   };
 
@@ -67,7 +57,7 @@ const App = () => {
         <NavBar />
 
         {/* SECTION Content */}
-        {!name ? (
+        {!userValid ? (
           <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
             <Box>
             <Typography variant="h4" gutterBottom>
@@ -89,7 +79,7 @@ const App = () => {
       ) : 
         (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
-            <Route path="/" element={<Home name={name} />} />
+            <Route path="/" element={<Home guests={guests} />} />
             <Route path="/details" element={<Details />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/ourstory" element={<OurStory />} />
