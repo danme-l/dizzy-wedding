@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Typography, Tabs, Tab, Button, TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from '@mui/material';
-import { Padding } from '@mui/icons-material';
 
 const rehearsalSchedule = [
     {time: '7:30', activity:"Get up"},
