@@ -11,13 +11,13 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 import Home from './components/Home';
-import Details from './components/Details';
-import Gallery from './components/Gallery';
-import Schedule from './components/Schedule';
-import FAQ from './components/FAQ';
-import Rsvp from './components/Rsvp';
-import OurStory from './components/OurStory';
-import AboutUs from './components/AboutUs';
+import Details from './components/pages/Details';
+import Gallery from './components/pages/Gallery';
+import Schedule from './components/pages/Schedule';
+import FAQ from './components/pages/FAQ';
+import Rsvp from './components/pages/Rsvp';
+import OurStory from './components/pages/OurStory';
+import AboutUs from './components/pages/AboutUs';
 import { useTheme } from '@mui/material/styles';
 import './global.css'
 
