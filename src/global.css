@@ -6,3 +6,21 @@ body {
     background-color: #afc0be;
     margin: 0 ;
 }
+.card{
+    height: 500px;
+    position: relative;
+    transition: transform 3s;
+    transform-style: preserve-3d;
+}
+.card.is-flipped {
+    transform: rotateY(-180deg);
+  }
+.back {
+    transform: rotateY(180deg);
+}
+.front, .back {
+    position: absolute;
+    overflow: hidden;
+    z-index: 1;
+    backface-visibility: hidden;
+}

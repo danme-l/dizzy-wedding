@@ -80,6 +80,22 @@ const StyledMenu = styled((props) => (
     },
 }));
 
+const MenuButtonLarge = styled((props) => (
+  <Button
+    color='inherit'
+        sx={{
+          fontSize: "1.5em",
+          fontStyle: 'italic',
+          textTransform: 'none',
+        }}
+        {...props}/>
+    ))(({ theme }) => ({
+      "&:hover": {
+        border: 'solid',
+        borderColor: "#C28E61",
+      }
+}));
+
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -236,7 +252,9 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
                     onClick={handleDrawerClose}
                     fullWidth={true}
                     sx={{
-                      justifyContent: 'flex-start',}}
+                      justifyContent: 'flex-start',
+
+                    }}
                     to={'/' + text.replace(/\s/g, '').toLowerCase()}>
                     {text}
                   </Button>
@@ -297,54 +315,36 @@ function LargeMenu(theme) {
     <Box>
 
       {/* SECTION Home */}
-      <Button
+      <MenuButtonLarge
         component={Link}
-        to="/"
-        color="inherit"
-        sx={{
-          fontSize: "1.5em",
-          fontStyle: 'italic',
-          textTransform: 'none',
-        }}>
+        to="/">
         Home
-      </Button>
+      </MenuButtonLarge>
       {/*Maybe do a hover brings on the menu as well?*/}
 
       {/* SECTION details button, including dropdown */}
-      <Button
+      <MenuButtonLarge
         aria-controls={open ? 'details-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         endIcon={<ArrowDropDownIcon />}
         disableElevation
         onClick={handleClick}
-        color="inherit"
-        sx={{
-          fontSize: "1.5em",
-          fontStyle: 'italic',
-          textTransform: 'none',
-        }}
       >
       Details
-      </Button>
+      </MenuButtonLarge>
 
       {/* SECTION about us button, including dropdown */}
-      <Button
+      <MenuButtonLarge
         aria-controls={open2 ? 'about-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open2 ? 'true' : undefined}
         disableElevation
         endIcon={<ArrowDropDownIcon />}
         onClick={handleClick2}
-        color="inherit"
-        sx={{
-          fontSize: "1.5em",
-          fontStyle: 'italic',
-          textTransform: 'none',
-        }}
         >
         About Us
-      </Button>
+      </MenuButtonLarge>
 
       {/* SECTION details menu */}
       <StyledMenu id="details-menu"
@@ -379,17 +379,11 @@ function LargeMenu(theme) {
       </StyledMenu>
 
       {/* SECTION rsvp button */}
-      <Button
-        color="inherit"
+      <MenuButtonLarge
         component={Link}
-        to="/rsvp"
-        sx={{
-          fontSize: "1.5em",
-          fontStyle: 'italic',
-          textTransform: 'none',
-        }}>
+        to="/rsvp">
         RSVP
-      </Button>
+      </MenuButtonLarge>
     </Box>
   );
 };
@@ -491,7 +485,7 @@ const App = () => {
             <Route path="/ourstory" element={<OurStory />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/rsvp" element={<Rsvp />} />
+            <Route path="/rsvp" element={<Rsvp defaultName={name}/>} />
             <Route path="/faq" element={<FAQ />} />s
           </Routes>
         </Paper>

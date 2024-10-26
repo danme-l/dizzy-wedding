@@ -21,9 +21,14 @@ const Home = ({ name }) => {
     return `${totalDays} days`
   };
 
+  //adding JS to flip the card upon click
+  const handletwist = () => {
+   document.getElementById('card').classList.toggle('is-flipped');
+  };
 
   return (
-    <Container>
+    <div className='card' id="card" onClick={handletwist}>
+    <Container className='front'>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
           <Box sx={{
@@ -34,7 +39,7 @@ const Home = ({ name }) => {
               Welcome, {name}!
             </Typography>
             <Typography variant="h1"> 
-              The Marriage of Isabel Haziomeric & Daniel Meleras
+              The Marriage of Isabel Haziomerovic & Daniel Meleras
             </Typography>
             <Typography variant='h2' mx={3}>
               {weddingDate.toLocaleDateString('en-CA', dateOptions)}
@@ -57,6 +62,20 @@ const Home = ({ name }) => {
         </Grid>
       </Grid>
     </Container>
+    <Container className='back'>
+      {/* Ally Prop 0: Rehearsal */}
+      <Box
+            component="img"
+            sx={{
+    maxHeight: { xs: 233, md: 600 },
+    maxWidth: { xs: 350, md: 600 },
+              m: 0
+            }}
+            alt="Dan and Izzy"
+            src="static/images/danIzzy1.jpg"
+            />
+    </Container>
+    </div>
   );
 };
 
