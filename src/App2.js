@@ -15,20 +15,7 @@ import NavBar from './components/navigation/NavBar';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import './global.css'
 
-// guests (temporary)
-const validCodes = {
-  '1': 'Laura Clark and Jeff Meleras, Parents of the Groom',
-  '2': 'Claudine Michaud and Adnan Hadziomerovic, Parents of the Bride',
-  '3': 'Tommy Wallis',
-  '4': 'Lara Kercoglu',
-  '5': 'Caroline Meleras',
-  '6': 'Jacob Meleras, Best Man',
-  '7': 'Ariane Hadziomerovic, Maid of Honour',
-  '8': 'Alexa Hadziomerovic, Maid of Honour',
-};
-
 const App = () => {
-  const [name, setName] = useState('');
   const [userValid, setUserValid] = useState(false);
   const [code, setCode] = useState('');
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
@@ -85,7 +72,7 @@ const App = () => {
             <Route path="/ourstory" element={<OurStory />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/rsvp" element={<Rsvp />} />
+            <Route path="/rsvp" element={<Rsvp guests={guests} />} />
             <Route path="/faq" element={<FAQ />} />s
           </Routes>
         </Paper>
