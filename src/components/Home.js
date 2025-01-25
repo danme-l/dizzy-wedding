@@ -14,7 +14,7 @@ const Home = ({ guests }) => {
       if (fullNames.length === 1) {
         return fullNames[0];
       } else {
-        const lastGuest = fullNames.pop(); // Remove the last guest
+        const lastGuest = fullNames.pop(); // remove the last guest
         return `${fullNames.join(', ')} and ${lastGuest}`;
       }
     };

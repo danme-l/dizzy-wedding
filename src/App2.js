@@ -44,7 +44,7 @@ const App = () => {
         <NavBar />
 
         {/* SECTION Content */}
-        {!userValid ? (
+        {!userValid ? ( // this is what's shown before the user is validated
           <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
             <Box>
             <Typography variant="h4" gutterBottom>
@@ -63,7 +63,7 @@ const App = () => {
               </Box>
             </Box>
           </Box>
-      ) : 
+      ) : // this is shown after the user is validated
         (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
             <Route path="/" element={<Home guests={guests} />} />
