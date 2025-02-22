@@ -3,17 +3,31 @@ import { createTheme } from "@mui/material";
 const theme = createTheme({
     palette: {
       primary: {
-        main: '#0a2749', // navy
+        main: '#B2D8E5', // soft pastel blue (tablecloth)
+        light: '#D9ECF2',
+        dark: '#89AEB8',
+        contrastText: '#ffffff',
       },
       secondary: {
-        main: '#C28E61', // bronze
+        main: '#E6B8C6', // mutel pastel pink (flowers)
+        light: '#F5D8E1',
+        dark: '#B38397',
+        contrastText: '#ffffff',
       },
-      tertiary: {
-        main: '#69482C', //dark brown
+      error: {
+        main: '#C85C5C', //Deep rose for accents
+      },
+      warning: {
+        main: '#F4C95D', //Warm gold for subtle contrast
+      },
+      info: {
+        main: '#A88EC2', //soft lavender (napkins)
+      },
+      success: {
+        main: '#87A68A', // muted sage green (foliage)
       },
       background: {
-        default: '#F7E7CE', // Light background
-        secondary: '#F7E7CE', //champagne
+        default: '#F8F8F8', // Light airy background
         paper: '#ffffff', // White background for paper components
       },
     },
