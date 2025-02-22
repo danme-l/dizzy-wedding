@@ -5,7 +5,11 @@ import { Container, Typography, Tabs, Tab, Button, TableContainer, Table, TableH
 const rehearsalSchedule = [
     {time: '7:30', activity:"Get up"},
     {time: '8:00', activity:"Watch videos"},
-    {time: '9:30', activity:"Double Check everything"}
+    {time: '9:30', activity:"Double Check everything"},
+    {time: '5:00', activity:"Go over roles and timing"},
+    {time: '7:00', activity:"Dinner"},
+    {time: '11:00', activity:"Go to sleep"}
+
 ];
 const weddingSchedule = [
     {time: '7:30', activity:"Get up"},
