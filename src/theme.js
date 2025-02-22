@@ -12,8 +12,8 @@ const theme = createTheme({
         main: '#69482C', //dark brown
       },
       background: {
-        default: '#cdcdc3', // Light background
-        secondary: '#afc0be', //Light blue
+        default: '#F7E7CE', // Light background
+        secondary: '#F7E7CE', //champagne
         paper: '#ffffff', // White background for paper components
       },
     },
@@ -44,6 +44,18 @@ const theme = createTheme({
       button: {
         textTransform: 'none', // Prevent uppercase transformation
       },
+      invitation1: {
+        fontFamily: '"Elegance", cursive',
+        fontSize: '1.9rem',
+        fontWeight: 400,
+        color: '#03311C', 
+      },
+      invitation2: {
+        fontFamily: '"Montserrat", cursive',
+        fontSize: '1.9rem',
+        fontWeight: 400,
+        color: 'black', 
+      }
     },
     
   });

@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 
-const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
+const mainMenuArr = ["Home", "Details", "About Us", "Engagement", "RSVP"];
 const detailsMenuArr = ["Details", "Schedule", "FAQ"];
 const aboutusMenuArr = ["Our Story", "Gallery", "About Us"];
 
@@ -238,7 +238,20 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
             </Accordion>
           </ListItem>
           <Divider/>
-
+          {/* ITEM 5: Engagement Invitation Test */}
+          <ListItem key='EngInv' disablePadding>
+            <ListItemButton 
+              component={Link}
+              onClick={handleDrawerClose}
+              to="/enginv"
+              sx={{
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'Engagement Invitation Test'} />
+            </ListItemButton>
+          </ListItem>
+          <Divider/>
           {/* ITEM 4: rsvp */}
           <ListItem key='RSVP' disablePadding>
             <ListItemButton 
@@ -352,7 +365,13 @@ function LargeMenu(theme) {
           </MenuItem>
         ))}
       </StyledMenu>
-
+      
+     {/* SECTION rsvp button */}
+     <MenuButtonLarge
+        component={Link}
+        to="/enginv">
+        Engagement Invitation Test
+      </MenuButtonLarge>
       {/* SECTION rsvp button */}
       <MenuButtonLarge
         component={Link}
@@ -376,7 +395,6 @@ const NavBar = () => {
           sx={{
             boxShadow: 'none', 
             p: '1em 0',
-            backgroundImage: 'url(static/images/limewash.jpg)',
           }}
         >
           <Toolbar sx={{ justifyContent: 'space-between' }}>

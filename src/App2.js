@@ -10,6 +10,7 @@ import FAQ from './components/pages/FAQ';
 import Rsvp from './components/pages/Rsvp';
 import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
+import EngInv from './components/pages/EngInvitation';
 import { useTheme } from '@mui/material/styles';
 import NavBar from './components/navigation/NavBar';
 import './global.css'
@@ -87,7 +88,7 @@ const App = () => {
             </Box>
           </Box>
       ) : 
-        (<Paper elevation={3} sx={{m: 3, p: 2}}>
+        (<div elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
             <Route path="/" element={<Home name={name} />} />
             <Route path="/details" element={<Details />} />
@@ -96,9 +97,10 @@ const App = () => {
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/rsvp" element={<Rsvp defaultName={name}/>} />
-            <Route path="/faq" element={<FAQ />} />s
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/enginv" element={<EngInv/>}/>
           </Routes>
-        </Paper>
+        </div>
         )}
       </Box>
     </Router>
