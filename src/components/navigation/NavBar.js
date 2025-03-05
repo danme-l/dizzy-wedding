@@ -5,13 +5,12 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import { styled, alpha } from '@mui/material/styles';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
+import {BorderBottomRounded, BorderBottomSharp, ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 
 const mainMenuArr = ["Home", "Details", "About Us", "Engagement", "RSVP"];
-const detailsMenuArr = ["Details", "Schedule", "FAQ"];
 const aboutusMenuArr = ["Our Story", "Gallery", "About Us"];
 
 const StyledMenu = styled((props) => (
@@ -31,7 +30,8 @@ const StyledMenu = styled((props) => (
         '& .MuiPaper-root': {
           borderRadius: 6,
           marginTop: theme.spacing(.5),
-          borderTop: '0.2em solid #0a2749',
+          borderTop: '0.2em solid',
+          borderTopColor: theme.palette.error.main,
           minWidth: 180,
           boxShadow:
             'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
@@ -77,8 +77,8 @@ const MenuButtonLarge = styled((props) => (
         {...props}/>
     ))(({ theme }) => ({
       "&:hover": {
-        border: 'solid',
-        borderColor: "#C28E61",
+        borderBottom: 'solid',
+        borderBottomColor: theme.palette.info.main,
       }
 }));
 
@@ -122,6 +122,7 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
     <Drawer
       sx={{
         flexShrink: 0,
+        bgcolor: 'inherit',
         //width: '100',
         '& .MuiDrawer-paper': {
           //width: '100',
@@ -161,42 +162,18 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
           <Divider/>
 
           {/* ITEM 2: details */}
-          <ListItem key='Details' disablePadding sx={{width: "100%"}}>
-            <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
-              sx={{'&:before': {
-                display: 'none',
-              }
+          <ListItem key='Schedule' disablePadding sx={{width: "100%"}}>
+          <ListItemButton
+              onClick={handleDrawerClose}
+              component={Link}
+              to="/schedule"
+              sx={{
+                fontSize: '1.5rem',
+                fontStyle: 'italic',
+                textTransform: 'none',
               }}>
-              <AccordionSummary
-                expandIcon={<ArrowDropDownIcon />}
-                aria-controls="panel1-content"
-                id="panel1-header">
-                <Typography
-                  disableElevation
-                  color="inherit"
-                  sx={{
-                    fontStyle: 'italic',
-                    textTransform: 'none',
-                  }}>
-                    Details
-                  </Typography>
-              </AccordionSummary>
-
-              {/* submenu, iterating over the details and creating links */}
-              <AccordionDetails>
-                {detailsMenuArr.map((text, index) => (
-                <Button key={text}
-                  component={Link}
-                  fullWidth={true}
-                  onClick={handleDrawerClose}
-                  sx={{
-                    justifyContent: 'flex-start',}}
-                  to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-                  {text}
-                </Button>
-                ))}
-              </AccordionDetails>
-            </Accordion>
+              <ListItemText primary={'Schedule'} /> 
+            </ListItemButton>
           </ListItem>
           <Divider/>
 
@@ -248,7 +225,7 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
                 fontStyle: 'italic',
                 textTransform: 'none',
               }}>
-              <ListItemText primary={'Engagement Invitation Test'} />
+              <ListItemText primary={'Engagement Invitation'} />
             </ListItemButton>
           </ListItem>
           <Divider/>
@@ -259,7 +236,6 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
               onClick={handleDrawerClose}
               to="/rsvp"
               sx={{
-                backgroundColor: theme.palette.background.secondary,
                 fontStyle: 'italic',
                 textTransform: 'none',
               }}>
@@ -312,14 +288,9 @@ function LargeMenu(theme) {
 
       {/* SECTION details button, including dropdown */}
       <MenuButtonLarge
-        aria-controls={open ? 'details-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        endIcon={<ArrowDropDownIcon />}
-        disableElevation
-        onClick={handleClick}
-      >
-      Details
+        component={Link}
+        to="/schedule">
+        Schedule
       </MenuButtonLarge>
 
       {/* SECTION about us button, including dropdown */}
@@ -333,22 +304,6 @@ function LargeMenu(theme) {
         >
         About Us
       </MenuButtonLarge>
-
-      {/* SECTION details menu */}
-      <StyledMenu id="details-menu"
-        MenuListProps={{ 'aria-labelledby': 'details-button',}}
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}>
-        {/* iterate over the details menu to create menu items */}
-        {detailsMenuArr.map((text, index) => (
-          <MenuItem key={text} onClick={handleClose}
-          component={Link}
-          to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-          {text}
-        </MenuItem>
-        ))}
-      </StyledMenu>
 
       {/* SECTION about us menu */}
       <StyledMenu id="about-menu"
@@ -392,12 +347,15 @@ const NavBar = () => {
       <AppBar
           position="sticky"
           color="black"
+          
           sx={{
             boxShadow: 'none', 
-            p: '1em 0',
+            
+            opacity: '100%', 
+            bgcolor: theme.palette.background.default,
           }}
         >
-          <Toolbar sx={{ justifyContent: 'space-between' }}>
+          <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0'}} >
             <Typography
               variant="h1"
               sx={{ fontWeight: 'bold', }}
