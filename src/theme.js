@@ -62,13 +62,13 @@ const theme = createTheme({
         textTransform: 'none', // Prevent uppercase transformation
       },
       invitation1: {
-        fontFamily: '"Elegance", cursive',
+        fontFamily: '"Kapakana", cursive',
         fontSize: '1.9rem',
         fontWeight: 400,
         color: '#03311C', 
       },
       invitation2: {
-        fontFamily: '"Montserrat", cursive',
+        fontFamily: '"Kapana", cursive',
         fontSize: '1.9rem',
         fontWeight: 400,
         color: 'black', 

@@ -22,7 +22,7 @@ const EngInv = () => {
             <Typography variant='h2'>
               Welcome, X!
             </Typography>
-            <Typography variant="h1"> 
+            <Typography variant="invitation1"> 
               Isabel Hadziomerovic & Daniel Meleras's Engagement Party
             </Typography>
             <Typography variant='h2' mx={3}>
@@ -59,7 +59,7 @@ const EngInv = () => {
     </Container>
     <hr/>
     <Container align='center'>
-      <Typography variant="invitation1" gutterBottom>
+      <Typography variant="h4" gutterBottom>
         About Ottawa
       </Typography>
       <Typography variant="body1">Blurb</Typography>
