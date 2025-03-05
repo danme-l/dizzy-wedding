@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
+import FAQ from './pages/FAQ';
 import { Box, Grid, Typography, TextField, Button, Container} from '@mui/material';
 
 
 const Home = ({ name }) => {
 
   // **SECTION** Date Stuff
-  const weddingDate = new Date('10 January 2026 12:00 EST');
+  const weddingDate = new Date('02 May 2026 12:00 EST');
   const dateOptions = {
     weekday: 'long',
     year: 'numeric',
@@ -27,8 +28,8 @@ const Home = ({ name }) => {
   };
 
   return (
-    <div className='card' id="card" onClick={handletwist}>
-    <Container className='front'>
+    <div id="card" onClick={handletwist}>
+    <Container>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
           <Box sx={{
@@ -57,24 +58,31 @@ const Home = ({ name }) => {
               m: 0
             }}
             alt="Dan and Izzy"
-            src="static/images/danIzzy1.jpg"
+            src="static/images/DSC_3975.jpg"
             />
         </Grid>
       </Grid>
     </Container>
-    <Container className='back'>
-      {/* Ally Prop 0: Rehearsal */}
-      <Box
-            component="img"
-            sx={{
-    maxHeight: { xs: 233, md: 600 },
-    maxWidth: { xs: 350, md: 600 },
-              m: 0
-            }}
-            alt="Dan and Izzy"
-            src="static/images/danIzzy1.jpg"
-            />
+    <hr/>
+    <Container align='center'>
+      <Typography variant="h4" gutterBottom>
+        Wedding Details
+      </Typography>
+      <Typography variant="body1">Date: {weddingDate.toLocaleDateString('en-CA', dateOptions)}</Typography>
+      <Typography variant="body1">Location: La Toundra, Montreal</Typography>
+      <Typography variant="body1">Time: Noon</Typography>
     </Container>
+    <hr/>
+    <Container align='center'>
+      <Typography variant="h4" gutterBottom>
+        About Montreal
+      </Typography>
+      <Typography variant="body1">Blurb</Typography>
+      <Typography variant="body1">Things to do</Typography>
+
+    </Container>
+    <hr/>
+    <FAQ/>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { Container, Typography } from '@mui/material';
 const FAQ = () => {
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom align='center'>
         Frequently Asked Questions
       </Typography>
       <Accordion>
