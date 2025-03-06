@@ -215,6 +215,7 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
             </Accordion>
           </ListItem>
           <Divider/>
+
           {/* ITEM 5: Engagement Invitation Test */}
           <ListItem key='EngInv' disablePadding>
             <ListItemButton 
@@ -229,8 +230,9 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
             </ListItemButton>
           </ListItem>
           <Divider/>
+
           {/* ITEM 4: rsvp */}
-          <ListItem key='RSVP' disablePadding>
+          {/* <ListItem key='RSVP' disablePadding>
             <ListItemButton 
               component={Link}
               onClick={handleDrawerClose}
@@ -241,7 +243,7 @@ function SmallMenu(theme, openMenu, setOpenMenu) {
               }}>
               <ListItemText primary={'RSVP'} />
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
 
       </List>
     </Drawer>
@@ -337,8 +339,6 @@ function LargeMenu(theme) {
   );
 };
   
-
-
 const NavBar = () => {
     const theme = useTheme();
     const [openMenu, setOpenMenu] = React.useState(false);
@@ -365,8 +365,13 @@ const NavBar = () => {
 
             {/* Links on the right */}
             {/*Use media query to determine if this should show up */}
+
+            {/* This section is temporarily commented out while the 
+            app functions solely as an 
+            engagement party invitation */}
+{/*             
             {useMediaQuery(theme.breakpoints.down('md')) ? 
-              SmallMenuIcon(openMenu, setOpenMenu) : LargeMenu(theme)}
+              SmallMenuIcon(openMenu, setOpenMenu) : LargeMenu(theme)} */}
           </Toolbar>
             
           {/* add drawer for small menu here*/}

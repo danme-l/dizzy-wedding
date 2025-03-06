@@ -63,13 +63,13 @@ const theme = createTheme({
       },
       invitation1: {
         fontFamily: '"Kapakana", cursive',
-        fontSize: '1.9rem',
+        fontSize: '4rem',
         fontWeight: 400,
         color: '#03311C', 
       },
       invitation2: {
-        fontFamily: '"Kapana", cursive',
-        fontSize: '1.9rem',
+        fontFamily: '"Kapakana", cursive',
+        fontSize: '3rem',
         fontWeight: 400,
         color: 'black', 
       }

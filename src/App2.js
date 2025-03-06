@@ -64,7 +64,6 @@ const App = () => {
       <Box sx={{ bgcolor: theme.palette.background.default }}>
 
         {/* SECTION Nav bar 
-        Izzy is pretty teeheehees
         */}
         <NavBar />
 
@@ -91,7 +90,7 @@ const App = () => {
         ) :
           (<div elevation={3} sx={{ m: 3, p: 2 }} class="body">
             <Routes>
-              <Route path="/" element={<Home name={name} />} />
+              <Route path="/" element={<EngInv name={name} />} />
               {/*<Route path="/details" element={<Details />} />*/}
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/ourstory" element={<OurStory />} />
@@ -105,11 +104,11 @@ const App = () => {
           )}
 
         {/*SECTION Footer */}
-        <Box bottom={0} borderTop={1} borderColor={theme.palette.warning.main} sx={{ m: '1em 0em -0.75em 0em', p: ' 0 1em' }} bgcolor={theme.palette.success.main}>
+        {/* <Box bottom={0} borderTop={1} borderColor={theme.palette.warning.main} sx={{ m: '1em 0em -0.75em 0em', p: ' 0 1em' }} bgcolor={theme.palette.success.main}>
           <Typography variant="h4" gutterBottom>
             Footer
           </Typography>
-        </Box>
+        </Box> */}
       </Box>
     </Router>
   );

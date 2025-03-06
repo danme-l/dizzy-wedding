@@ -7,29 +7,31 @@ import { Box, Grid, TextField, Button} from '@mui/material';
 const handletwist = () => {
     document.getElementById('card').classList.toggle('is-flipped');
   };
-const EngInv = () => {
+
+
+const EngInv = ({name}) => {
   return (
     <Container>
       {/*Engagement card with link to RSVP */}
       <div id="card" onClick={handletwist}>
       <Container justifyContent={true}>
-      <Grid container spacing={1}>
+      <Grid container spacing={1} 
+        sx={{
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems:'center'
+          }}
+        >
         <Grid item xs={12} md={6}>
           <Box sx={{
             p: 1,
             gap: 1
           }}>
-            <Typography variant='h2'>
-              Welcome, X!
+            <Typography variant='invitation1'>
+              Welcome, {name}! <br/>
             </Typography>
-            <Typography variant="invitation1"> 
-              Isabel Hadziomerovic & Daniel Meleras's Engagement Party
-            </Typography>
-            <Typography variant='h2' mx={3}>
-              May 31st, 2025
-            </Typography>
-            <Typography variant='h2' mx={3}>
-              XXX
+            <Typography variant="invitation2"> 
+              Please join us to celebrate the engagement of Isabel Hadziomerovic & Daniel Meleras
             </Typography>
           </Box>
         </Grid>
@@ -41,8 +43,8 @@ const EngInv = () => {
               m: 0
             }}
             alt="Dan and Izzy"
-            src="static/images/DSC_3975.jpg"
-            
+            // src="static/images/DSC_3975.jpg"
+            src="https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0357.jpg"
             />
         </Grid>
       </Grid>
@@ -52,19 +54,13 @@ const EngInv = () => {
       <Typography variant="h4" gutterBottom>
         Details
       </Typography>
-      <Typography variant="body1">Date: XXX</Typography>
-      <Typography variant="body1">Location: 352 Acacia ave, Ottawa</Typography>
+      <Typography variant="body1">May 31, 2025</Typography>
+      <Typography variant="body1">352 Acacia ave, Ottawa</Typography>
       <Typography variant="body1">Time: 3 PM</Typography>
       <Typography variant="body1">Dress Code: Business Casual</Typography>
     </Container>
     <hr/>
     <Container align='center'>
-      <Typography variant="h4" gutterBottom>
-        About Ottawa
-      </Typography>
-      <Typography variant="body1">Blurb</Typography>
-      <Typography variant="body1">Things to do</Typography>
-
     </Container>
     </div>
     </Container>

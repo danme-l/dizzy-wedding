@@ -40,7 +40,7 @@ const Home = ({ name }) => {
               Welcome, {name}!
             </Typography>
             <Typography variant="h1"> 
-              The Marriage of Isabel Haziomerovic & Daniel Meleras
+              The Marriage of Isabel Hadziomerovic & Daniel Meleras
             </Typography>
             <Typography variant='h2' mx={3}>
               {weddingDate.toLocaleDateString('en-CA', dateOptions)}
