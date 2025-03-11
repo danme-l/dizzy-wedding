@@ -58,6 +58,11 @@ const theme = createTheme({
         fontSize: '1rem',
         color: '#333333',
       },
+      body2: {
+        fontFamily: '"Great Vibes", cursive',
+        fontSize: '1.4rem',
+        color: '#6A3805',
+      },
       button: {
         textTransform: 'none', // Prevent uppercase transformation
       },

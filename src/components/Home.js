@@ -1,9 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
 import { Box, Grid, Typography, TextField, Button, Container} from '@mui/material';
 
 
-const Home = ({ name }) => {
+const Home = ({ guests }) => {
+  const [guestString, setGuestString] = useState('');
+
+  useEffect(() => {
+    const formatGuestString = () => {
+      if (guests.length === 0) return '';
+
+      const fullNames = guests.map(guest => `${guest.first_name} ${guest.last_name}`);
+
+      if (fullNames.length === 1) {
+        return fullNames[0];
+      } else {
+        const lastGuest = fullNames.pop(); // remove the last guest
+        return `${fullNames.join(', ')} and ${lastGuest}`;
+      }
+    };
+
+    setGuestString(formatGuestString());
+  }, [guests]);
 
   // **SECTION** Date Stuff
   const weddingDate = new Date('02 May 2026 12:00 EST');
@@ -22,11 +40,6 @@ const Home = ({ name }) => {
     return `${totalDays} days`
   };
 
-  //adding JS to flip the card upon click
-  const handletwist = () => {
-    document.getElementById('card').classList.toggle('is-flipped');
-  };
-
   return (
     <div id="card" onClick={handletwist}>
     <Container>
@@ -37,8 +50,12 @@ const Home = ({ name }) => {
             gap: 1
           }}>
             <Typography variant='h2'>
-              Welcome, {name}!
+              Welcome!
             </Typography>
+            <Typography variant='h3' sx={{ m:2}}>
+              {guestString}
+            </Typography>
+            <br />
             <Typography variant="h1"> 
               The Marriage of Isabel Haziomerovic & Daniel Meleras
             </Typography>
