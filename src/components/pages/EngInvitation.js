@@ -9,7 +9,13 @@ const handletwist = () => {
   };
 
 
-const EngInv = ({name}) => {
+const EngInv = ({guests}) => {
+
+  let guestString;
+  if (guests.length == 2) {
+    guestString = `${guests[0].first_name} ${guests[0].last_name} and ${guests[1].first_name} ${guests[1].last_name}`
+  }
+
   return (
     <Container>
       {/*Engagement card with link to RSVP */}
@@ -28,7 +34,7 @@ const EngInv = ({name}) => {
             gap: 1
           }}>
             <Typography variant='invitation1'>
-              Welcome, {name}! <br/>
+              Welcome, {guestString}! <br/>
             </Typography>
             <Typography variant="invitation2"> 
               Please join us to celebrate the engagement of Isabel Hadziomerovic & Daniel Meleras
@@ -43,7 +49,6 @@ const EngInv = ({name}) => {
               m: 0
             }}
             alt="Dan and Izzy"
-            // src="static/images/DSC_3975.jpg"
             src="https://i.postimg.cc/fT6t77H9/DSC-3975.jpg"
             />
         </Grid>
@@ -55,12 +60,13 @@ const EngInv = ({name}) => {
         Details
       </Typography>
       <Typography variant="body1">May 31, 2025</Typography>
-      <Typography variant="body1">352 Acacia ave, Ottawa</Typography>
+      <Typography variant="body1">352 Acacia Avenue, Ottawa</Typography>
       <Typography variant="body1">Time: 3 PM</Typography>
       <Typography variant="body1">Dress Code: Business Casual</Typography>
     </Container>
     <hr/>
     <Container align='center'>
+      <Typography variant="body1">Please send an email</Typography>
     </Container>
     </div>
     </Container>
