@@ -8,7 +8,7 @@ import { Container, Typography } from '@mui/material';
 const FAQ = () => {
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom align='center'>
         Frequently Asked Questions
       </Typography>
       <Accordion>
@@ -50,6 +50,20 @@ const FAQ = () => {
         <AccordionDetails>
           <Typography>
             Sorry Abby and Justin, you can't bring your kid. 
+          </Typography>
+        </AccordionDetails>
+      </Accordion> 
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ArrowDropDownIcon />}
+          aria-controls="panel5-content"
+          id="panel5-header"
+        >
+          <Typography variant="body1">Is there a registry?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            No, just give us money.
           </Typography>
         </AccordionDetails>
       </Accordion> 

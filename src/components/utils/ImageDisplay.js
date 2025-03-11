@@ -5,6 +5,7 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -22,10 +23,10 @@ const HtmlTooltip = styled(({ className, ...props }) => (
 export default function ImageDisplay() {
   
   const theme = useTheme();
-
+  const colNum = useMediaQuery(theme.breakpoints.down('md')) ? 2 : 3
   return (
     <Box>
-      <ImageList variant="masonry" cols={3} gap={8}>
+      <ImageList variant="masonry" cols={colNum} gap={8}>
         {itemData.map((item) => (
           <HtmlTooltip
             title={

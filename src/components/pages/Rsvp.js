@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Typography, Box, TextField, Button, Checkbox, FormControlLabel } from '@mui/material';
 
-
 const Rsvp = ({ guests }) => {
   const [name, setName] = useState('');
   const [attending, setAttending] = useState('');

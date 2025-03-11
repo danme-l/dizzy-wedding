@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
-import {Box, Typography, TextField, Button, Paper} from '@mui/material';
+import { Box, Typography, TextField, Button, Paper } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import React from 'react';
 import Home from './components/Home';
-import Details from './components/pages/Details';
 import Gallery from './components/pages/Gallery';
 import Schedule from './components/pages/Schedule';
 import FAQ from './components/pages/FAQ';
 import Rsvp from './components/pages/Rsvp';
 import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
+import EngInv from './components/pages/EngInvitation';
 import { useTheme } from '@mui/material/styles';
 import NavBar from './components/navigation/NavBar';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
@@ -38,28 +38,30 @@ const App = () => {
 
   return (
     <Router>
-      <Box>
+      <Box sx={{ bgcolor: theme.palette.background.default }}>
 
-        {/* SECTION Nav bar */}
+        {/* SECTION Nav bar 
+        Izzy is pretty teeheehees
+        */}
         <NavBar />
 
         {/* SECTION Content */}
         {!userValid ? ( // this is what's shown before the user is validated
           <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
             <Box>
-            <Typography variant="h4" gutterBottom>
-              Enter Your Code
-            </Typography>
-            <Box  sx={{display:'flex', p:2, gap: 2}}>
-              <TextField
-                label="Invite Code"
-                variant="outlined"
-                value={code}
-                onChange={handleInputChange}
+              <Typography variant="h4" gutterBottom>
+                Enter Your Code
+              </Typography>
+              <Box sx={{ display: 'flex', p: 2, gap: 2 }}>
+                <TextField
+                  label="Invite Code"
+                  variant="outlined"
+                  value={code}
+                  onChange={handleInputChange}
                 />
-              <Button variant="contained" color="primary" onClick={handleSubmit}>
-                Submit
-              </Button>
+                <Button variant="contained" color="primary" onClick={handleSubmit}>
+                  Submit
+                </Button>
               </Box>
             </Box>
           </Box>
@@ -73,7 +75,8 @@ const App = () => {
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/rsvp" element={<Rsvp guests={guests} />} />
-            <Route path="/faq" element={<FAQ />} />s
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/enginv" element={<EngInv />} />
           </Routes>
         </Paper>
         )}
