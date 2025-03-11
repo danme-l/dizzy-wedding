@@ -14,7 +14,12 @@ const EngInv = ({guests}) => {
   let guestString;
   if (guests.length == 2) {
     guestString = `${guests[0].first_name} ${guests[0].last_name} and ${guests[1].first_name} ${guests[1].last_name}`
+  } else {
+    guestString = `${guests[0].first_name} ${guests[0].last_name}`
   }
+  console.log(guests)
+  console.log(guestString)
+
 
   return (
     <Container>
@@ -65,9 +70,6 @@ const EngInv = ({guests}) => {
       <Typography variant="body1">Dress Code: Business Casual</Typography>
     </Container>
     <hr/>
-    <Container align='center'>
-      <Typography variant="body1">Please send an email</Typography>
-    </Container>
     </div>
     </Container>
   );
