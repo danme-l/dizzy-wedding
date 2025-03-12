@@ -50,7 +50,7 @@ const App = () => {
               {
                 loading ? (
                 <Typography variant="h4" gutterBottom>
-                loading...
+                Loading...
                 </Typography>) : (
                     <></>
                 )

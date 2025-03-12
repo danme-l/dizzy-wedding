@@ -66,8 +66,14 @@ const EngInv = ({guests}) => {
       </Typography>
       <Typography variant="body1">May 31, 2025</Typography>
       <Typography variant="body1">352 Acacia Avenue, Ottawa</Typography>
-      <Typography variant="body1">Time: 3 PM</Typography>
-      <Typography variant="body1">Dress Code: Business Casual</Typography>
+      <Typography variant="body1">Time: 3 PM to 6 PM</Typography>
+      <Typography variant="body1" sx={{mb:3}}>Dress Code: Business Casual</Typography>
+      <Box sx={{
+        width: '55%'
+      }}>
+        <Typography variant="body1">To RSVP, or if you have any questions, please contact the Bride at ihadziomerovic@gmail.com, or the Groom at danielmeleras@proton.me</Typography>
+      </Box>
+
     </Container>
     <hr/>
     </div>
