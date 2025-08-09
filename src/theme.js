@@ -79,6 +79,19 @@ const theme = createTheme({
         color: 'black', 
       }
     },
+    components: {
+      MuiLink: {
+      styleOverrides: {
+        root: {
+          color: myPalette.secondary.dark, // Set the color to the secondary color
+          textDecoration: 'none', // Optional: remove underline
+          '&:hover': {
+            textDecoration: 'underline', // Optional: add underline on hover
+          },
+        },
+      },
+    },
+    }
     
   });
   
