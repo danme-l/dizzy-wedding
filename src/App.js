@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button, Paper } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import React from 'react';
-import EngInv from './components/pages/EngInvitation';
+import SaveTheDate from './components/pages/SaveTheDate';
 import { useTheme } from '@mui/material/styles';
 import NavBar from './components/navigation/NavBar';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
@@ -71,7 +71,7 @@ const App = () => {
       ) : // this is shown after the user is validated
         (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
-            <Route path="/"  element={<EngInv guests={guests}/>} />
+            <Route path="/"  element={<SaveTheDate guests={guests}/>} />
           </Routes>
         </Paper>
         )}

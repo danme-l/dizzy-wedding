@@ -2,14 +2,7 @@ import React from 'react';
 import { Container, Typography } from '@mui/material';
 import { Box, Grid, TextField, Button} from '@mui/material';
 
-
-//adding JS to flip the card upon click TODO: find a way to make this function universal
-const handletwist = () => {
-    document.getElementById('card').classList.toggle('is-flipped');
-  };
-
-
-const EngInv = ({guests}) => {
+const SaveTheDate = ({guests}) => {
 
   let guestString;
   if (guests.length == 2) {
@@ -24,8 +17,9 @@ const EngInv = ({guests}) => {
   return (
     <Container>
       {/*Engagement card with link to RSVP */}
-      <div id="card" onClick={handletwist}>
+      <div id="card">
       <Container justifyContent={true}>
+
       <Grid container spacing={1} 
         sx={{
           display: 'flex',
@@ -33,6 +27,11 @@ const EngInv = ({guests}) => {
           alignItems:'center'
           }}
         >
+        <Grid item xs={12} md={12} sx={{ textAlign: 'center' }}>
+          <Typography variant='h1'>
+            Save the Date!
+          </Typography>
+        </Grid>
         <Grid item xs={12} md={6}>
           <Box sx={{
             p: 1,
@@ -42,7 +41,7 @@ const EngInv = ({guests}) => {
               Welcome, {guestString}! <br/>
             </Typography>
             <Typography variant="invitation2"> 
-              Please join us to celebrate the engagement of Isabel Hadziomerovic & Daniel Meleras
+              Please save the date for the Wedding of Isabel Hadziomerovic & Daniel Meleras
             </Typography>
           </Box>
         </Grid>
@@ -64,21 +63,31 @@ const EngInv = ({guests}) => {
       <Typography variant="h4" gutterBottom>
         Details
       </Typography>
-      <Typography variant="body1">May 31, 2025</Typography>
-      <Typography variant="body1">352 Acacia Avenue, Ottawa</Typography>
-      <Typography variant="body1">Time: 3 PM to 6 PM</Typography>
-      <Typography variant="body1" sx={{mb:3}}>Dress Code: Business Casual</Typography>
+      <Typography variant="body1">May 2, 2026</Typography>
+      <Typography variant="body1">La Toundra, Montreal, Quebec</Typography>
       <Box sx={{
         width: '55%'
       }}>
-        <Typography variant="body1">To RSVP, or if you have any questions, please contact the Bride at ihadziomerovic@gmail.com, or the Groom at danielmeleras@proton.me</Typography>
+        {/* <Typography variant="body1">Check back here for more details.</Typography> */}
       </Box>
 
     </Container>
     <hr/>
+    <Container>
+      {/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b */}
+                <Box
+            component="img"
+            sx={{
+              width: '100%',
+              m: 0
+            }}
+            alt="Venue"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b"
+            />
+    </Container>
     </div>
     </Container>
   );
 };
 
-export default EngInv;
+export default SaveTheDate;
