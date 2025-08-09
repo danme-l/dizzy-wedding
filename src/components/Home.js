@@ -41,7 +41,7 @@ const Home = ({ guests }) => {
   };
 
   return (
-    <div id="card" onClick={handletwist}>
+    <div id="card"> 
     <Container>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
@@ -75,7 +75,7 @@ const Home = ({ guests }) => {
               m: 0
             }}
             alt="Dan and Izzy"
-            src="static/images/DSC_3975.jpg"
+            src="https://i.postimg.cc/fT6t77H9/DSC-3975.jpg"
             />
         </Grid>
       </Grid>

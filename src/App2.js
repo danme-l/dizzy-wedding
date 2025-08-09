@@ -20,6 +20,8 @@ const App = () => {
   const [code, setCode] = useState('');
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
 
+  const theme = useTheme();
+
   const handleInputChange = (event) => {
     setCode(event.target.value);
   };
@@ -69,7 +71,7 @@ const App = () => {
         (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
             <Route path="/" element={<Home guests={guests} />} />
-            <Route path="/details" element={<Details />} />
+            {/* <Route path="/details" element={<Details />} /> */}
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/ourstory" element={<OurStory />} />
             <Route path="/aboutus" element={<AboutUs />} />
