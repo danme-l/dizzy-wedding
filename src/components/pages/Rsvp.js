@@ -1,21 +1,14 @@
 import React, { useState } from 'react';
 import { Container, Typography, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
-
-
-              {/* <TextField
-                label="Attendance"
-                variant="outlined"
-                value={attending}
-                onChange={(e) => setAttending(e.target.value)}
-                required
-                sx={{width: 1/3}}
-                /> */}
+import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
 
 export default function Rsvp({ guests }) {
-  // console.log(guests)
   const [attendance, setAttendance] = React.useState({});
   const [foodChoice, setFoodChoice] = React.useState({});
   const [plusOneName, setPlusOneName] = React.useState('');
+  
+  const { submitRSVP, loading, error, success } = useSubmitRSVP();
+
 
 const guestsToRender = (() => {
   if (guests.length === 1) {
@@ -36,11 +29,9 @@ const guestsToRender = (() => {
 
   const foodOptions = [
     { value: 'chicken', label: 'Chicken Supreme' },
-    { value: 'beef', label: 'Wine Braised Lamb Shank' },
+    { value: 'lamb', label: 'Wine Braised Lamb Shank' },
     { value: 'vegetarian', label: 'Eggplant Parmesan' },
   ];
-
-  console.log(guestsToRender)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -63,6 +54,7 @@ const guestsToRender = (() => {
 
     console.log(rsvpArray);
     // TODO push to DB here
+    submitRSVP(rsvpArray)
 };
 
   return (
