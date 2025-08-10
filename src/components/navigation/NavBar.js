@@ -10,6 +10,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
 
+
 const aboutusMenuArr = ["Our Story", "Gallery", "About Us"];
 
 // for mobile
