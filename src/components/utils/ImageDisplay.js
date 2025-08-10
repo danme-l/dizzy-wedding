@@ -31,7 +31,7 @@ export default function ImageDisplay() {
           <HtmlTooltip
             title={
               <React.Fragment>
-                <Typography color="inherit">{item.title}</Typography>
+                <Typography variant='body1'>{item.title}</Typography>
               </React.Fragment>
             }
             placement='left'
@@ -52,14 +52,26 @@ export default function ImageDisplay() {
 }
 
 
-const itemData = [
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0090.jpg', title:'Pumpkin Patch'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0112.jpg', title:'Pumpkin Patch'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4172.jpg', title:'Peggy\'s Cove, Nova Scotia'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0009.jpg', title:'Epernay, Champagne, France'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0045.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0357.jpg', title:'Hat Street, Panama City, Panama'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4174.jpg', title:'Bay of Fundy, New Brunswick'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_8657.jpg', title:'Volcan Masaya, Nicaragua'},
-  {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion (yeah we hiked that bitch too)'}
+// const itemData = [
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0090.jpg', title:'Pumpkin Patch'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0112.jpg', title:'Pumpkin Patch'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4172.jpg', title:'Peggy\'s Cove, Nova Scotia'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0009.jpg', title:'Epernay, Champagne, France'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0045.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0357.jpg', title:'Hat Street, Panama City, Panama'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4174.jpg', title:'Bay of Fundy, New Brunswick'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_8657.jpg', title:'Volcan Masaya, Nicaragua'},
+//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion (yeah we hiked that bitch too)'}
+// ];
+
+const itemData = [ 
+    {img: 'https://i.postimg.cc/V0n0ncvP/DSC-0090.jpg', title:'Pumpkin Patch'}, 
+    {img: 'https://i.postimg.cc/vg1V8ndB/DSC-0112.jpg', title:'Pumpkin Patch'}, 
+    {img: 'https://i.postimg.cc/Fd2JYK9x/IMG-0009.jpg', title:'Peggy\'s Cove, Nova Scotia'}, 
+    {img: 'https://i.postimg.cc/Y4CFVVnQ/IMG-0045.jpg', title:'Epernay, Champagne, France'}, 
+    {img: 'https://i.postimg.cc/YvkYNjQn/IMG-0357.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'}, 
+    {img: 'https://i.postimg.cc/4K2cT5qq/IMG-4172.jpg', title:'Hat Street, Panama City, Panama'}, 
+    {img: 'https://i.postimg.cc/D811b144/IMG-4174.jpg', title:'Bay of Fundy, New Brunswick'}, 
+    {img: 'https://i.postimg.cc/z3snBxv1/IMG-8657.jpg', title:'Volcan Masaya, Nicaragua'}, 
+    {img: 'https://i.postimg.cc/RWRfg9RM/IMG-9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion'}
 ];
