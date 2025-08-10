@@ -13,6 +13,8 @@ function useFetchGuestGroup() {
     setLoading(true);
     setError(null);
 
+    console.log(apiUrl)
+
     try {
       const response = await axios.get(`${apiUrl}/passwords/${pw}`);
       if (response.data && response.data.length > 0) {

@@ -9,11 +9,9 @@ import FAQ from './components/pages/FAQ';
 import Rsvp from './components/pages/Rsvp';
 import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
-import EngInv from './components/pages/EngInvitation';
 import { useTheme } from '@mui/material/styles';
 import NavBar from './components/navigation/NavBar';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
-import './global.css'
 
 const App = () => {
   const [userValid, setUserValid] = useState(false);
@@ -22,6 +20,13 @@ const App = () => {
 
   const theme = useTheme();
 
+    useEffect(() => {
+    // Automatically set user to valid in development environment
+    if (process.env.NODE_ENV === 'development') {
+      setUserValid(true);
+    }
+  }, []);
+  
   const handleInputChange = (event) => {
     setCode(event.target.value);
   };
@@ -37,6 +42,8 @@ const App = () => {
       }
     }
   };
+
+  console.log(guests)
 
   return (
     <Router>
@@ -78,7 +85,6 @@ const App = () => {
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/rsvp" element={<Rsvp guests={guests} />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/enginv" element={<EngInv />} />
           </Routes>
         </Paper>
         )}

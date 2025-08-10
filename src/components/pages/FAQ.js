@@ -5,7 +5,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Container, Typography } from '@mui/material';
 
-const FAQ = () => {
+const FAQ = ({dateCalculate}) => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom align='center'>
@@ -21,7 +21,7 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Halloween style costume party.
+            Formal attire requested. Ladies, that means (Izzy, what does that mean?) Gentlemen, break out the neck wear.
           </Typography>
         </AccordionDetails>
       </Accordion>
@@ -35,7 +35,7 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            The deadline is X day of X month of never.  You have X days left [insert countdown].
+            Please RSVP by February 14 (That gives you {dateCalculate(new Date('14 February 2026 12:00 EST'))}).
           </Typography>
         </AccordionDetails>
       </Accordion> 
