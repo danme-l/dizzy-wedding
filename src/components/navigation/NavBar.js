@@ -5,21 +5,23 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
-import { BrowserRouter as Router, Route, Routes, Link, useParams} from 'react-router-dom';
+import { Link } from 'react-router-dom'; // use react-router Link here
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
-import { StyledMenu, DrawerHeader, MenuButtonLarge, SmallMenuIcon } from './NavUtils';
+import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
 
-const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const aboutusMenuArr = ["Our Story", "Gallery", "About Us"];
 
-  
-  // **SECTION** small menu appears on phones 
-function SmallMenu(theme, openMenu, setOpenMenu, withToken) {
+// for mobile
+function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
   const handleDrawerClose = () => setOpenMenu(false);
 
   return (
-    <Drawer /* ... */>
+    <Drawer
+      anchor="right"
+      open={openMenu}
+      onClose={handleDrawerClose}
+    >
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
           <ChevronRight />
@@ -53,8 +55,8 @@ function SmallMenu(theme, openMenu, setOpenMenu, withToken) {
         <Divider />
 
         {/* About Us submenu */}
-        <Accordion /* ... */>
-          <AccordionSummary /* ... */>
+        <Accordion>
+          <AccordionSummary>
             <Typography sx={{ fontStyle: 'italic' }}>About Us</Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -87,9 +89,8 @@ function SmallMenu(theme, openMenu, setOpenMenu, withToken) {
   );
 }
 
-
-  // **SECTION** large menu appears on large screens such as laptops, iPads
-function LargeMenu(theme, withToken) {
+// for computers and ipads and such
+function LargeMenu({ theme, withToken }) {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const open2 = Boolean(anchorEl2);
   const handleClick2 = (e) => setAnchorEl2(e.currentTarget);
@@ -97,17 +98,14 @@ function LargeMenu(theme, withToken) {
 
   return (
     <Box>
-      {/* Home */}
       <MenuButtonLarge component={Link} to={withToken('')}>
         Home
       </MenuButtonLarge>
 
-      {/* Schedule */}
       <MenuButtonLarge component={Link} to={withToken('schedule')}>
         Schedule
       </MenuButtonLarge>
 
-      {/* About Us */}
       <MenuButtonLarge
         endIcon={<ArrowDropDownIcon />}
         onClick={handleClick2}
@@ -131,7 +129,6 @@ function LargeMenu(theme, withToken) {
         ))}
       </StyledMenu>
 
-      {/* RSVP */}
       <MenuButtonLarge component={Link} to={withToken('rsvp')}>
         RSVP
       </MenuButtonLarge>
@@ -139,27 +136,49 @@ function LargeMenu(theme, withToken) {
   );
 }
 
-const NavBar = ({ Link }) => {
+const NavBar = () => {
   const theme = useTheme();
   const [openMenu, setOpenMenu] = React.useState(false);
 
-  const withToken = (path) => path; // no token prefix here; LinkWithToken adds it
+  const withToken = (path) => path; // adjust as needed
 
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
-    <AppBar position="sticky" color="black" sx={{ boxShadow: 'none', opacity: '100%', bgcolor: theme.palette.background.default }}>
+    <AppBar
+      position="sticky"
+      color="black"
+      sx={{ boxShadow: 'none', opacity: '100%', bgcolor: theme.palette.background.default }}
+    >
       <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0' }}>
         <Typography variant="h1" sx={{ fontWeight: 'bold' }}>
           D & I
         </Typography>
 
-        {isMobile
-          ? SmallMenu(theme, openMenu, setOpenMenu, withToken, Link)
-          : LargeMenu(theme, withToken, Link)}
-      </Toolbar>
+        {isMobile ? (
+          <>
+            {/* Hamburger menu button */}
+            <IconButton
+              aria-label="open drawer"
+              onClick={() => setOpenMenu(true)}
+              edge="start"
+              sx={{ mr: 0 }}
+            >
+              <MenuIcon />
+            </IconButton>
 
-      {isMobile && SmallMenu(theme, openMenu, setOpenMenu, withToken, Link)}
+            {/* Drawer sliding menu */}
+            <SmallMenu
+              theme={theme}
+              openMenu={openMenu}
+              setOpenMenu={setOpenMenu}
+              withToken={withToken}
+            />
+          </>
+        ) : (
+          <LargeMenu theme={theme} withToken={withToken} />
+        )}
+      </Toolbar>
     </AppBar>
   );
 };

@@ -18,6 +18,6 @@ const LinkWithToken = React.forwardRef(function LinkWithToken(props, ref) {
 });
 
 export default function TokenizedNav() {
-  // now NavBar gets LinkWithToken as a prop and uses it for all links
+  // NavBar gets LinkWithToken as a prop and uses it for all links
   return <NavBar Link={LinkWithToken} />;
 }
