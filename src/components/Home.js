@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
 import ThingToDoCard from './utils/ThingToDoCard';
 import { Box, Grid, Typography, TextField, Button, Container, Link, useTheme} from '@mui/material';
+import CardCarousel from './utils/CardCarousel';
 
 
 const Home = ({ guests }) => {
@@ -118,25 +119,7 @@ const Home = ({ guests }) => {
       <Typography variant="h3" sx={{my: 2}}>
         Things to do
       </Typography>
-      <Box sx={{ display: 'flex', justifyContent: 'space-around'}}>
-          <ThingToDoCard
-            imgLink='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.timeout.com%2Fimages%2F105465851%2Fimage.jpg&f=1&nofb=1&ipt=c80d577aa52043aa44747f9bd77e6aa9531440e130ed7d29fd2da6bd3c76f705'
-            name='Old Montreal'
-            info='Wander the beautiful streets' 
-            />
-          <ThingToDoCard
-            imgLink='https://www.thegeographicalcure.com/wp-content/uploads/2021/10/img_61598d7c1d9f9.'
-            name='Mont Royal Park'
-            info='Climb the mountain (or drive), walk around Beaver Lake, and take in the beautiful views' 
-            />
-          <ThingToDoCard
-            imgLink='https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.cntraveler.com%2Fphotos%2F5b6dab0c890b740fb9121ecb%2F16%3A9%2Fw_2560%2Cc_limit%2FLa-Banquise__2018_173.jpg&f=1&nofb=1&ipt=6dee73bb30a13f035db74f496ec9d196dee30d4a0b73b09abbca2dc795b56f02'
-            name='La Banquise'
-            info="Try the World's greatest poutine (sorry Julep fans, you are wrong)"
-            />
-
-            
-      </Box>
+      <CardCarousel />
 
     </Container>
     <hr/>

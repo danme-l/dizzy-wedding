@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 
 export default function ThingToDoCard({imgLink, name, info}) {
   return (
-    <Card sx={{ width: 345}}>
+    <Card sx={{ width: 345, height: 300}}>
       <CardMedia
         sx={{ height: 140 }}
         image={imgLink}
@@ -22,9 +22,9 @@ export default function ThingToDoCard({imgLink, name, info}) {
           {info}
         </Typography>
       </CardContent>
-      <CardActions>
+      {/* <CardActions>
         <Button size="small">Learn More</Button>
-      </CardActions>
+      </CardActions> */}
     </Card>
   );
 }
