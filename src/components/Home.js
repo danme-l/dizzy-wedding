@@ -3,6 +3,7 @@ import FAQ from './pages/FAQ';
 import ThingToDoCard from './utils/ThingToDoCard';
 import { Box, Grid, Typography, TextField, Button, Container, Link, useTheme} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
+import { LinkWithToken } from './navigation/NavUtils';
 
 
 const Home = ({ guests }) => {
@@ -89,14 +90,14 @@ const Home = ({ guests }) => {
       <Typography variant="h4" gutterBottom>
         Wedding Details
       </Typography>
-      <Typography variant="body1">Date: {weddingDate.toLocaleDateString('en-CA', dateOptions)}</Typography>
+      <Typography variant="body1">{weddingDate.toLocaleDateString('en-CA', dateOptions)}</Typography>
       <Typography variant="body1">
-        Location: <Link href="https://maps.app.goo.gl/PJhCz1GjBgRXTbHWA">La Toundra, Montreal</Link>
+        <Link href="https://maps.app.goo.gl/PJhCz1GjBgRXTbHWA">La Toundra, Montreal</Link>
       </Typography>
-      <Typography variant="body1">Time: Half Past Three</Typography>
-      <Container>
-      {/* https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b */}
-                <Box
+      <Typography variant="body1">
+        Find other important information on the <LinkWithToken to='details'>details</LinkWithToken> page.
+      </Typography>
+          <Box
             component="img"
             sx={{
               width: '100%',
@@ -105,7 +106,6 @@ const Home = ({ guests }) => {
             alt="Venue"
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b"
             />
-    </Container>
     </Container>
     <hr/>
     <Container align='center'>
@@ -123,7 +123,6 @@ const Home = ({ guests }) => {
 
     </Container>
     <hr/>
-    <FAQ dateCalculate={dateCalculate} />
     </div>
   );
 };

@@ -2,6 +2,8 @@ import {Box, Typography, AppBar, Toolbar, Button, Menu, MenuItem, Drawer, List, 
 import {IconButton} from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import { Menu as MenuIcon} from '@mui/icons-material';
+import React from 'react';
+import { useParams, Link as RouterLink } from 'react-router-dom';
 
 export const StyledMenu = styled((props) => (
     <Menu
@@ -97,3 +99,17 @@ export function SmallMenuIcon(openMenu, setOpenMenu){
   );
 };
   
+// wrapper around react-router-dom's Link that prepends the token
+export const LinkWithToken = React.forwardRef(function LinkWithToken(props, ref) {
+  const { token } = useParams();
+  console.log("the nav token:", token)
+  let newTo = props.to || '';
+
+  if (!newTo.startsWith('http')) {
+    // if no leading slash, add one
+    if (!newTo.startsWith('/')) newTo = '/' + newTo;
+    newTo = `/${token}${newTo}`;
+  }
+
+  return <RouterLink ref={ref} {...props} to={newTo} />;
+});

@@ -5,10 +5,12 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { Container, Typography } from '@mui/material';
 
-const FAQ = ({dateCalculate}) => {
+const FAQ = () => {
   return (
     <Container>
-      <Typography variant="h4" gutterBottom align='center'>
+
+      <hr />
+      <Typography variant="h1" gutterBottom align='center'>
         Frequently Asked Questions
       </Typography>
       <Accordion>
@@ -35,7 +37,7 @@ const FAQ = ({dateCalculate}) => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Please RSVP by February 14 (That gives you {dateCalculate(new Date('14 February 2026 12:00 EST'))}).
+            Please RSVP by February 14.
           </Typography>
         </AccordionDetails>
       </Accordion> 

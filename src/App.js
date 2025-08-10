@@ -9,6 +9,7 @@ import FAQ from './components/pages/FAQ';
 import Rsvp from './components/pages/Rsvp';
 import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
+import Details from './components/pages/Details';
 import { useTheme } from '@mui/material/styles';
 import TokenizedNav from './components/navigation/TokenizedNav';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
@@ -44,8 +45,10 @@ const TokenizedApp = ({ setUserValid }) => {
           <Route path="ourstory" element={<OurStory />} />
           <Route path="aboutus" element={<AboutUs />} />
           <Route path="schedule" element={<Schedule />} />
+          <Route path="details" element={<Details />} />
           <Route path="rsvp" element={<Rsvp guests={guests} />} />
           <Route path="faq" element={<FAQ />} />
+
         </Routes>
       </Paper>
     </>

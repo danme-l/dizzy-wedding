@@ -43,7 +43,19 @@ function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
         </ListItem>
         <Divider />
 
-        {/* Schedule */}
+        {/* Details */}
+        <ListItem disablePadding>
+          <ListItemButton
+            onClick={handleDrawerClose}
+            component={Link}
+            to={withToken('details')}
+          >
+            <ListItemText primary="Details" />
+          </ListItemButton>
+        </ListItem>
+        <Divider />
+
+        {/* Schedule
         <ListItem disablePadding>
           <ListItemButton
             onClick={handleDrawerClose}
@@ -53,7 +65,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
             <ListItemText primary="Schedule" />
           </ListItemButton>
         </ListItem>
-        <Divider />
+        <Divider /> */}
 
         {/* About Us submenu */}
         <Accordion>
@@ -103,9 +115,13 @@ function LargeMenu({ theme, withToken }) {
         Home
       </MenuButtonLarge>
 
-      <MenuButtonLarge component={Link} to={withToken('schedule')}>
-        Schedule
+      <MenuButtonLarge component={Link} to={withToken('details')}>
+        Details
       </MenuButtonLarge>
+
+      {/* <MenuButtonLarge component={Link} to={withToken('schedule')}>
+        Schedule
+      </MenuButtonLarge> */}
 
       <MenuButtonLarge
         endIcon={<ArrowDropDownIcon />}
@@ -141,7 +157,7 @@ const NavBar = () => {
   const theme = useTheme();
   const [openMenu, setOpenMenu] = React.useState(false);
 
-  const withToken = (path) => path; // adjust as needed
+  const withToken = (path) => path; 
 
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
