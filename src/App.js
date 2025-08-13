@@ -10,13 +10,14 @@ import Rsvp from './components/pages/Rsvp';
 import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
 import Details from './components/pages/Details';
+import NoToken from './components/pages/NoToken';
 import { useTheme } from '@mui/material/styles';
 import TokenizedNav from './components/navigation/TokenizedNav';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 
 // render the navbar and the main content for all /:token routes
 const TokenizedApp = ({ setUserValid }) => {
-  const { token } = useParams();
+  const { token } = useParams(); 
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
 
   React.useEffect(() => {
@@ -63,6 +64,7 @@ const App = () => {
     <Router>
       <Box sx={{ bgcolor: theme.palette.background.default }}>
         <Routes>
+          <Route path="/" element={<NoToken />} />
           {/* everything under /:token/* */}
           <Route path="/:token/*" element={<TokenizedApp setUserValid={setUserValid} />} />
           {/* TODO add landing or 404 routes  */}
