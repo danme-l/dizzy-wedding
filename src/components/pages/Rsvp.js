@@ -9,23 +9,28 @@ export default function Rsvp({ guests }) {
   
   const { submitRSVP, loading, error, success } = useSubmitRSVP();
 
+  console.log(guests)
 
-const guestsToRender = (() => {
-  if (guests.length === 1) {
-    if (guests[0].plus_one) {
-      // plus_one flag true: render main + synthetic plus one
-      return [guests[0], { id: 'plus_one', isPlusOne: true }];
+
+  // creates the guest list for the form(s)
+  const guestsToRender = (() => {
+    if (guests.length === 1) {
+      if (guests[0].plus_one) {
+        // plus_one flag true: render main + synthetic plus one
+        return [guests[0], { id: 'plus_one', isPlusOne: true }];
+      } else {
+        // just main guest, no plus one
+        return [guests[0]];
+      }
+    } else if (guests.length === 2) {
+      // render both real guests only (no synthetic plus one)
+      return guests;
     } else {
-      // just main guest, no plus one
-      return [guests[0]];
+      return [];
     }
-  } else if (guests.length === 2) {
-    // render both real guests only (no synthetic plus one)
-    return guests;
-  } else {
-    return [];
-  }
-})();
+  })();
+
+  console.log(guestsToRender)
 
   const foodOptions = [
     { value: 'chicken', label: 'Chicken Supreme' },
@@ -52,121 +57,151 @@ const guestsToRender = (() => {
           : attendance[g.id] === '1'
       }));
 
+    console.log("submitted:")
     console.log(rsvpArray);
-    // TODO push to DB here
+    
     submitRSVP(rsvpArray)
-};
+  };
+
+
+  const isAnyAttending = guests.some(guest => guest.attending !== null);
+  // check for attendance
+  if (isAnyAttending) {
+    return <Box sx={{
+      justifyContent:'center',
+      alignItems:'center',
+      display: 'flex',
+      flexDirection:'column'
+    }}>
+      <Typography variant='h5'>
+        Looks like you've RSVP'ed! We can't wait to see you there.
+      </Typography>
+      <Typography variant='body1'>
+        If you need to make any changes, please don't hesitate to contact the bride and groom.
+      </Typography>
+      <Box
+        component="img"
+        sx={{
+          width: '40%',
+          my: 3
+        }}
+        alt="Dan and Izzy"
+        src="https://i.postimg.cc/3xgjGznB/doggies.gif"
+        // source: https://giphy.com/gifs/wedding-bride-and-groom-h85sDYSl23vvoI3SiB
+        />
+    </Box>;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
       {guestsToRender.map((g) => (
         <Box key={g.id} sx={{ mb: 3 }}>
-          <Box
-            sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              maxWidth: { xs: '100%', md: '60%' },
-              gap: 3,
-            }}
-          >
-            <FormControl>
-              <FormLabel id={`label-attendance-${g.id}`}>
-                {g.isPlusOne ? (
-                  // the text field renders if it's for a a plus one
-                  <TextField
-                    label="Plus One Name"
-                    value={plusOneName}
-                    onChange={(e) => setPlusOneName(e.target.value)}
-                    size="small"
-                    sx={{ minWidth: 200 }}
-                    disabled={attendance['plus_one'] === '0'}
-                    required={attendance['plus_one'] === '1'}
-                  />
-                ) : (
-                  // otherwise just the name
-                  `${g.first_name} ${g.last_name}`
-                )}
-              </FormLabel>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                maxWidth: { xs: '100%', md: '60%' },
+                gap: 3,
+              }}
+            >
+              <FormControl>
+                <FormLabel id={`label-attendance-${g.id}`}>
+                  {g.isPlusOne ? (
+                    // the text field renders if it's for a a plus one
+                    <TextField
+                      label="Plus One Name"
+                      value={plusOneName}
+                      onChange={(e) => setPlusOneName(e.target.value)}
+                      size="small"
+                      sx={{ minWidth: 200 }}
+                      disabled={attendance['plus_one'] === '0'}
+                      required={attendance['plus_one'] === '1'}
+                    />
+                  ) : (
+                    // otherwise just the name
+                    `${g.first_name} ${g.last_name}`
+                  )}
+                </FormLabel>
 
-              {/* radio buttons for attendance */}
-              <RadioGroup
-                aria-labelledby={`label-attendance-${g.id}`} 
-                name={`attendance-${g.id}`}                  // unique name per guest to avoid radio group conflicts
-                row
-                value={
-                  g.isPlusOne
-                    ? attendance['plus_one'] || ''            // for plus one, use attendance state at key "plus_one"
-                    : attendance[g.id] || ''                   // for invited guest, use attendance state keyed by guest ID
-                }
-                onChange={(e) => {
-                  if (g.isPlusOne) {
-                    // if this is the plus one, store attendance under the "plus_one" key
-                    setAttendance((prev) => ({
-                      ...prev,                                 // keep existing attendance values
-                      ['plus_one']: e.target.value,            // update plus one's attendance (1 = attending, 0 = not attending)
-                    }));
-                  } else {
-                    // if this is the invited guest, store attendance under their guest ID
-                    setAttendance((prev) => ({
-                      ...prev,                                 // keep existing attendance values
-                      [g.id]: e.target.value,                  // update invited guest's attendance
-                    }));
+                {/* radio buttons for attendance */}
+                <RadioGroup
+                  aria-labelledby={`label-attendance-${g.id}`} 
+                  name={`attendance-${g.id}`}                  // unique name per guest to avoid radio group conflicts
+                  row
+                  value={
+                    g.isPlusOne
+                      ? attendance['plus_one'] || ''            // for plus one, use attendance state at key "plus_one"
+                      : attendance[g.id] || ''                   // for invited guest, use attendance state keyed by guest ID
                   }
-                }}
-              >
+                  onChange={(e) => {
+                    if (g.isPlusOne) {
+                      // if this is the plus one, store attendance under the "plus_one" key
+                      setAttendance((prev) => ({
+                        ...prev,                                 // keep existing attendance values
+                        ['plus_one']: e.target.value,            // update plus one's attendance (1 = attending, 0 = not attending)
+                      }));
+                    } else {
+                      // if this is the invited guest, store attendance under their guest ID
+                      setAttendance((prev) => ({
+                        ...prev,                                 // keep existing attendance values
+                        [g.id]: e.target.value,                  // update invited guest's attendance
+                      }));
+                    }
+                  }}
+                >
 
 
-                <FormControlLabel value="1" control={<Radio />} label="Attending!" />
-                <FormControlLabel value="0" control={<Radio />} label={g.isPlusOne ? "No Plus One" : "Won't be able to make it"} />
-              </RadioGroup>
-            </FormControl>
+                  <FormControlLabel value="1" control={<Radio />} label="Attending!" />
+                  <FormControlLabel value="0" control={<Radio />} label={g.isPlusOne ? "No Plus One" : "Won't be able to make it"} />
+                </RadioGroup>
+              </FormControl>
 
-            <FormControl sx={{ minWidth: 220 }}>
-              <InputLabel id={`food-label-${g.id}`}>Food Choice</InputLabel>
-              {/* drop down for food  */}
-              <Select
-                labelId={`food-label-${g.id}`}
-                id={`food-select-${g.id}`}                    // unique ID for this select
-                disabled={
-                  g.isPlusOne
-                    ? attendance['plus_one'] === '0'          // disable plus one's food choice if they are not attending
-                    : attendance[g.id] === '0'                 // disable invited guest's food choice if they are not attending
-                }
-                value={
-                  g.isPlusOne
-                    ? foodChoice['plus_one'] || ''             // for plus one, use food choice stored at "plus_one"
-                    : foodChoice[g.id] || ''                    // for invited guest, use food choice stored at guest ID
-                }
-                onChange={(e) => {
-                  if (g.isPlusOne) {
-                    // if this is the plus one, store food choice under "plus_one"
-                    setFoodChoice((prev) => ({
-                      ...prev,                                 // keep existing food choices
-                      ['plus_one']: e.target.value,            // update plus one's food choice
-                    }));
-                  } else {
-                    // if this is the invited guest, store food choice under their guest ID
-                    setFoodChoice((prev) => ({
-                      ...prev,                                 // keep existing food choices
-                      [g.id]: e.target.value,                  // update invited guest's food choice
-                    }));
+              <FormControl sx={{ minWidth: 220 }}>
+                {/* drop down for food  */}
+                <InputLabel id={`food-label-${g.id}`}>Food Choice</InputLabel>
+                <Select
+                  labelId={`food-label-${g.id}`}
+                  id={`food-select-${g.id}`}                    // unique ID for this select
+                  disabled={
+                    g.isPlusOne
+                      ? attendance['plus_one'] === '0'          // disable plus one's food choice if they are not attending
+                      : attendance[g.id] === '0'                 // disable invited guest's food choice if they are not attending
                   }
-                }}
-              >
+                  value={
+                    g.isPlusOne
+                      ? foodChoice['plus_one'] || ''             // for plus one, use food choice stored at "plus_one"
+                      : foodChoice[g.id] || ''                    // for invited guest, use food choice stored at guest ID
+                  }
+                  onChange={(e) => {
+                    if (g.isPlusOne) {
+                      // if this is the plus one, store food choice under "plus_one"
+                      setFoodChoice((prev) => ({
+                        ...prev,                                 // keep existing food choices
+                        ['plus_one']: e.target.value,            // update plus one's food choice
+                      }));
+                    } else {
+                      // if this is the invited guest, store food choice under their guest ID
+                      setFoodChoice((prev) => ({
+                        ...prev,                                 // keep existing food choices
+                        [g.id]: e.target.value,                  // update invited guest's food choice
+                      }));
+                    }
+                  }}
+                >
 
 
-                {foodOptions.map((option) => (
-                  <MenuItem key={option.value} value={option.value}>
-                    {option.label}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
+                  {foodOptions.map((option) => (
+                    <MenuItem key={option.value} value={option.value}>
+                      {option.label}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Box>
+            <hr />
           </Box>
-          <hr />
-        </Box>
       ))}
 
       <Box
@@ -175,9 +210,11 @@ const guestsToRender = (() => {
           flexDirection: 'column',
         }}
       >
+      {/* {guests[0].attending === null & */}
         <Button type="submit" variant="contained" color="primary" sx={{ m: '0% auto' }}>
           Submit
         </Button>
+        {/* } */}
       </Box>
     </form>
   );

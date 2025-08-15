@@ -54,13 +54,13 @@ const Details = () => {
             imageSrc="https://i.postimg.cc/RZFysDmB/toundra-reception.jpg"
             imageAlt="Venue"
             >
-                The Wedding will be held at La Toundra, in the Florailles Gardens of Parc Jean Drapeau.
+                The Wedding will be held at La Toundra, in the Floralies Gardens of Parc Jean Drapeau.
         </Section>
 
         <MapComponent />
 
         {/* SECTION Alt Hotel */}
-        <Typography variant="h1" gutterBottom sx={{my: 3}}>
+        <Typography variant="h1" gutterBottom sx={{my: 5}}>
             The Hotel
         </Typography>
         <Section
@@ -71,7 +71,8 @@ const Details = () => {
                 The Bride and Groom and the wedding party will 
                 be staying at the Alt Hotel in Griffintown. <br />
                 They have kindly offered a discount for our guests to use to stay with us.
-                Book your rooms <Link>here</Link> and use the code <em>dizzy</em>.
+                Details to come soon!
+                {/* Book your rooms <Link>here</Link> and use the code <em>dizzy</em>. */}
             </Typography>
         </Section>
 

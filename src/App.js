@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Box, Paper } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, useParams } from 'react-router-dom';
+import { ThemeProvider} from '@mui/material/styles';
 import React from 'react';
 import Home from './components/Home';
 import Gallery from './components/pages/Gallery';
 import Schedule from './components/pages/Schedule';
 import FAQ from './components/pages/FAQ';
 import Rsvp from './components/pages/Rsvp';
-import OurStory from './components/pages/OurStory';
+import UnderConstruction from './components/pages/UnderConstruction';
 import AboutUs from './components/pages/AboutUs';
 import Details from './components/pages/Details';
 import NoToken from './components/pages/NoToken';
@@ -43,13 +44,12 @@ const TokenizedApp = ({ setUserValid }) => {
         <Routes>
           <Route path="" element={<Home guests={guests} />} />
           <Route path="gallery" element={<Gallery />} />
-          <Route path="ourstory" element={<OurStory />} />
-          <Route path="aboutus" element={<AboutUs />} />
+          <Route path="aboutus" element={<UnderConstruction />} />
           <Route path="schedule" element={<Schedule />} />
           <Route path="details" element={<Details />} />
           <Route path="rsvp" element={<Rsvp guests={guests} />} />
           <Route path="faq" element={<FAQ />} />
-
+          <Route path="under_construction" element={<UnderConstruction />} />
         </Routes>
       </Paper>
     </>
