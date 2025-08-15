@@ -3,7 +3,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Container, Typography } from '@mui/material';
+import { Container, Typography, Link } from '@mui/material';
 
 const FAQ = () => {
   return (
@@ -51,7 +51,7 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Sorry Abby and Justin, you can't bring your kid. 
+            Adults only ceremony please. 
           </Typography>
         </AccordionDetails>
       </Accordion> 
@@ -79,8 +79,21 @@ const FAQ = () => {
         </AccordionSummary>
         <AccordionDetails>
           <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
+            Please check your invite.
+          </Typography>
+        </AccordionDetails>
+      </Accordion>
+            <Accordion>
+        <AccordionSummary
+          expandIcon={<ArrowDropDownIcon />}
+          aria-controls="panel4-content"
+          id="panel4-header"
+        >
+          <Typography variant="body1">How did you make this website?</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <Typography>
+            This is a PERN-stack web app. You can check the <Link href="https://github.com/danme-l/dizzy-wedding">README</Link> over on Github if you are a nerd like us.
           </Typography>
         </AccordionDetails>
       </Accordion>

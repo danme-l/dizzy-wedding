@@ -11,7 +11,7 @@ import React from 'react';
 import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
 
 
-const aboutusMenuArr = ["Our Story", "Gallery", "About Us"];
+const aboutusMenuArr = ["Gallery", "About Us"];
 
 // for mobile
 function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
@@ -54,18 +54,6 @@ function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
           </ListItemButton>
         </ListItem>
         <Divider />
-
-        {/* Schedule
-        <ListItem disablePadding>
-          <ListItemButton
-            onClick={handleDrawerClose}
-            component={Link}
-            to={withToken('schedule')}
-          >
-            <ListItemText primary="Schedule" />
-          </ListItemButton>
-        </ListItem>
-        <Divider /> */}
 
         {/* About Us submenu */}
         <Accordion>
@@ -118,10 +106,6 @@ function LargeMenu({ theme, withToken }) {
       <MenuButtonLarge component={Link} to={withToken('details')}>
         Details
       </MenuButtonLarge>
-
-      {/* <MenuButtonLarge component={Link} to={withToken('schedule')}>
-        Schedule
-      </MenuButtonLarge> */}
 
       <MenuButtonLarge
         endIcon={<ArrowDropDownIcon />}
