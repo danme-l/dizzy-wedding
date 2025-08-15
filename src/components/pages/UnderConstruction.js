@@ -1,15 +1,14 @@
 import React from 'react';
 import { Container, Typography } from '@mui/material';
 
-const Story = () => {
+const UnderConstruction = () => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Our Love Story
+        We're working on this page... stay tuned.
       </Typography>
-      <Typography variant="body1">Photos will be added here!</Typography>
     </Container>
   );
 };
 
-export default Story;
+export default UnderConstruction;

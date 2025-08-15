@@ -120,6 +120,7 @@ const Home = ({ guests }) => {
         Things to do
       </Typography>
       <CardCarousel />
+    <FAQ />
 
     </Container>
     <hr/>
