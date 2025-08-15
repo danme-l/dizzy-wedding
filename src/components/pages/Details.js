@@ -51,7 +51,7 @@ const Details = () => {
             The Venue
         </Typography>
         <Section
-            imageSrc="https://www.parcjeandrapeau.com/files/photos/mariage_salle_reception_toundra_espaces_locatifs_parc_jean_drapeau_montreal_002.jpg"
+            imageSrc="https://i.postimg.cc/RZFysDmB/toundra-reception.jpg"
             imageAlt="Venue"
             >
                 The Wedding will be held at La Toundra, in the Florailles Gardens of Parc Jean Drapeau.
@@ -64,7 +64,7 @@ const Details = () => {
             The Hotel
         </Typography>
         <Section
-            imageSrc="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcimg0.ibsrv.net%2Fcimg%2Fwww.fodors.com%2F2000x2000_60%2F316%2F5a79d61d50bd1-316316.jpg&f=1&nofb=1&ipt=470cc236692cb631c2604340dec8972fc9cc6ddf913136abdb34de1c95760c9b"
+            imageSrc="https://i.postimg.cc/RZD8jLCn/alt-hotel.jpg"
             imageAlt="Venue"
             >
             <Typography variant='body1'>
@@ -80,16 +80,13 @@ const Details = () => {
             Wedding Day Schedule
         </Typography>
         <Section
-            imageSrc="https://www.parcjeandrapeau.com/files/photos/jardins_des_floralies_nature_fleurs_arbustes_arbes_lagunes_juin_2019_003.jpg"
+            imageSrc="https://i.postimg.cc/28TgxfPG/floralies-gardens.jpg"
             imageAlt="Garden"
             >
             <Typography variant='body1'>
                 <Schedule />
             </Typography>
         </Section>
-
-        {/* https://www.parcjeandrapeau.com/files/photos/jardins_des_floralies_nature_fleurs_arbustes_arbes_lagunes_juin_2019_003.jpg */}
-
         <FAQ />
 
     </Container>
