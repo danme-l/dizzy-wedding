@@ -9,28 +9,22 @@ export default function Rsvp({ guests }) {
   
   const { submitRSVP, loading, error, success } = useSubmitRSVP();
 
-  console.log(guests)
-
-
-  // creates the guest list for the form(s)
-  const guestsToRender = (() => {
-    if (guests.length === 1) {
-      if (guests[0].plus_one) {
-        // plus_one flag true: render main + synthetic plus one
-        return [guests[0], { id: 'plus_one', isPlusOne: true }];
-      } else {
-        // just main guest, no plus one
-        return [guests[0]];
-      }
-    } else if (guests.length === 2) {
-      // render both real guests only (no synthetic plus one)
-      return guests;
+const guestsToRender = (() => {
+  if (guests.length === 1) {
+    if (guests[0].plus_one) {
+      // plus_one flag true: render main + synthetic plus one
+      return [guests[0], { id: 'plus_one', isPlusOne: true }];
     } else {
-      return [];
+      // just main guest, no plus one
+      return [guests[0]];
     }
-  })();
-
-  console.log(guestsToRender)
+  } else if (guests.length === 2) {
+    // render both real guests only (no synthetic plus one)
+    return guests;
+  } else {
+    return [];
+  }
+})();
 
   const foodOptions = [
     { value: 'chicken', label: 'Chicken Supreme' },
@@ -91,11 +85,11 @@ export default function Rsvp({ guests }) {
         />
     </Box>;
   }
-
   return (
     <form onSubmit={handleSubmit}>
       {guestsToRender.map((g) => (
         <Box key={g.id} sx={{ mb: 3 }}>
+
             <Box
               sx={{
                 display: 'flex',
@@ -210,11 +204,9 @@ export default function Rsvp({ guests }) {
           flexDirection: 'column',
         }}
       >
-      {/* {guests[0].attending === null & */}
         <Button type="submit" variant="contained" color="primary" sx={{ m: '0% auto' }}>
           Submit
         </Button>
-        {/* } */}
       </Box>
     </form>
   );

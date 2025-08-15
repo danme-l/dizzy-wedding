@@ -3,6 +3,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+
 // import styled from '@mui/material/s';
 import { Container, Typography, Link, styled, useTheme} from '@mui/material';
 
@@ -88,6 +89,7 @@ const FAQ = () => {
         <StyledAnswerSection>
           <Typography>
             We recommend arriving around thirty minutes before the ceremony begins.<br /> Please arrive no later than ten minutes before the ceremony.
+
           </Typography>
         </StyledAnswerSection>
       </Accordion> 
