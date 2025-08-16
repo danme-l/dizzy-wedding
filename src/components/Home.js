@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
-import { Box, Grid, Typography, TextField, Button, Container} from '@mui/material';
+import { Box, Grid, Typography, Link, Button, Container} from '@mui/material';
+import CardCarousel from './utils/CardCarousel';
 
 
 const Home = ({ guests }) => {
@@ -41,7 +42,7 @@ const Home = ({ guests }) => {
   };
 
   return (
-    <div id="card" onClick={handletwist}>
+    <div id="card">
     <Container>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
@@ -75,7 +76,7 @@ const Home = ({ guests }) => {
               m: 0
             }}
             alt="Dan and Izzy"
-            src="static/images/DSC_3975.jpg"
+            src="https://i.postimg.cc/ZK3C9V2J/img-fe5.jpg"
             />
         </Grid>
       </Grid>
@@ -85,21 +86,39 @@ const Home = ({ guests }) => {
       <Typography variant="h4" gutterBottom>
         Wedding Details
       </Typography>
-      <Typography variant="body1">Date: {weddingDate.toLocaleDateString('en-CA', dateOptions)}</Typography>
-      <Typography variant="body1">Location: La Toundra, Montreal</Typography>
-      <Typography variant="body1">Time: Noon</Typography>
+      <Typography variant="body1">{weddingDate.toLocaleDateString('en-CA', dateOptions)}</Typography>
+      <Typography variant="body1">
+        <Link href="https://maps.app.goo.gl/PJhCz1GjBgRXTbHWA">La Toundra, Montreal</Link>
+      </Typography>
+      <Typography variant="body1">
+        Find other important information on the <Link to='details'>details</Link> page.
+      </Typography>
+          <Box
+            component="img"
+            sx={{
+              width: '100%',
+              m: 2
+            }}
+            alt="Venue"
+            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b"
+            />
     </Container>
     <hr/>
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         About Montreal
       </Typography>
-      <Typography variant="body1">Blurb</Typography>
-      <Typography variant="body1">Things to do</Typography>
+      <Typography variant="body1">
+        Dan and Izzy became friends in Montreal in late 2018/early 2019. 
+        It is a city that remains near and dear to their hearts.
+      </Typography>
+      <Typography variant="h3" sx={{my: 2}}>
+        Things to do
+      </Typography>
+      <CardCarousel />
+    <FAQ />
 
     </Container>
-    <hr/>
-    <FAQ/>
     </div>
   );
 };

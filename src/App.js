@@ -1,17 +1,14 @@
 import { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button, Paper } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import React from 'react';
 import Home from './components/Home';
 import Gallery from './components/pages/Gallery';
 import Schedule from './components/pages/Schedule';
 import FAQ from './components/pages/FAQ';
 import Rsvp from './components/pages/Rsvp';
-import OurStory from './components/pages/OurStory';
 import AboutUs from './components/pages/AboutUs';
-import EngInv from './components/pages/EngInvitation';
-import { useTheme } from '@mui/material/styles';
 import NavBar from './components/navigation/NavBar';
+import Details from './components/pages/Details';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import './global.css'
 
@@ -38,7 +35,7 @@ const App = () => {
 
   return (
     <Router>
-      <Box sx={{ bgcolor: theme.palette.background.default }}>
+      <Box>
 
         {/* SECTION Nav bar 
         Izzy is pretty teeheehees
@@ -71,12 +68,10 @@ const App = () => {
             <Route path="/" element={<Home guests={guests} />} />
             <Route path="/details" element={<Details />} />
             <Route path="/gallery" element={<Gallery />} />
-            <Route path="/ourstory" element={<OurStory />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
             <Route path="/rsvp" element={<Rsvp guests={guests} />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/enginv" element={<EngInv />} />
           </Routes>
         </Paper>
         )}
