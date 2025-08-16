@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
-import ThingToDoCard from './utils/ThingToDoCard';
-import { Box, Grid, Typography, TextField, Button, Container, Link, useTheme} from '@mui/material';
+import { Box, Grid, Typography, Container, Link, useTheme} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
 import { LinkWithToken } from './navigation/NavUtils';
 

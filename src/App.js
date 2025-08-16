@@ -21,6 +21,8 @@ const TokenizedApp = ({ setUserValid }) => {
   const { token } = useParams(); 
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
 
+  console.log("checking in App.js: ", token)
+
   React.useEffect(() => {
     if (token) {
       fetchGuestGroup(token).then(isValidUser => {
