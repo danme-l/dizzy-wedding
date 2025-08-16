@@ -317,44 +317,44 @@ function LargeMenu(theme) {
     </Box>
   );
 };
-  
-
 
 const NavBar = () => {
     const theme = useTheme();
     const [openMenu, setOpenMenu] = React.useState(false);
+    
+    // Call useMediaQuery unconditionally
+    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
 
-  return (
-      <AppBar
-          position="sticky"
-          color="black"
-          
-          sx={{
-            boxShadow: 'none', 
-            
-            opacity: '100%', 
-            bgcolor: theme.palette.background.default,
-          }}
+    // Ensure that the component always returns a valid JSX structure
+    return (
+        <AppBar
+            position="sticky"
+            color="black"
+            sx={{
+                boxShadow: 'none',
+                opacity: '100%',
+                bgcolor: theme.palette.background.default,
+            }}
         >
-          <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0'}} >
-            <Typography
-              variant="h1"
-              sx={{ fontWeight: 'bold', }}
-            >
-              D & I
-            </Typography>
+            <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0' }}>
+                <Typography
+                    variant="h1"
+                    sx={{ fontWeight: 'bold' }}
+                >
+                    D & I
+                </Typography>
 
-            {/* Links on the right */}
-            {/*Use media query to determine if this should show up */}
-            {useMediaQuery(theme.breakpoints.down('md')) ? 
-              SmallMenuIcon(openMenu, setOpenMenu) : LargeMenu(theme)}
-          </Toolbar>
-            
-          {/* add drawer for small menu here*/}
-          {useMediaQuery(theme.breakpoints.down('md')) && 
-            SmallMenu(theme, openMenu, setOpenMenu)}
+                {/* Render menu based on screen size */}
+                {isSmallScreen ? 
+                    SmallMenuIcon(openMenu, setOpenMenu) : 
+                    LargeMenu(theme)}
+            </Toolbar>
+
+            {/* Add drawer for small menu here */}
+            {isSmallScreen && 
+                SmallMenu(theme, openMenu, setOpenMenu)}
         </AppBar>
-  );
+    );
 };
 
 export default NavBar;

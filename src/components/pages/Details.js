@@ -1,5 +1,5 @@
 import { Box, Container, Typography, Link } from '@mui/material';
-// import MapComponent from '../utils/MapComponent';
+import MapComponent from '../utils/MapComponent';
 import FAQ from './FAQ';
 import Schedule from './Schedule';
 
@@ -56,7 +56,7 @@ const Details = () => {
                 The Wedding will be held at La Toundra, in the Floralies Gardens of Parc Jean Drapeau.
         </Section>
 
-        {/* <MapComponent /> */}
+        <MapComponent />
 
         {/* SECTION Alt Hotel */}
         <Typography variant="h1" gutterBottom sx={{my: 5}}>
