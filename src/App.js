@@ -10,6 +10,7 @@ import AboutUs from './components/pages/AboutUs';
 import NavBar from './components/navigation/NavBar';
 import Details from './components/pages/Details';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
+import CircularProgress from '@mui/material/CircularProgress';
 import './global.css'
 
 const App = () => {
@@ -33,10 +34,18 @@ const App = () => {
     }
   };
 
+  if (loading) {
+    return (
+      <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
+        Loading...
+        <CircularProgress />
+      </Box>
+    )
+  }
+
   return (
     <Router>
       <Box>
-
         {/* SECTION Nav bar 
         Izzy is pretty teeheehees
         */}

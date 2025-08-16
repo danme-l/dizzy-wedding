@@ -1,12 +1,18 @@
-import React from 'react';
-import { Typography, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
+import React, {useState} from 'react';
+import { Typography,Modal, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
 
 export default function Rsvp({ guests }) {
+  // states for the return array that gets posted
   const [attendance, setAttendance] = React.useState({});
   const [foodChoice, setFoodChoice] = React.useState({});
   const [plusOneName, setPlusOneName] = React.useState('');
-  
+
+  // states for the modal
+  const [open, setOpen] = useState(false);
+  const [rsvpArray, setRsvpArray] = useState([]);
+  const [submitted, setSubmitted] = useState(false); // to handle the button
+
   const { submitRSVP, loading, error, success } = useSubmitRSVP();
 
   const guestsToRender = (() => {
@@ -26,8 +32,6 @@ export default function Rsvp({ guests }) {
     }
   })();
 
-  console.log(guestsToRender)
-
   const foodOptions = [
     { value: 'chicken', label: 'Chicken Supreme' },
     { value: 'lamb', label: 'Wine Braised Lamb Shank' },
@@ -37,15 +41,15 @@ export default function Rsvp({ guests }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const rsvpArray = guestsToRender
+    // this rsvp array gets posted to the API
+    const newRsvpArray = guestsToRender
       .filter((g) => {
         if (!g.isPlusOne) return true;
-        // only include plus ones if attending
         return attendance['plus_one'] === '1';
       })
       .map((g) => ({
-        guest_id: g.isPlusOne ? null : g.id,           // real guests keep their guest_id
-        invited_id: g.isPlusOne ? guests[0].id : null, // plus one links to invited guest
+        guest_id: g.isPlusOne ? null : g.id,
+        invited_id: g.isPlusOne ? guests[0].id : null,
         food_choice: g.isPlusOne ? foodChoice['plus_one'] : foodChoice[g.id],
         plus_one_name: g.isPlusOne ? plusOneName : null,
         attending: g.isPlusOne
@@ -53,16 +57,37 @@ export default function Rsvp({ guests }) {
           : attendance[g.id] === '1'
       }));
 
-    console.log("submitted:")
+    setRsvpArray(newRsvpArray);
+    setOpen(true); // open the modal
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleConfirm = () => {
+    console.log("submitted:");
     console.log(rsvpArray);
-    
-    submitRSVP(rsvpArray)
+
+    submitRSVP(rsvpArray);
+    // handleClose(); // close the modal after submission
+    setSubmitted(true); 
+
+    // reset state after 4 seconds to re-render the component (and show the cute little gif)
+    // HELP:  HERE is where to check: it's not re-rendering the component when the states are changed??
+    setTimeout(() => {
+      setSubmitted(false);
+      setOpen(false); 
+      setRsvpArray([]); // clear the RSVP array if needed
+    }, 4000);
   };
 
 
+  /// HELP: I want this to get checked again after the form is submitted
+  // make attendance flag
   const isAnyAttending = guests.some(guest => guest.attending !== null);
 
-  // check for attendance
+  // check for attendance, then return the cute little gif if so
   if (isAnyAttending) {
     return <Box sx={{
       justifyContent:'center',
@@ -82,14 +107,23 @@ export default function Rsvp({ guests }) {
           width: '40%',
           my: 3
         }}
-        alt="Dan and Izzy"
+        alt="Cute attendance gif"
         src="https://i.postimg.cc/3xgjGznB/doggies.gif"
         // source: https://giphy.com/gifs/wedding-bride-and-groom-h85sDYSl23vvoI3SiB
         />
     </Box>;
   }
 
+  // check for rsvp weirdness
+  const checkRSVP = (arrToCheck) => {
+    return arrToCheck.some(
+      e => e.attending & !e.food_choice
+    )
+  }
+
   return (
+    <div>
+
     <form onSubmit={handleSubmit}>
       {guestsToRender.map((g) => (
         <Box key={g.id} sx={{ mb: 3 }}>
@@ -116,8 +150,8 @@ export default function Rsvp({ guests }) {
                       sx={{ minWidth: 200 }}
                       disabled={attendance['plus_one'] === '0'}
                       required={attendance['plus_one'] === '1'}
-                    />
-                  ) : (
+                      />
+                      ) : (
                     // otherwise just the name
                     `${g.first_name} ${g.last_name}`
                   )}
@@ -213,5 +247,54 @@ export default function Rsvp({ guests }) {
         </Button>
       </Box>
     </form>
+
+    <Modal open={open} onClose={handleClose}>
+        <Box sx={{ 
+          position: 'absolute', 
+          top: '50%', 
+          left: '50%', 
+          transform: 'translate(-50%, -50%)', 
+          bgcolor: 'background.paper', 
+          boxShadow: 24, 
+          p: 4 
+        }}>
+          {submitted ? (
+            // just been submitted, say thank you to our guests
+            <Typography variant="h6" component="h2">
+              Thanks!
+            </Typography>
+          ) :
+          // if the check is true, someone's hit attending without picking their meal 
+          checkRSVP(rsvpArray) ? 
+          <Typography variant='body1'>
+            Looks like someone hasn't made a food choice. Please check again!
+          </Typography>
+          :
+          <div>
+            <Typography variant="h6" component="h2">
+              Does this look correct?
+            </Typography>
+            <Typography sx={{ mt: 2 }}>
+              {rsvpArray.map((entry, index) => (
+                <div>
+                  <Typography variant='h3'>
+                    {guestsToRender[index].first_name}
+                  </Typography>
+                  {entry.attending ? "Looking forward to seeing you!" : "Can't make it"}                
+                </div>
+              )
+              )}
+            </Typography>
+            <Button onClick={handleConfirm} color="primary" variant="contained" sx={{ mt: 2 }}>
+              Confirm
+            </Button>
+            <Button onClick={handleClose} color="secondary" variant="contained" sx={{ mt: 2, ml: 2 }}>
+              Cancel
+            </Button>
+          </div>
+          }
+        </Box>
+      </Modal>
+    </div>
   );
 }
