@@ -14,7 +14,6 @@ export default function ThingToDoCard({imgLink, name, info, spotLink}) {
         sx={{ height: 140 }}
         image={imgLink}
         title={name}
-        spotLink={spotLink}
       />
       <CardContent>
         <Typography gutterBottom variant="h3" component="div">
