@@ -9,22 +9,24 @@ export default function Rsvp({ guests }) {
   
   const { submitRSVP, loading, error, success } = useSubmitRSVP();
 
-const guestsToRender = (() => {
-  if (guests.length === 1) {
-    if (guests[0].plus_one) {
-      // plus_one flag true: render main + synthetic plus one
-      return [guests[0], { id: 'plus_one', isPlusOne: true }];
+  const guestsToRender = (() => {
+    if (guests.length === 1) {
+      if (guests[0].plus_one) {
+        // plus_one flag true: render main + synthetic plus one
+        return [guests[0], { id: 'plus_one', isPlusOne: true }];
+      } else {
+        // just main guest, no plus one
+        return [guests[0]];
+      }
+    } else if (guests.length === 2) {
+      // render both real guests only (no synthetic plus one)
+      return guests;
     } else {
-      // just main guest, no plus one
-      return [guests[0]];
+      return [];
     }
-  } else if (guests.length === 2) {
-    // render both real guests only (no synthetic plus one)
-    return guests;
-  } else {
-    return [];
-  }
-})();
+  })();
+
+  console.log(guestsToRender)
 
   const foodOptions = [
     { value: 'chicken', label: 'Chicken Supreme' },
@@ -59,6 +61,7 @@ const guestsToRender = (() => {
 
 
   const isAnyAttending = guests.some(guest => guest.attending !== null);
+
   // check for attendance
   if (isAnyAttending) {
     return <Box sx={{
@@ -85,6 +88,7 @@ const guestsToRender = (() => {
         />
     </Box>;
   }
+
   return (
     <form onSubmit={handleSubmit}>
       {guestsToRender.map((g) => (

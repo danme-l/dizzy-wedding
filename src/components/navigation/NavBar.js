@@ -82,40 +82,28 @@ const MenuButtonLarge = styled((props) => (
       }
 }));
 
-function SmallMenuIcon(openMenu, setOpenMenu){
-  //const [openMenu, setState] = React.useState(false);
-  const handleDrawerClose = () => {
-    setOpenMenu(false);
-  };
-  const handleDrawerOpen = () => {
-    setOpenMenu(true);
-  };
-  
-  return (
-    <IconButton
-      aria-label="open drawer"
-      onClick={handleDrawerOpen}
-      edge="start"
-      sx={[
-        {
-          mr: 0,
-        },
-        //state && { display: 'none' },
-      ]}>
-      <MenuIcon />
-    </IconButton>
-  );
-};
+function SmallMenuIcon({ openMenu, setOpenMenu }) {
+    const handleDrawerOpen = () => {
+        setOpenMenu(true);
+    };
+
+    return (
+        <IconButton
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{ mr: 0 }}
+        >
+            <MenuIcon />
+        </IconButton>
+    );
+}
   
   // **SECTION** small menu appears on phones 
-function SmallMenu(theme, openMenu, setOpenMenu) {
-  // open, close handlers
-  const handleDrawerClose = () => {
-    setOpenMenu(false);
-  };
-  const handleDrawerOpen = () => {
-    setOpenMenu(true);
-  };
+function SmallMenu({ theme, openMenu, setOpenMenu }) {
+    const handleDrawerClose = () => {
+        setOpenMenu(false);
+    };
 
 
   return (
@@ -319,42 +307,47 @@ function LargeMenu(theme) {
 };
 
 const NavBar = () => {
-    const theme = useTheme();
-    const [openMenu, setOpenMenu] = React.useState(false);
-    
-    // Call useMediaQuery unconditionally
-    const isSmallScreen = useMediaQuery(theme.breakpoints.down('md'));
+  const theme = useTheme();
+  const [openMenu, setOpenMenu] = React.useState(false);
 
-    // Ensure that the component always returns a valid JSX structure
-    return (
-        <AppBar
-            position="sticky"
-            color="black"
-            sx={{
-                boxShadow: 'none',
-                opacity: '100%',
-                bgcolor: theme.palette.background.default,
-            }}
-        >
-            <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0' }}>
-                <Typography
-                    variant="h1"
-                    sx={{ fontWeight: 'bold' }}
-                >
-                    D & I
-                </Typography>
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
-                {/* Render menu based on screen size */}
-                {isSmallScreen ? 
-                    SmallMenuIcon(openMenu, setOpenMenu) : 
-                    LargeMenu(theme)}
-            </Toolbar>
+  return (
+    <AppBar
+      position="sticky"
+      color="black"
+      sx={{ boxShadow: 'none', opacity: '100%', bgcolor: theme.palette.background.default }}
+    >
+      <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0' }}>
+        <Typography variant="h1" sx={{ fontWeight: 'bold' }}>
+          D & I
+        </Typography>
 
-            {/* Add drawer for small menu here */}
-            {isSmallScreen && 
-                SmallMenu(theme, openMenu, setOpenMenu)}
-        </AppBar>
-    );
+        {isMobile ? (
+          <>
+            {/* hamburger menu button */}
+            <IconButton
+              aria-label="open drawer"
+              onClick={() => setOpenMenu(true)}
+              edge="start"
+              sx={{ mr: 0 }}
+            >
+              <MenuIcon />
+            </IconButton>
+
+            {/* drawer sliding menu */}
+            <SmallMenu
+              theme={theme}
+              openMenu={openMenu}
+              setOpenMenu={setOpenMenu}
+            />
+          </>
+        ) : (
+          <LargeMenu theme={theme} />
+        )}
+      </Toolbar>
+    </AppBar>
+  );
 };
 
 export default NavBar;
