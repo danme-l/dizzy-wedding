@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
 import { Box, Grid, Typography, Container, Link, useTheme} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
@@ -7,7 +7,6 @@ import { LinkWithToken } from './navigation/NavUtils';
 
 const Home = ({ guests }) => {
   const [guestString, setGuestString] = useState('');
-  const theme = useTheme();
   
 
   useEffect(() => {

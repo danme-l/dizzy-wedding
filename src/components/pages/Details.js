@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Container, Typography, Link } from '@mui/material';
 import MapComponent from '../utils/MapComponent';
 import FAQ from './FAQ';

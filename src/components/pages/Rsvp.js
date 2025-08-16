@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Container, Typography, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
+import React from 'react';
+import { Typography, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
 
 export default function Rsvp({ guests }) {
