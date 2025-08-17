@@ -98,18 +98,3 @@ export function SmallMenuIcon(openMenu, setOpenMenu){
     </IconButton>
   );
 };
-  
-// wrapper around react-router-dom's Link that prepends the token
-export const LinkWithToken = React.forwardRef(function LinkWithToken(props, ref) {
-  const { token } = useParams();
-  console.log("The nav token:", token)
-  let newTo = props.to || '';
-
-  if (!newTo.startsWith('http')) {
-    // if no leading slash, add one
-    if (!newTo.startsWith('/')) newTo = '/' + newTo;
-    newTo = `/${token}${newTo}`;
-  }
-
-  return <RouterLink ref={ref} {...props} to={newTo} />;
-});
