@@ -11,9 +11,6 @@ function useFetchGuestGroup() {
     setLoading(true);
     setError(null);
 
-    console.log("The endpoint is: ", apiUrl)
-    console.log("The token is:", token)
-
     try {
       const response = await axios.get(`${apiUrl}/passwords/${token}`);
 

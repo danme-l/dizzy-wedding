@@ -84,12 +84,9 @@ const Details = () => {
             imageSrc={config.wedding.venue.photoLinks[2]}
             imageAlt="Garden"
             >
-            <Typography variant='body1'>
-                <Schedule />
-            </Typography>
+            <Schedule />
         </Section>
         <FAQ />
-
     </Container>
   );
 };

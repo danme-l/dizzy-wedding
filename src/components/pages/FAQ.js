@@ -30,7 +30,7 @@ const FAQ = () => {
       </Typography>
 
       {faq.map((item, index) => (
-        <Accordion>
+        <Accordion key={index}>
           <AccordionSummary
             expandIcon={<ArrowDropDownIcon />}
             aria-controls="panel1-content"

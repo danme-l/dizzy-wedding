@@ -7,7 +7,6 @@ const Schedule = () => {
   const weddingSchedule = config.wedding.schedule
 
   return (
-    <Container>
         <TableContainer>
             <Table stickyHeader sx={{ overflow: 'scroll' }}>
                 {/* SECTION table Head */}
@@ -31,8 +30,6 @@ const Schedule = () => {
                 </TableBody>
             </Table>
           </TableContainer>
-
-    </Container>
   );
 };
 

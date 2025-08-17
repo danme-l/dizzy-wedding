@@ -14,15 +14,13 @@ import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import CircularProgress from '@mui/material/CircularProgress';
 
 // configs
-import { ConfigContext } from "./ConfigContext";
-import weddingConfig from './config/wedding.json'
+import { ConfigProvider } from "./ConfigContext";
+
 
 const App = () => {
   const [userValid, setUserValid] = useState(false);
   const [code, setCode] = useState('');
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
-
-  console.log(weddingConfig.bride.name)
 
   const handleInputChange = (event) => {
     setCode(event.target.value);
@@ -71,7 +69,7 @@ const App = () => {
   }
 
   return (
-    <ConfigContext.Provider value={weddingConfig}>
+    <ConfigProvider>
 
       <Router>
         <Box>
@@ -105,7 +103,7 @@ const App = () => {
               <Route path="/details" element={<Details />} />
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/aboutus" element={<AboutUs />} />
-              <Route path="/schedule" element={<Schedule config={weddingConfig} />} />
+              <Route path="/schedule" element={<Schedule/>} />
               <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)}/>} />
               <Route path="/faq" element={<FAQ />} />
             </Routes>
@@ -113,7 +111,7 @@ const App = () => {
           )}
         </Box>
       </Router>
-    </ConfigContext.Provider>
+    </ConfigProvider>
   );
 };
 
