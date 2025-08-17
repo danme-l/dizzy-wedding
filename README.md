@@ -20,11 +20,5 @@ Schema:
 
 ### TODO
 (1) Necessary
-* Fix FAQ
 * Proper hotel link
-* Push and test RSVP functionality
 * Admin section
-
-(2) Possible
-* Add more photos to gallery
-* About us page - wedding party, families, etc
