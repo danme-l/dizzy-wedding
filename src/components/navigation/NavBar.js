@@ -1,14 +1,14 @@
-import {Box, Typography, AppBar, Toolbar, Button, Menu, MenuItem, Drawer, List, ListItemText } from '@mui/material';
+import {Box, Typography, AppBar, Toolbar, Button, MenuItem, Drawer, List, ListItemText } from '@mui/material';
 import {IconButton, ListItem, ListItemButton, Divider, useTheme} from '@mui/material';
 import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
-import { styled, alpha } from '@mui/material/styles';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import {BorderBottomRounded, BorderBottomSharp, ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import {ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
+import { Link } from 'react-router-dom'; // use react-router Link here
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
+import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
 
 const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const aboutusMenuArr = ["Gallery", "About Us"];
@@ -105,23 +105,16 @@ function SmallMenu({ theme, openMenu, setOpenMenu }) {
         setOpenMenu(false);
     };
 
+// for mobile
+function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
+  const handleDrawerClose = () => setOpenMenu(false);
 
   return (
     <Drawer
-      sx={{
-        flexShrink: 0,
-        bgcolor: 'inherit',
-        //width: '100',
-        '& .MuiDrawer-paper': {
-          //width: '100',
-          boxSizing: 'border-box',
-        },
-      }}
-      variant="persistent"
       anchor="right"
       open={openMenu}
+      onClose={handleDrawerClose}
     >
-      {/* drawer header, containing the close button */}
       <DrawerHeader>
         <IconButton onClick={handleDrawerClose}>
           <ChevronRight />
@@ -129,7 +122,6 @@ function SmallMenu({ theme, openMenu, setOpenMenu }) {
       </DrawerHeader>
       <Divider />
 
-      {/* navigation list */}
       <List disablePadding>
 
         {/* ITEM 1: Home */}
@@ -218,48 +210,24 @@ function SmallMenu({ theme, openMenu, setOpenMenu }) {
             </ListItemButton>
           </ListItem>
 
+
       </List>
     </Drawer>
   );
-};
-  
-  // **SECTION** large menu appears on large screens such as laptops, iPads
-function LargeMenu(theme) {
-  //const theme = useTheme();
+}
 
-  // state, handlers for the details dropdown
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  // state, handlers for the about us dropdown
+// for computers and ipads and such
+function LargeMenu({ theme, withToken }) {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const open2 = Boolean(anchorEl2);
-
-  const handleClick2 = (event2) => {
-    setAnchorEl2(event2.currentTarget);
-  };
-  const handleClose2 = () => {
-    setAnchorEl2(null);
-  };
+  const handleClick2 = (e) => setAnchorEl2(e.currentTarget);
+  const handleClose2 = () => setAnchorEl2(null);
 
   return (
-    // Container for the nav buttons 
     <Box>
-
-      {/* SECTION Home */}
-      <MenuButtonLarge
-        component={Link}
-        to="/">
+      <MenuButtonLarge component={Link} to={withToken('')}>
         Home
       </MenuButtonLarge>
-      {/*Maybe do a hover brings on the menu as well?*/}
 
       {/* SECTION details button, including dropdown */}
       <MenuButtonLarge
@@ -268,29 +236,24 @@ function LargeMenu(theme) {
         Details
       </MenuButtonLarge>
 
-      {/* SECTION about us button, including dropdown */}
       <MenuButtonLarge
-        aria-controls={open2 ? 'about-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open2 ? 'true' : undefined}
-        disableElevation
         endIcon={<ArrowDropDownIcon />}
         onClick={handleClick2}
-        >
+      >
         About Us
       </MenuButtonLarge>
-
-      {/* SECTION about us menu */}
-      <StyledMenu id="about-menu"
-        MenuListProps={{ 'aria-labelledby': 'about-button',}}
+      <StyledMenu
         anchorEl={anchorEl2}
         open={open2}
-        onClose={handleClose2}>
-        {/* iterate over the about us menu to create menu items */}
-        {aboutusMenuArr.map((text, index) => (
-          <MenuItem key={text} onClick={handleClose2}
+        onClose={handleClose2}
+      >
+        {aboutusMenuArr.map((text) => (
+          <MenuItem
+            key={text}
+            onClick={handleClose2}
             component={Link}
-            to={'/' + text.replace(/\s/g, '').toLowerCase()}>
+            to={withToken(text.replace(/\s/g, '').toLowerCase())}
+          >
             {text}
           </MenuItem>
         ))}
@@ -305,6 +268,7 @@ function LargeMenu(theme) {
     </Box>
   );
 };
+
 
 const NavBar = () => {
   const theme = useTheme();

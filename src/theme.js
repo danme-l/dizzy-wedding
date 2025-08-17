@@ -96,8 +96,27 @@ const theme = createTheme({
           textTransform: "none",
         },
       },
+      invitation2: {
+        fontFamily: '"Kapana", cursive',
+        fontSize: '1.9rem',
+        fontWeight: 400,
+        color: 'black', 
+      }
     },
-  },
-});
+    components: {
+      MuiLink: {
+      styleOverrides: {
+        root: {
+          color: myPalette.secondary.dark, // Set the color to the secondary color
+          textDecoration: 'none', // Optional: remove underline
+          '&:hover': {
+            textDecoration: 'underline', // Optional: add underline on hover
+          },
+        },
+      },
+    },
+    }
+    
+  });
 
 export default theme;

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Box, Typography, TextField, Button, Paper } from '@mui/material';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
 import Home from './components/Home';
 import Gallery from './components/pages/Gallery';
 import Schedule from './components/pages/Schedule';

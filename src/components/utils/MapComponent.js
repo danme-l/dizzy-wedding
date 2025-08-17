@@ -38,6 +38,4 @@ const MapComponent = ({coords}) => {
   );
 };
 
-
-
 export default MapComponent;

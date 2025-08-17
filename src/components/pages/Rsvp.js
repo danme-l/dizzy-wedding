@@ -48,8 +48,8 @@ export default function Rsvp({ guests, refreshGuests }) {
         return attendance['plus_one'] === '1';
       })
       .map((g) => ({
-        guest_id: g.isPlusOne ? null : g.id,
-        invited_id: g.isPlusOne ? guests[0].id : null,
+        guest_id: g.isPlusOne ? null : g.id,           // real guests keep their guest_id
+        invited_id: g.isPlusOne ? guests[0].id : null, // plus one links to invited guest
         food_choice: g.isPlusOne ? foodChoice['plus_one'] : foodChoice[g.id],
         plus_one_name: g.isPlusOne ? plusOneName : null,
         attending: g.isPlusOne
@@ -154,7 +154,7 @@ export default function Rsvp({ guests, refreshGuests }) {
                     `${g.first_name} ${g.last_name}`
                   )}
                 </FormLabel>
-
+                
                 {/* radio buttons for attendance */}
                 <RadioGroup
                   aria-labelledby={`label-attendance-${g.id}`} 

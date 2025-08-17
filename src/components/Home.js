@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
 import { Box, Grid, Typography, Link, Divider, Container, Button} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
@@ -6,6 +6,7 @@ import CardCarousel from './utils/CardCarousel';
 
 const Home = ({ guests, handleSignOut }) => {
   const [guestString, setGuestString] = useState('');
+  
 
   useEffect(() => {
     const formatGuestString = () => {
@@ -76,7 +77,7 @@ const Home = ({ guests, handleSignOut }) => {
               m: 0
             }}
             alt="Dan and Izzy"
-            src="https://i.postimg.cc/ZK3C9V2J/img-fe5.jpg"
+            src="https://i.postimg.cc/fT6t77H9/DSC-3975.jpg"
             />
         </Grid>
       </Grid>
