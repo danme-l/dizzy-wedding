@@ -29,14 +29,14 @@ const App = () => {
         setUserValid(true);
       } else {
         setUserValid(false);
-        alert("You sure you're invited to this?");
+        alert("Oops, that didn't work. Check your code again!");
       }
     }
   };
 
   if (loading) {
     return (
-      <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
+      <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
         Loading...
         <CircularProgress />
       </Box>
@@ -46,9 +46,7 @@ const App = () => {
   return (
     <Router>
       <Box>
-        {/* SECTION Nav bar 
-        Izzy is pretty teeheehees
-        */}
+        {/* SECTION Nav bar */}
         <NavBar />
 
         {/* SECTION Content */}
@@ -79,7 +77,7 @@ const App = () => {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/aboutus" element={<AboutUs />} />
             <Route path="/schedule" element={<Schedule />} />
-            <Route path="/rsvp" element={<Rsvp guests={guests} />} />
+            <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)}/>} />
             <Route path="/faq" element={<FAQ />} />
           </Routes>
         </Paper>

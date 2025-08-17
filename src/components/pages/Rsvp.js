@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { Typography,Modal, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
 
-export default function Rsvp({ guests }) {
+export default function Rsvp({ guests, refreshGuests }) {
   // states for the return array that gets posted
   const [attendance, setAttendance] = React.useState({});
   const [foodChoice, setFoodChoice] = React.useState({});
@@ -65,25 +65,23 @@ export default function Rsvp({ guests }) {
     setOpen(false);
   };
 
-  const handleConfirm = () => {
-    console.log("submitted:");
-    console.log(rsvpArray);
-
-    submitRSVP(rsvpArray);
-    // handleClose(); // close the modal after submission
+  const handleConfirm = async () => {
+    await submitRSVP(rsvpArray);
     setSubmitted(true); 
 
-    // reset state after 4 seconds to re-render the component (and show the cute little gif)
-    // HELP:  HERE is where to check: it's not re-rendering the component when the states are changed??
+    // reset state after 4 seconds 
     setTimeout(() => {
       setSubmitted(false);
       setOpen(false); 
       setRsvpArray([]); // clear the RSVP array if needed
-    }, 4000);
+    }, 3000);
+
+    // after saving, re-fetch latest info from server 
+    // to re-render the component (and show the cute little gif)
+    await refreshGuests();
   };
 
 
-  /// HELP: I want this to get checked again after the form is submitted
   // make attendance flag
   const isAnyAttending = guests.some(guest => guest.attending !== null);
 
