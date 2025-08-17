@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import weddingConfig from './config/wedding.json'
 
 export const ConfigContext = createContext(null);
 
@@ -10,14 +11,23 @@ export function ConfigProvider({ children }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // url to the config file in blob storage
   const configUrl = process.env.REACT_APP_CONFIG_FILE_URL;
 
   useEffect(() => {
     const fetchConfig = async () => {
       try {
-        const res = await fetch(configUrl);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
+        let data;
+        // load the local file in dev mode
+        if (process.env.NODE_ENV === 'development') {
+          data = weddingConfig;
+        } else {
+          // get it from the blob storage in prod
+          const res = await fetch(configUrl);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          data = await res.json();
+        }
+
         setConfig(data);
       } catch (err) {
         console.error("Failed to fetch config:", err);

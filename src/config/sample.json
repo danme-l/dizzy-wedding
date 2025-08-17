@@ -1,0 +1,161 @@
+{
+  "bride": {
+    "name": "Sophie Dupont",
+    "email": "sophie.dupont@example.com"
+  },
+  "groom": {
+    "name": "Lucas Martin",
+    "email": "lucas.martin@example.com"
+  },
+  "couplePhotoLinks": [
+    "https://images.unsplash.com/photo-1598976701972-40f0bf429d9f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZW5nYWdlbWVudHxlbnwwfHwwfHx8MA%3D%3D"
+  ],
+  "wedding": {
+    "date": "2026-05-09",
+    "venue": {
+    "name": "Le Petit Palais",
+    "city": "Paris",
+    "description": "The Wedding will be held at Le Petit Palais, a stunning museum with beautiful gardens and exquisite architecture.",
+    "link": "https://www.petitpalais.paris.fr/en",
+    "address": "Avenue Winston Churchill, 75008 Paris, France",
+    "coordinates": {
+        "lat": "48.870800",
+        "long": "2.316200"
+    },
+    "photoLinks": [
+        "https://plus.unsplash.com/premium_photo-1661962571049-792ae9be2d79?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1709483813148-dbf61bba6daf?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    ],
+    "venueNotes": {
+        "cityNotes": "Sophie and Lucas have always dreamed of a fairytale wedding in the heart of Paris."
+    }
+    },
+    "hotel": {
+      "name": "Hôtel Le Meurice",
+      "description": "The Bride and Groom and the wedding party will be staying at the luxurious Hôtel Le Meurice. They have kindly offered a discount for our guests to use to stay with us. Details to come soon!",
+      "address": "228 Rue de Rivoli, 75001 Paris, France",
+      "coordinates": {
+        "lat": "48.865933",
+        "long": "2.328159"
+      },
+      "photoLinks": [
+        "https://images.unsplash.com/photo-1651841687301-4a774591cc5c?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ],
+      "links": {
+        "booking": "",
+        "main": "https://www.dorchestercollection.com/en/paris/le-meurice/"
+      }
+    },
+    "schedule": [
+      {"time": "16:30", "activity": "Ceremony"},
+      {"time": "17:00", "activity": "Cocktail Hour"},
+      {"time": "18:30", "activity": "Dinner"},
+      {"time": "21:30", "activity": "Dance Party"},
+      {"time": "00:00", "activity": "Late Night Snack"}
+    ],
+    "catering": {
+      "provider": {
+        "name": "Catering Paris",
+        "link": ""
+      },
+      "foodOptions": [
+        { "value": "chicken", "label": "Herb Roasted Chicken" },
+        { "value": "fish", "label": "Grilled Salmon with Lemon Butter" },
+        { "value": "vegetarian", "label": "Ratatouille with Fresh Herbs" }
+      ]
+    },
+    "faq": [
+      {
+        "question": "What is the dress code?",
+        "answer": "Formal attire requested. Please dress to impress!"
+      },
+      {
+        "question": "What is the RSVP deadline?",
+        "answer": "Please RSVP by April 1."
+      },
+      {
+        "question": "Are kids invited?",
+        "answer": "This is an adults-only event."
+      },
+      {
+        "question": "What time should I arrive?",
+        "answer": "We recommend arriving around thirty minutes before the ceremony begins."
+      },
+      {
+        "question": "What's the best way to get to the venue?",
+        "answer": "We recommend taking a taxi or rideshare service. Public transport is also available."
+      },
+      {
+        "question": "Is there a registry?",
+        "answer": "Yes, we have a registry at several stores."
+      },
+      {
+        "question": "Is there an Open Bar?",
+        "answer": "Yes, there will be an Open Bar."
+      },
+      {
+        "question": "Can I bring a plus one?",
+        "answer": "Please refer to your invitation for details regarding plus ones."
+      },
+      {
+        "question": "How did you make this website?",
+        "answer": "This website was created using modern web technologies."
+      }
+    ]
+  },
+  "gallery": [
+    {"img": "https://plus.unsplash.com/premium_photo-1676667573109-273586405c96?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y291cGxlfGVufDB8fDB8fHww", "title": "Some beach"},
+    {"img": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "title": "Eiffel Tower"},
+    {"img": "https://images.unsplash.com/photo-1551634979-2b11f8c946fe?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "title": "Louvre Museum"},
+    {"img": "https://plus.unsplash.com/premium_photo-1661919210043-fd847a58522d?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D4", "title": "Seine River"},
+    {"img": "https://plus.unsplash.com/premium_photo-1661919210043-fd847a58522d?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "title": "Montmartre"},
+    {"img": "https://images.unsplash.com/photo-1682695795798-1b31ea040caf?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "title": "Canyon"},
+    {"img": "https://images.unsplash.com/photo-1574870310056-79c4b3c7d449?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "title": "Notre-Dame Cathedral"},
+    {"img": "https://images.unsplash.com/photo-1509439581779-6298f75bf6e5?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", "title": "Arc de Triomphe"}
+  ],
+  "cardCarousel": [
+    {
+      "name": "Eiffel Tower",
+      "info": "Visit the iconic symbol of Paris.",
+      "imgLink": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=873&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "spotLink": false
+    },
+    {
+      "name": "Louvre Museum",
+      "info": "Explore the world's largest art museum.",
+      "imgLink": "https://images.unsplash.com/photo-1551634979-2b11f8c946fe?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "spotLink": false
+    },
+    {
+      "name": "Montmartre",
+      "info": "Wander the charming streets and enjoy the view from Sacré-Cœur.",
+      "imgLink": "https://plus.unsplash.com/premium_photo-1661919210043-fd847a58522d?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "spotLink": false
+    },
+    {
+      "name": "Seine River Cruise",
+      "info": "Take a scenic boat ride along the Seine.",
+      "imgLink": "https://plus.unsplash.com/premium_photo-1661919210043-fd847a58522d?q=80&w=871&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D4",
+      "spotLink": false
+    }
+  ],
+    "aboutUs": {
+        "groomsmen": {
+            "names": [],
+            "photoLink": ""
+        },
+        "bridesmaids" :{
+            "names": [],
+            "photoLink":""
+        },
+        "groomFamily": {
+            "names": [],
+            "photoLink": ""
+        },
+        "brideFamily" :{
+            "names": [],
+            "photoLink":""
+        }
+    }
+}

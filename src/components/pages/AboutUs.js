@@ -1,7 +1,10 @@
 import React from 'react';
 import { Container, Box, Typography } from '@mui/material';
+import { useConfig } from "../../ConfigContext";
 
 const AboutUs = () => {
+  const config = useConfig();
+  
   return (
     <div>
       <Typography variant="h4" gutterBottom>
@@ -16,7 +19,7 @@ const AboutUs = () => {
             //   m: 0
             // }}
             alt="Dan and Izzy"
-            src="https://i.postimg.cc/kgsM8ZcP/groomsmen.png"
+            src={config.aboutUs.groomsmen.photoLink}
             />
       <Typography variant="h5">Bride's Family</Typography>
       <Typography variant="h5">Bridesmaids</Typography>
