@@ -28,7 +28,8 @@ body {
     z-index: 1;
     backface-visibility: hidden;
 }
-hr {
+
+/* hr {
     margin: 1.5em 7em;
     border-color: #F4C95D;
-}
+} */

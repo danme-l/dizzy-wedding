@@ -10,8 +10,100 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
 
-
+const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const aboutusMenuArr = ["Gallery", "About Us"];
+
+const StyledMenu = styled((props) => (
+    <Menu
+      elevation={0}
+      anchorOrigin={{
+        vertical: 'bottom',
+        horizontal: 'right',
+      }}
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      {...props}
+    />
+      ))(({ theme }) => ({
+        '& .MuiPaper-root': {
+          borderRadius: 6,
+          marginTop: theme.spacing(.5),
+          borderTop: '0.2em solid',
+          borderTopColor: theme.palette.error.main,
+          minWidth: 180,
+          boxShadow:
+            'rgb(255, 255, 255) 0px 0px 0px 0px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px',
+          '& .MuiMenu-list': {
+            padding: '4px 0',
+          },
+          '& .MuiMenuItem-root': {
+            '& .MuiSvgIcon-root': {
+              fontSize: 18,
+              color: theme.palette.text.secondary,
+              marginRight: theme.spacing(1.5),
+            },
+            '&:active': {
+              backgroundColor: alpha(
+                theme.palette.primary.main,
+                theme.palette.action.selectedOpacity,
+              ),
+            },
+          },
+          ...theme.applyStyles('dark', {
+            color: theme.palette.grey[300],
+          }),
+      },
+  }));
+  
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: 'flex-end',
+}));
+  
+const MenuButtonLarge = styled((props) => (
+  <Button
+    color='inherit'
+        sx={{
+          fontSize: "1.5em",
+          fontStyle: 'italic',
+          textTransform: 'none',
+        }}
+        {...props}/>
+    ))(({ theme }) => ({
+      "&:hover": {
+        borderBottom: 'solid',
+        borderBottomColor: theme.palette.info.main,
+      }
+}));
+
+function SmallMenuIcon({ openMenu, setOpenMenu }) {
+    const handleDrawerOpen = () => {
+        setOpenMenu(true);
+    };
+
+    return (
+        <IconButton
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{ mr: 0 }}
+        >
+            <MenuIcon />
+        </IconButton>
+    );
+}
+  
+  // **SECTION** small menu appears on phones 
+function SmallMenu({ theme, openMenu, setOpenMenu }) {
+    const handleDrawerClose = () => {
+        setOpenMenu(false);
+    };
 
 // for mobile
 function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
@@ -31,60 +123,94 @@ function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {
       <Divider />
 
       <List disablePadding>
-        {/* Home */}
-        <ListItem disablePadding>
-          <ListItemButton
-            onClick={handleDrawerClose}
-            component={Link}
-            to={withToken('')}
-          >
-            <ListItemText primary="Home" />
-          </ListItemButton>
-        </ListItem>
-        <Divider />
 
-        {/* Details */}
-        <ListItem disablePadding>
-          <ListItemButton
-            onClick={handleDrawerClose}
-            component={Link}
-            to={withToken('details')}
-          >
-            <ListItemText primary="Details" />
-          </ListItemButton>
-        </ListItem>
-        <Divider />
+        {/* ITEM 1: Home */}
+          <ListItem key='Home' disablePadding>
+            <ListItemButton
+              onClick={handleDrawerClose}
+              component={Link}
+              to="/"
+              sx={{
+                fontSize: '1.5rem',
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'Home'} />
+              
+            </ListItemButton>
+          </ListItem>
+          <Divider/>
 
-        {/* About Us submenu */}
-        <Accordion>
-          <AccordionSummary>
-            <Typography sx={{ fontStyle: 'italic' }}>About Us</Typography>
-          </AccordionSummary>
-          <AccordionDetails>
-            {aboutusMenuArr.map((text) => (
-              <Button
-                key={text}
-                component={Link}
-                onClick={handleDrawerClose}
-                to={withToken(text.replace(/\s/g, '').toLowerCase())}
-              >
-                {text}
-              </Button>
-            ))}
-          </AccordionDetails>
-        </Accordion>
-        <Divider />
-
-        {/* RSVP */}
-        <ListItem disablePadding>
+          {/* ITEM 2: details */}
+          <ListItem key='Details' disablePadding sx={{width: "100%"}}>
           <ListItemButton
-            component={Link}
-            onClick={handleDrawerClose}
-            to={withToken('rsvp')}
-          >
-            <ListItemText primary="RSVP" />
-          </ListItemButton>
-        </ListItem>
+              onClick={handleDrawerClose}
+              component={Link}
+              to="/details"
+              sx={{
+                fontSize: '1.5rem',
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'Details'} /> 
+            </ListItemButton>
+          </ListItem>
+          <Divider/>
+
+          {/* ITEM 3: about us */}
+          <ListItem key='AboutUs' disablePadding>
+            <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
+              sx={{'&:before': {
+                display: 'none',
+              }}}>
+              <AccordionSummary
+                expandIcon={<ArrowDropDownIcon />}
+                aria-controls="panel2-content"
+                id="panel2-header">
+                <Typography
+                  disableElevation
+                  color="inherit"
+                  sx={{
+                    fontStyle: 'italic',
+                    textTransform: 'none',
+                  }}>
+                  About Us
+                </Typography>
+              </AccordionSummary>
+
+              {/* submenu, iterating over the details and creating links */}
+              <AccordionDetails>
+                {aboutusMenuArr.map((text, index) => (
+                  <Button key={text}
+                    component={Link}
+                    onClick={handleDrawerClose}
+                    fullWidth={true}
+                    sx={{
+                      justifyContent: 'flex-start',}}
+                    to={'/' + text.replace(/\s/g, '').toLowerCase()}>
+                    {text}
+                  </Button>
+                ))}
+              </AccordionDetails>
+            </Accordion>
+          </ListItem>
+          <Divider/>
+
+          {/* ITEM 4: rsvp */}
+          <ListItem key='RSVP' disablePadding>
+            <ListItemButton 
+              component={Link}
+              onClick={handleDrawerClose}
+              to="/rsvp"
+              sx={{
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'RSVP'} />
+            </ListItemButton>
+          </ListItem>
+
+
       </List>
     </Drawer>
   );
@@ -103,7 +229,10 @@ function LargeMenu({ theme, withToken }) {
         Home
       </MenuButtonLarge>
 
-      <MenuButtonLarge component={Link} to={withToken('details')}>
+      {/* SECTION details button, including dropdown */}
+      <MenuButtonLarge
+        component={Link}
+        to="/details">
         Details
       </MenuButtonLarge>
 
@@ -130,18 +259,20 @@ function LargeMenu({ theme, withToken }) {
         ))}
       </StyledMenu>
 
-      <MenuButtonLarge component={Link} to={withToken('rsvp')}>
+      {/* SECTION rsvp button */}
+      <MenuButtonLarge
+        component={Link}
+        to="/rsvp">
         RSVP
       </MenuButtonLarge>
     </Box>
   );
-}
+};
+
 
 const NavBar = () => {
   const theme = useTheme();
   const [openMenu, setOpenMenu] = React.useState(false);
-
-  const withToken = (path) => path; 
 
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
@@ -158,7 +289,7 @@ const NavBar = () => {
 
         {isMobile ? (
           <>
-            {/* Hamburger menu button */}
+            {/* hamburger menu button */}
             <IconButton
               aria-label="open drawer"
               onClick={() => setOpenMenu(true)}
@@ -168,16 +299,15 @@ const NavBar = () => {
               <MenuIcon />
             </IconButton>
 
-            {/* Drawer sliding menu */}
+            {/* drawer sliding menu */}
             <SmallMenu
               theme={theme}
               openMenu={openMenu}
               setOpenMenu={setOpenMenu}
-              withToken={withToken}
             />
           </>
         ) : (
-          <LargeMenu theme={theme} withToken={withToken} />
+          <LargeMenu theme={theme} />
         )}
       </Toolbar>
     </AppBar>

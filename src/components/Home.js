@@ -1,11 +1,10 @@
 import {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
-import { Box, Grid, Typography, Container, Link, useTheme} from '@mui/material';
+import { Box, Grid, Typography, Link, Divider, Container, Button} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
-import { LinkWithToken } from './navigation/NavUtils';
 
 
-const Home = ({ guests }) => {
+const Home = ({ guests, handleSignOut }) => {
   const [guestString, setGuestString] = useState('');
   
 
@@ -44,7 +43,7 @@ const Home = ({ guests }) => {
   };
 
   return (
-    <div id="card"> 
+    <div id="card">
     <Container>
       <Grid container spacing={1}>
         <Grid item xs={12} md={6}>
@@ -83,7 +82,7 @@ const Home = ({ guests }) => {
         </Grid>
       </Grid>
     </Container>
-    <hr/>
+    <Divider />
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         Wedding Details
@@ -93,7 +92,7 @@ const Home = ({ guests }) => {
         <Link href="https://maps.app.goo.gl/PJhCz1GjBgRXTbHWA">La Toundra, Montreal</Link>
       </Typography>
       <Typography variant="body1">
-        Find other important information on the <LinkWithToken to='details'>details</LinkWithToken> page.
+        Find other important information on the <Link to='details'>details</Link> page.
       </Typography>
           <Box
             component="img"
@@ -105,7 +104,7 @@ const Home = ({ guests }) => {
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b"
             />
     </Container>
-    <hr/>
+    <Divider />
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         About Montreal
@@ -118,10 +117,13 @@ const Home = ({ guests }) => {
         Things to do
       </Typography>
       <CardCarousel />
+    <Divider />
     <FAQ />
-
+    <Typography variant='body1'>
+      Are you not {guestString}? Please help us out! Contact the bride and groom and tell us who the app thinks you are.
+    </Typography>
+    <Button variant="contained" onClick={handleSignOut}>Not you?</Button>
     </Container>
-    <hr/>
     </div>
   );
 };

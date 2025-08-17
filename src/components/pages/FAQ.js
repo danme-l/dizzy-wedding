@@ -22,8 +22,7 @@ const FAQ = () => {
   const theme = useTheme(); 
 
   return (
-    <Container>
-      <hr />
+    <Container sx = {{my:3}}> 
       <Typography variant="h1" gutterBottom>
         Frequently Asked Questions
       </Typography>
