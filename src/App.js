@@ -13,10 +13,16 @@ import Details from './components/pages/Details';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import CircularProgress from '@mui/material/CircularProgress';
 
+// configs
+import { ConfigContext } from "./ConfigContext";
+import weddingConfig from './config/wedding.json'
+
 const App = () => {
   const [userValid, setUserValid] = useState(false);
   const [code, setCode] = useState('');
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
+
+  console.log(weddingConfig.bride.name)
 
   const handleInputChange = (event) => {
     setCode(event.target.value);
@@ -65,46 +71,49 @@ const App = () => {
   }
 
   return (
-    <Router>
-      <Box>
-        {/* SECTION Nav bar */}
-        <NavBar />
+    <ConfigContext.Provider value={weddingConfig}>
 
-        {/* SECTION Content */}
-        {!userValid ? ( // this is what's shown before the user is validated
-          <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
-            <Box>
-              <Typography variant="h4" gutterBottom>
-                Enter Your Code
-              </Typography>
-              <Box sx={{ display: 'flex', p: 2, gap: 2 }}>
-                <TextField
-                  label="Invite Code"
-                  variant="outlined"
-                  value={code}
-                  onChange={handleInputChange}
-                />
-                <Button variant="contained" color="primary" onClick={handleSubmit}>
-                  Submit
-                </Button>
+      <Router>
+        <Box>
+          {/* SECTION Nav bar */}
+          <NavBar />
+
+          {/* SECTION Content */}
+          {!userValid ? ( // this is what's shown before the user is validated
+            <Box sx={{display: 'flex', justifyContent:'center', alignItems: 'center'}}>
+              <Box>
+                <Typography variant="h4" gutterBottom>
+                  Enter Your Code
+                </Typography>
+                <Box sx={{ display: 'flex', p: 2, gap: 2 }}>
+                  <TextField
+                    label="Invite Code"
+                    variant="outlined"
+                    value={code}
+                    onChange={handleInputChange}
+                    />
+                  <Button variant="contained" color="primary" onClick={handleSubmit}>
+                    Submit
+                  </Button>
+                </Box>
               </Box>
             </Box>
-          </Box>
-      ) : // this is shown after the user is validated
-        (<Paper elevation={3} sx={{m: 3, p: 2}}>
-          <Routes>
-            <Route path="/" element={<Home guests={guests} handleSignOut={handleSignOut} />} />
-            <Route path="/details" element={<Details />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/aboutus" element={<AboutUs />} />
-            <Route path="/schedule" element={<Schedule />} />
-            <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)}/>} />
-            <Route path="/faq" element={<FAQ />} />
-          </Routes>
-        </Paper>
-        )}
-      </Box>
-    </Router>
+        ) : // this is shown after the user is validated
+          (<Paper elevation={3} sx={{m: 3, p: 2}}>
+            <Routes>
+              <Route path="/" element={<Home guests={guests} handleSignOut={handleSignOut} />} />
+              <Route path="/details" element={<Details />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/schedule" element={<Schedule config={weddingConfig} />} />
+              <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)}/>} />
+              <Route path="/faq" element={<FAQ />} />
+            </Routes>
+          </Paper>
+          )}
+        </Box>
+      </Router>
+    </ConfigContext.Provider>
   );
 };
 

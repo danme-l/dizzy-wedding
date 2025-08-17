@@ -2,10 +2,13 @@ import {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
 import { Box, Grid, Typography, Link, Divider, Container, Button} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
+import { useConfig } from '../ConfigContext';
 
 
 const Home = ({ guests, handleSignOut }) => {
   const [guestString, setGuestString] = useState('');
+
+  const config = useConfig();
   
 
   useEffect(() => {
@@ -26,7 +29,7 @@ const Home = ({ guests, handleSignOut }) => {
   }, [guests]);
 
   // **SECTION** Date Stuff
-  const weddingDate = new Date('02 May 2026 12:00 EST');
+  const weddingDate = new Date(config.wedding.date);
   const dateOptions = {
     weekday: 'long',
     year: 'numeric',
@@ -59,7 +62,7 @@ const Home = ({ guests, handleSignOut }) => {
             </Typography>
             <br />
             <Typography variant="h1"> 
-              The Marriage of Isabel Haziomerovic & Daniel Meleras
+              The Marriage of {config.groom.name} & {config.bride.name}
             </Typography>
             <Typography variant='h2' mx={3}>
               {weddingDate.toLocaleDateString('en-CA', dateOptions)}
@@ -77,7 +80,7 @@ const Home = ({ guests, handleSignOut }) => {
               m: 0
             }}
             alt="Dan and Izzy"
-            src="https://i.postimg.cc/fT6t77H9/DSC-3975.jpg"
+            src={config.couplePhotoLinks[0]}
             />
         </Grid>
       </Grid>
@@ -89,7 +92,10 @@ const Home = ({ guests, handleSignOut }) => {
       </Typography>
       <Typography variant="body1">{weddingDate.toLocaleDateString('en-CA', dateOptions)}</Typography>
       <Typography variant="body1">
-        <Link href="https://maps.app.goo.gl/PJhCz1GjBgRXTbHWA">La Toundra, Montreal</Link>
+        <Link href={config.wedding.venue.link}>{config.wedding.venue.name}</Link>
+      </Typography>
+      <Typography variant="body1">
+        {config.wedding.venue.address}
       </Typography>
       <Typography variant="body1">
         Find other important information on the <Link to='details'>details</Link> page.
@@ -101,17 +107,16 @@ const Home = ({ guests, handleSignOut }) => {
               m: 2
             }}
             alt="Venue"
-            src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b"
+            src={config.wedding.venue.photoLinks[0]}
             />
     </Container>
     <Divider />
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
-        About Montreal
+        About {config.wedding.venue.city}
       </Typography>
       <Typography variant="body1">
-        Dan and Izzy became friends in Montreal in late 2018/early 2019. 
-        It is a city that remains near and dear to their hearts.
+        {config.wedding.venue.venueNotes.cityNotes}
       </Typography>
       <Typography variant="h3" sx={{my: 2}}>
         Things to do

@@ -8,7 +8,6 @@ const AboutUs = () => {
         About Us
       </Typography>
       <Typography variant="h5">Groom's Family</Typography>
-      {/* https://i.postimg.cc/kgsM8ZcP/groomsmen.png */}
       <Typography variant="h5">Groomsmen</Typography>
           <Box
             component="img"

@@ -6,6 +6,7 @@ import ImageListItem from '@mui/material/ImageListItem';
 import { styled } from '@mui/material/styles';
 import Tooltip, { tooltipClasses } from '@mui/material/Tooltip';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useConfig } from '../../ConfigContext';
 
 const HtmlTooltip = styled(({ className, ...props }) => (
   <Tooltip {...props} classes={{ popper: className }} />
@@ -21,9 +22,12 @@ const HtmlTooltip = styled(({ className, ...props }) => (
 
 // docs where I lifted this from: https://mui.com/material-ui/react-image-list/
 export default function ImageDisplay() {
+  const config = useConfig();
+  const itemData = config.gallery
   
   const theme = useTheme();
   const colNum = useMediaQuery(theme.breakpoints.down('md')) ? 2 : 3
+
   return (
     <Box>
       <ImageList variant="masonry" cols={colNum} gap={8}>
@@ -50,32 +54,3 @@ export default function ImageDisplay() {
     </Box>
   );
 }
-
-
-// const itemData = [
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0090.jpg', title:'Pumpkin Patch'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/DSC_0112.jpg', title:'Pumpkin Patch'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4172.jpg', title:'Peggy\'s Cove, Nova Scotia'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0009.jpg', title:'Epernay, Champagne, France'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0045.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_0357.jpg', title:'Hat Street, Panama City, Panama'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_4174.jpg', title:'Bay of Fundy, New Brunswick'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_8657.jpg', title:'Volcan Masaya, Nicaragua'},
-//   {img: 'https://dizzy-wedding-site.s3.amazonaws.com/galleryPhotos/IMG_9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion (yeah we hiked that bitch too)'}
-// ];
-
-const itemData = [ 
-    {img: 'https://i.postimg.cc/90NP3mj0/DSC-0090.jpg', title:'Pumpkin Patch'}, 
-    {img: 'https://i.postimg.cc/ydjXPhQF/DSC-0112.jpg', title:'Pumpkin Patch'}, 
-    {img: 'https://i.postimg.cc/ZR4xpscb/IMG-4172.jpg', title:'Peggy\'s Cove, Nova Scotia'}, 
-    {img: 'https://i.postimg.cc/Wz4mfDCx/IMG-0009.jpg', title:'Epernay, Champagne, France'}, 
-    {img: 'https://i.postimg.cc/mrQScW7p/IMG-0045.jpg', title:'Hour 12 of hiking Volcan Baru, Panama'}, 
-    {img: 'https://i.postimg.cc/rwRjkrsk/IMG-0357.jpg', title:'Hat Street, Panama City, Panama'}, 
-    {img: 'https://i.postimg.cc/BQVpkgqp/IMG-4174.jpg', title:'Bay of Fundy, New Brunswick'}, 
-    {img: 'https://i.postimg.cc/gkJ4g5Pr/IMG-8657.jpg', title:'Volcan Masaya, Nicaragua'}, 
-    {img: 'https://i.postimg.cc/jjVXdSnJ/IMG-9041.jpg', title:'Ometepe Island, Nicaragua, in front of Volcan Concepcion'},
-    {img: 'https://i.postimg.cc/BbpHRN3W/img-81f.jpg', title:'Cinque Terre, Italy'}, 
-    {img: 'https://i.postimg.cc/ZK3C9V2J/img-fe5.jpg', title:'Boston, Massachussets'}, 
-    {img: 'https://i.postimg.cc/Jh7n2mnh/img-514.jpg', title:'China Beach, Vancouver Island'}, 
-    {img: 'https://i.postimg.cc/dVj36DJX/img-e28.jpg', title:'Ruins of Coba, Mayan Riviera, Mexico'}, 
-];

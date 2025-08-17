@@ -1,15 +1,10 @@
 import { Container, TableContainer, Table, TableRow, TableCell, TableBody } from '@mui/material';
+import { useConfig } from "../../ConfigContext"
 
-
-const weddingSchedule = [
-    {time: '4:30', activity:"Ceremony"},
-    {time: '5:00', activity:"Cocktail Hour"},
-    {time: '6:30', activity:"Dinner"},
-    {time: '9:30', activity:"Dance Party"},
-    {time: 'Midnight', activity:"Late Night Snack"},
- ];
 
 const Schedule = () => {
+  const config = useConfig();
+  const weddingSchedule = config.wedding.schedule
 
   return (
     <Container>

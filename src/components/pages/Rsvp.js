@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Typography,Modal, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
+import { useConfig } from "../../ConfigContext"
 
 export default function Rsvp({ guests, refreshGuests }) {
   // states for the return array that gets posted
@@ -14,6 +15,10 @@ export default function Rsvp({ guests, refreshGuests }) {
   const [submitted, setSubmitted] = useState(false); // to handle the button
 
   const { submitRSVP, loading, error, success } = useSubmitRSVP();
+
+  // get config
+  const config = useConfig();
+  const foodOptions = config.wedding.catering.foodOptions
 
   const guestsToRender = (() => {
     if (guests.length === 1) {
@@ -31,12 +36,6 @@ export default function Rsvp({ guests, refreshGuests }) {
       return [];
     }
   })();
-
-  const foodOptions = [
-    { value: 'chicken', label: 'Chicken Supreme' },
-    { value: 'lamb', label: 'Wine Braised Lamb Shank' },
-    { value: 'vegetarian', label: 'Eggplant Parmesan' },
-  ];
 
   const handleSubmit = (e) => {
     e.preventDefault();
