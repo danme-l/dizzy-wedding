@@ -63,7 +63,7 @@ const theme = createTheme({
     body2: {
       fontFamily: '"Great Vibes", cursive',
       fontSize: "1.4rem",
-      color: "#6A3805",
+      color: "#B38397",
     },
     button: {
       textTransform: "none",

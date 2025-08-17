@@ -26,12 +26,33 @@ const App = () => {
       const isValidUser = await fetchGuestGroup(code);
       if (isValidUser) {
         setUserValid(true);
+        localStorage.setItem("guestCode", code);  // store code in localStorage
       } else {
         setUserValid(false);
         alert("Oops, that didn't work. Check your code again!");
       }
     }
   };
+
+  useEffect(() => {
+    const savedCode = localStorage.getItem("guestCode");
+    if (savedCode) {
+      (async () => {
+        const isValidUser = await fetchGuestGroup(savedCode);
+        if (isValidUser) {
+          setUserValid(true);
+          setCode(savedCode); // keep it in state too
+        }
+      })();
+    }
+  }, []);
+
+  const handleSignOut = () => {
+    localStorage.removeItem("guestCode");
+    setUserValid(false);
+    setCode('');
+  };
+ 
 
   if (loading) {
     return (
@@ -71,7 +92,7 @@ const App = () => {
       ) : // this is shown after the user is validated
         (<Paper elevation={3} sx={{m: 3, p: 2}}>
           <Routes>
-            <Route path="/" element={<Home guests={guests} />} />
+            <Route path="/" element={<Home guests={guests} handleSignOut={handleSignOut} />} />
             <Route path="/details" element={<Details />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/aboutus" element={<AboutUs />} />

@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
-import { Box, Grid, Typography, Link, Divider, Container} from '@mui/material';
+import { Box, Grid, Typography, Link, Divider, Container, Button} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
 
 
-const Home = ({ guests }) => {
+const Home = ({ guests, handleSignOut }) => {
   const [guestString, setGuestString] = useState('');
 
   useEffect(() => {
@@ -118,6 +118,10 @@ const Home = ({ guests }) => {
       <CardCarousel />
     <Divider />
     <FAQ />
+    <Typography variant='body1'>
+      Are you not {guestString}? Please help us out! Contact the bride and groom and tell us who the app thinks you are.
+    </Typography>
+    <Button variant="contained" onClick={handleSignOut}>Not you?</Button>
     </Container>
     </div>
   );
