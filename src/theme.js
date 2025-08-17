@@ -103,7 +103,7 @@ const theme = createTheme({
     MuiLink: {
       styleOverrides: {
         root: {
-          color: myPalette.secondary.dark,
+          color: "#B38397",
           textDecoration: 'none',
           '&:hover': {
             textDecoration: 'underline',
