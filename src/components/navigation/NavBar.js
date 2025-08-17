@@ -5,10 +5,10 @@ import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import {ChevronRight, Menu as MenuIcon} from '@mui/icons-material';
-import { Link } from 'react-router-dom'; // use react-router Link here
+import { Link } from 'react-router-dom'; 
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
-import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
+// import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
 
 const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const aboutusMenuArr = ["Gallery", "About Us"];
@@ -104,6 +104,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu }) {
     const handleDrawerClose = () => {
         setOpenMenu(false);
     };
+  }
 
 // for mobile
 function SmallMenu({ theme, openMenu, setOpenMenu, withToken }) {

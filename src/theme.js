@@ -4,22 +4,19 @@ import "./global.css";
 const theme = createTheme({
   palette: {
     primary: {
-      // pastel blues
       main: "#B2D8E5",
       light: "#D9ECF2",
       dark: "#89AEB8",
       contrastText: "#ffffff",
     },
     secondary: {
-      // pastel pinks
       main: "#E6B8C6",
       light: "#F5D8E1",
       dark: "#B38397",
       contrastText: "#ffffff",
     },
     tertiary: {
-      // bronze
-      main: "#6A3805" 
+      main: "#6A3805",
     },
     error: {
       main: "#C85C5C",
@@ -44,7 +41,7 @@ const theme = createTheme({
       fontFamily: '"Great Vibes", cursive',
       fontSize: "3.1rem",
       fontWeight: 400,
-      color: "#89AEB8", // primary.dark
+      color: "#89AEB8",
     },
     h2: {
       fontFamily: '"Great Vibes", cursive',
@@ -85,7 +82,7 @@ const theme = createTheme({
     MuiDivider: {
       styleOverrides: {
         root: {
-          borderColor: "#B38397", // secondary.dark
+          borderColor: "#B38397",
           margin: "16px 0",
         },
       },
@@ -95,28 +92,26 @@ const theme = createTheme({
         root: {
           textTransform: "none",
         },
+        invitation2: {
+          fontFamily: '"Kapana", cursive',
+          fontSize: '1.9rem',
+          fontWeight: 400,
+          color: 'black',
+        },
       },
-      invitation2: {
-        fontFamily: '"Kapana", cursive',
-        fontSize: '1.9rem',
-        fontWeight: 400,
-        color: 'black', 
-      }
     },
-    components: {
-      MuiLink: {
+    MuiLink: {
       styleOverrides: {
         root: {
-          color: myPalette.secondary.dark, // Set the color to the secondary color
-          textDecoration: 'none', // Optional: remove underline
+          color: myPalette.secondary.dark,
+          textDecoration: 'none',
           '&:hover': {
-            textDecoration: 'underline', // Optional: add underline on hover
+            textDecoration: 'underline',
           },
         },
       },
     },
-    }
-    
-  });
+  },
+});
 
 export default theme;
