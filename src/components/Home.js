@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import FAQ from './pages/FAQ';
-import { Box, Grid, Typography, Link, Button, Container} from '@mui/material';
+import { Box, Grid, Typography, Link, Divider, Container} from '@mui/material';
 import CardCarousel from './utils/CardCarousel';
 
 
@@ -81,7 +81,7 @@ const Home = ({ guests }) => {
         </Grid>
       </Grid>
     </Container>
-    <hr/>
+    <Divider />
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         Wedding Details
@@ -103,7 +103,7 @@ const Home = ({ guests }) => {
             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.parcjeandrapeau.com%2Fmedias%2Fimages%2Fheader%2Fespaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montreal-1920x700.jpg%3Fv2%3Dtrue&f=1&nofb=1&ipt=0f54d5135847ec4c4cdef900135433025f8df59e8f83b471c0aad85be7c9a04b"
             />
     </Container>
-    <hr/>
+    <Divider />
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         About Montreal
@@ -116,8 +116,8 @@ const Home = ({ guests }) => {
         Things to do
       </Typography>
       <CardCarousel />
+    <Divider />
     <FAQ />
-
     </Container>
     </div>
   );
