@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import weddingConfig from './config/wedding.json'
+import weddingConfig from './config/wedding.json';
+import sampleConfig from './config/sample.json';
 
 export const ConfigContext = createContext(null);
 
 // custom hook so components can just use useConfig()
 export const useConfig = () => useContext(ConfigContext);
 
-export function ConfigProvider({ children }) {
+export function ConfigProvider({ children, appMode }) {
   const [config, setConfig] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -18,8 +19,12 @@ export function ConfigProvider({ children }) {
     const fetchConfig = async () => {
       try {
         let data;
+        // sample mode
+        if (appMode === "sample") {
+          data = sampleConfig;
+        }
         // load the local file in dev mode
-        if (process.env.NODE_ENV === 'development') {
+        else if (process.env.NODE_ENV === 'development') {
           data = weddingConfig;
         } else {
           // get it from the blob storage in prod

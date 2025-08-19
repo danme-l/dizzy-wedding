@@ -21,6 +21,7 @@ const App = () => {
   const [userValid, setUserValid] = useState(false);
   const [code, setCode] = useState('');
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
+  const [appMode, setAppMode] = useState('null');
 
   const handleInputChange = (event) => {
     setCode(event.target.value);
@@ -32,6 +33,14 @@ const App = () => {
       if (isValidUser) {
         setUserValid(true);
         localStorage.setItem("guestCode", code);  // store code in localStorage
+        
+        // set appMode depending on code
+        if (code === "xyz") {
+          setAppMode("sample");
+        } else {
+          setAppMode(null);
+        }
+
       } else {
         setUserValid(false);
         alert("Oops, that didn't work. Check your code again!");
@@ -47,6 +56,13 @@ const App = () => {
         if (isValidUser) {
           setUserValid(true);
           setCode(savedCode); // keep it in state too
+
+          // set appMode depending on saved code
+          if (savedCode === "xyz") {
+            setAppMode("sample");
+          } else {
+            setAppMode(null);
+          }
         }
       })();
     }
@@ -69,8 +85,7 @@ const App = () => {
   }
 
   return (
-    <ConfigProvider>
-
+    <ConfigProvider appMode={appMode}>
       <Router>
         <Box>
           {/* SECTION Nav bar */}
