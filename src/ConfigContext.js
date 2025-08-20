@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import weddingConfig from './config/wedding.json';
+// import weddingConfig from './config/wedding.json';
 import sampleConfig from './config/sample.json';
 
 export const ConfigContext = createContext(null);
