@@ -3,7 +3,7 @@ import { Typography,Modal, Box, TextField, FormLabel, Button, Radio, RadioGroup,
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
 import { useConfig } from "../../ConfigContext"
 
-export default function Rsvp({ guests, refreshGuests }) {
+export default function Rsvp({ guests, refreshGuests, appMode }) {
   // states for the return array that gets posted
   const [attendance, setAttendance] = React.useState({});
   const [foodChoice, setFoodChoice] = React.useState({});
@@ -282,7 +282,19 @@ export default function Rsvp({ guests, refreshGuests }) {
               )
               )}
             </Typography>
-            <Button onClick={handleConfirm} color="primary" variant="contained" sx={{ mt: 2 }}>
+            {/* sample mode notifier */}
+            {appMode === "sample" &&
+            <div>
+              <hr />
+              <Typography variant='body1'>
+                This is sample mode.
+              </Typography>
+            </div>
+            }
+            <Button 
+              onClick={handleConfirm} color="primary" variant="contained" sx={{ mt: 2 }}
+              disabled={appMode === "sample"} // can't push in app mode
+              >
               Confirm
             </Button>
             <Button onClick={handleClose} color="secondary" variant="contained" sx={{ mt: 2, ml: 2 }}>

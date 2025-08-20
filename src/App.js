@@ -35,7 +35,7 @@ const App = () => {
         localStorage.setItem("guestCode", code);  // store code in localStorage
         
         // set appMode depending on code
-        if (code === "xyz") {
+        if (code === "sample123") {
           setAppMode("sample");
         } else {
           setAppMode(null);
@@ -58,7 +58,7 @@ const App = () => {
           setCode(savedCode); // keep it in state too
 
           // set appMode depending on saved code
-          if (savedCode === "xyz") {
+          if (savedCode === "sample123") {
             setAppMode("sample");
           } else {
             setAppMode(null);
@@ -119,7 +119,7 @@ const App = () => {
               <Route path="/gallery" element={<Gallery />} />
               <Route path="/aboutus" element={<AboutUs />} />
               <Route path="/schedule" element={<Schedule/>} />
-              <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)}/>} />
+              <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)} appMode={appMode} />} />
               <Route path="/faq" element={<FAQ />} />
             </Routes>
           </Paper>
