@@ -10,6 +10,7 @@ import Rsvp from './components/pages/Rsvp';
 import AboutUs from './components/pages/AboutUs';
 import NavBar from './components/navigation/NavBar';
 import Details from './components/pages/Details';
+import UnderConstruction from './components/pages/UnderConstruction';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import CircularProgress from '@mui/material/CircularProgress';
 

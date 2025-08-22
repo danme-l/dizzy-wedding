@@ -26,7 +26,8 @@ export function ConfigProvider({ children, appMode }) {
           // only import the config in dev mode since it's git ignored
             const weddingConfig = await import('./config/wedding.json');
             data = weddingConfig;
-        } else {
+        } 
+        else {
           // get config from the blob storage in prod
           const res = await fetch(configUrl);
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
