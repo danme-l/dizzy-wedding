@@ -40,7 +40,7 @@ export default function Rsvp({ guests, refreshGuests, appMode }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // this rsvp array gets posted to the API
+    // this rsvp array is posted to the API
     const newRsvpArray = guestsToRender
       .filter((g) => {
         if (!g.isPlusOne) return true;

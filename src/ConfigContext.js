@@ -1,7 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-// import weddingConfig from './config/wedding.json';
 import sampleConfig from './config/sample.json';
-
 export const ConfigContext = createContext(null);
 
 // custom hook so components can just use useConfig()
@@ -23,11 +21,13 @@ export function ConfigProvider({ children, appMode }) {
         if (appMode === "sample") {
           data = sampleConfig;
         }
-        // load the local file in dev mode
+        // local wedding file in dev mode
         else if (process.env.NODE_ENV === 'development') {
-          data = weddingConfig;
+          // only import the config in dev mode since it's git ignored
+            const weddingConfig = await import('./config/wedding.json');
+            data = weddingConfig;
         } else {
-          // get it from the blob storage in prod
+          // get config from the blob storage in prod
           const res = await fetch(configUrl);
           if (!res.ok) throw new Error(`HTTP ${res.status}`);
           data = await res.json();

@@ -2,7 +2,6 @@ import {Button, Menu } from '@mui/material';
 import {IconButton} from '@mui/material';
 import { styled, alpha } from '@mui/material/styles';
 import { Menu as MenuIcon} from '@mui/icons-material';
-import React from 'react';
 import { useParams, Link as RouterLink } from 'react-router-dom';
 
 export const StyledMenu = styled((props) => (
