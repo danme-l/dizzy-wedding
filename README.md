@@ -1,6 +1,8 @@
 ## Dan and Izzy's wedding website
 PERN-based web application that achieves the same functionality as off-the-shelf wedding websites like With Joy or The Knot, but custom built for our wedding.
 
+Try it out: go to dizzywedding.info and use the code 'sample123'
+
 **Front end:** React, styled with [Material UI](https://mui.com/material-ui/).
 
 **Back end:** Node- and Express-based API (find the repo [here](https://github.com/danme-l/dizzy-wedding-back)). 
