@@ -23,6 +23,8 @@ const App = () => {
   const [code, setCode] = useState('');
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
   const [appMode, setAppMode] = useState('null');
+  const [longLoading, setLongLoading] = useState(false);
+
 
   const handleInputChange = (event) => {
     setCode(event.target.value);
@@ -69,6 +71,18 @@ const App = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // using render free tier can make it take a long time to boot up the api
+    // show a message if that's the case
+    let timer;
+    if (loading) {
+      timer = setTimeout(() => {
+        setLongLoading(true);
+      }, 15000); // 15 seconds
+    }
+    return () => clearTimeout(timer); // cleanup on unmount or when loading changes
+  }, [loading]);
+
   const handleSignOut = () => {
     localStorage.removeItem("guestCode");
     setUserValid(false);
@@ -78,11 +92,14 @@ const App = () => {
 
   if (loading) {
     return (
-      <Box sx={{display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems: 'center'}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
         Loading...
         <CircularProgress />
+        {longLoading && <div style={{ marginTop: '10px' }}>
+          This can take around 45 seconds to boot up. Please be patient.
+        </div>}
       </Box>
-    )
+    );
   }
 
   return (
@@ -118,7 +135,7 @@ const App = () => {
               <Route path="/" element={<Home guests={guests} handleSignOut={handleSignOut} />} />
               <Route path="/details" element={<Details />} />
               <Route path="/gallery" element={<Gallery />} />
-              <Route path="/aboutus" element={<AboutUs />} />
+              <Route path="/aboutus" element={<UnderConstruction />} />
               <Route path="/schedule" element={<Schedule/>} />
               <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)} appMode={appMode} />} />
               <Route path="/faq" element={<FAQ />} />
