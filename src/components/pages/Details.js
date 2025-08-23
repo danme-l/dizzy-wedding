@@ -3,6 +3,8 @@ import MapComponent from '../utils/MapComponent';
 import FAQ from './FAQ';
 import Schedule from './Schedule';
 
+import { useConfig } from "../../ConfigContext"
+
 const Section = ({ children, imageSrc, imageAlt, imageFirst = false }) => {
   return (
     <Box
@@ -43,6 +45,9 @@ const Section = ({ children, imageSrc, imageAlt, imageFirst = false }) => {
 };
 
 const Details = () => {
+  // configs
+  const config = useConfig();
+
   return (
     <Container sx={{ display: 'flex', flexDirection:'column', justifyContent: 'center',alignItems: 'center'}}>
         {/* SECTION Venue */}
@@ -50,10 +55,10 @@ const Details = () => {
             The Venue
         </Typography>
         <Section
-            imageSrc="https://i.postimg.cc/RZFysDmB/toundra-reception.jpg"
+            imageSrc={config.wedding.venue.photoLinks[1]}
             imageAlt="Venue"
             >
-                The Wedding will be held at La Toundra, in the Floralies Gardens of Parc Jean Drapeau.
+              {config.wedding.venue.description}
         </Section>
 
         <MapComponent />
@@ -63,15 +68,11 @@ const Details = () => {
             The Hotel
         </Typography>
         <Section
-            imageSrc="https://i.postimg.cc/RZD8jLCn/alt-hotel.jpg"
-            imageAlt="Venue"
+            imageSrc={config.wedding.hotel.photoLinks[0]}
+            imageAlt="Hotel"
             >
             <Typography variant='body1'>
-                The Bride and Groom and the wedding party will 
-                be staying at the Alt Hotel in Griffintown. <br />
-                They have kindly offered a discount for our guests to use to stay with us.
-                Details to come soon!
-                {/* Book your rooms <Link>here</Link> and use the code <em>dizzy</em>. */}
+                {config.wedding.hotel.description}
             </Typography>
         </Section>
 
@@ -80,15 +81,12 @@ const Details = () => {
             Wedding Day Schedule
         </Typography>
         <Section
-            imageSrc="https://i.postimg.cc/28TgxfPG/floralies-gardens.jpg"
+            imageSrc={config.wedding.venue.photoLinks[2]}
             imageAlt="Garden"
             >
-            <Typography variant='body1'>
-                <Schedule />
-            </Typography>
+            <Schedule />
         </Section>
         <FAQ />
-
     </Container>
   );
 };

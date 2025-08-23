@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import React from 'react';
 import { StyledMenu, DrawerHeader, MenuButtonLarge } from './NavUtils';
+import { useConfig } from "../../ConfigContext"
+
 
 const mainMenuArr = ["Home", "Details", "About Us", "RSVP"];
 const aboutusMenuArr = ["Gallery", "About Us"];
@@ -201,6 +203,9 @@ const NavBar = () => {
 
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
+  // get config
+  const config = useConfig();
+
   return (
     <AppBar
       position="sticky"
@@ -209,7 +214,7 @@ const NavBar = () => {
     >
       <Toolbar sx={{ justifyContent: 'space-between', m: '1em 0' }}>
         <Typography variant="h1" sx={{ fontWeight: 'bold' }}>
-          D & I
+          {config.groom.name[0]} & {config.bride.name[0]}
         </Typography>
 
         {isMobile ? (

@@ -11,6 +11,9 @@
 # production
 /build
 
+# config (personal)
+/src/config/wedding.json
+
 # misc
 .DS_Store
 .env

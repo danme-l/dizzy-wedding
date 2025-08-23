@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { Typography,Modal, Box, TextField, FormLabel, Button, Radio, RadioGroup, FormControl, FormControlLabel, Select, MenuItem, InputLabel } from '@mui/material';
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
+import { useConfig } from "../../ConfigContext"
 
-export default function Rsvp({ guests, refreshGuests }) {
+export default function Rsvp({ guests, refreshGuests, appMode }) {
   // states for the return array that gets posted
   const [attendance, setAttendance] = React.useState({});
   const [foodChoice, setFoodChoice] = React.useState({});
@@ -14,6 +15,10 @@ export default function Rsvp({ guests, refreshGuests }) {
   const [submitted, setSubmitted] = useState(false); // to handle the button
 
   const { submitRSVP, loading, error, success } = useSubmitRSVP();
+
+  // get config
+  const config = useConfig();
+  const foodOptions = config.wedding.catering.foodOptions
 
   const guestsToRender = (() => {
     if (guests.length === 1) {
@@ -32,16 +37,10 @@ export default function Rsvp({ guests, refreshGuests }) {
     }
   })();
 
-  const foodOptions = [
-    { value: 'chicken', label: 'Chicken Supreme' },
-    { value: 'lamb', label: 'Wine Braised Lamb Shank' },
-    { value: 'vegetarian', label: 'Eggplant Parmesan' },
-  ];
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // this rsvp array gets posted to the API
+    // this rsvp array is posted to the API
     const newRsvpArray = guestsToRender
       .filter((g) => {
         if (!g.isPlusOne) return true;
@@ -283,7 +282,19 @@ export default function Rsvp({ guests, refreshGuests }) {
               )
               )}
             </Typography>
-            <Button onClick={handleConfirm} color="primary" variant="contained" sx={{ mt: 2 }}>
+            {/* sample mode notifier */}
+            {appMode === "sample" &&
+            <div>
+              <hr />
+              <Typography variant='body1'>
+                This is sample mode.
+              </Typography>
+            </div>
+            }
+            <Button 
+              onClick={handleConfirm} color="primary" variant="contained" sx={{ mt: 2 }}
+              disabled={appMode === "sample"} // can't push in app mode
+              >
               Confirm
             </Button>
             <Button onClick={handleClose} color="secondary" variant="contained" sx={{ mt: 2, ml: 2 }}>
