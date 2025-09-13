@@ -58,7 +58,7 @@ const theme = createTheme({
       color: "#333333",
     },
     body2: {
-      fontFamily: '"Great Vibes", cursive',
+      // fontFamily: '"Great Vibes", cursive',
       fontSize: "1.4rem",
       color: "#B38397",
     },

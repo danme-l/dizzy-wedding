@@ -10,12 +10,20 @@ import Rsvp from './components/pages/Rsvp';
 import AboutUs from './components/pages/AboutUs';
 import NavBar from './components/navigation/NavBar';
 import Details from './components/pages/Details';
+import VIP from './components/pages/VIP';
 import UnderConstruction from './components/pages/UnderConstruction';
 import useFetchGuestGroup from './components/hooks/useFetchGuestGroup';
 import CircularProgress from '@mui/material/CircularProgress';
+import { Navigate } from 'react-router-dom';
 
 // configs
 import { ConfigProvider } from "./ConfigContext";
+
+
+const ProtectedRoute = ({ isVip, children }) => {
+  return isVip ? children : <Navigate to="/" />; // Redirect to home if not VIP
+};
+
 
 
 const App = () => {
@@ -154,6 +162,14 @@ const App = () => {
               <Route path="/schedule" element={<Schedule/>} />
               <Route path="/rsvp" element={<Rsvp guests={guests} refreshGuests={() => fetchGuestGroup(code)} appMode={appMode} />} />
               <Route path="/faq" element={<FAQ />} />
+              <Route 
+                path="/vip" 
+                element={
+                  <ProtectedRoute isVip={isVip}>
+                    <VIP/> 
+                  </ProtectedRoute>
+                } 
+              />
             </Routes>
           </Paper>
           )}
