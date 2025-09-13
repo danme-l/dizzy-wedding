@@ -4,7 +4,6 @@ import { useConfig } from "../../ConfigContext";
 
 const AboutUs = () => {
   const config = useConfig();
-  console.log(config.aboutUs);
   
   return (
     <div>

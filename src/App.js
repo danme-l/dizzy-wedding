@@ -24,10 +24,19 @@ const App = () => {
   const { guests, fetchGuestGroup, loading, error } = useFetchGuestGroup();
   const [appMode, setAppMode] = useState('null');
   const [longLoading, setLongLoading] = useState(false);
+  const [isVip, setIsVip] = useState(false)
 
 
   const handleInputChange = (event) => {
     setCode(event.target.value);
+  };
+
+  const checkForVipGuests = () => {
+    // aka check for mum and dad
+    // (or us)
+    console.log(guests); 
+    const vipExists = guests.some(guest => guest.is_vip);
+    setIsVip(vipExists);
   };
 
   const handleSubmit = async () => {
@@ -43,6 +52,8 @@ const App = () => {
         } else {
           setAppMode(null);
         }
+
+        checkForVipGuests();
 
       } else {
         setUserValid(false);
@@ -66,6 +77,8 @@ const App = () => {
           } else {
             setAppMode(null);
           }
+
+          checkForVipGuests();
         }
       })();
     }
@@ -102,12 +115,14 @@ const App = () => {
     );
   }
 
+  console.log('App, VI?', isVip)
+
   return (
     <ConfigProvider appMode={appMode}>
       <Router>
         <Box>
           {/* SECTION Nav bar */}
-          <NavBar />
+          <NavBar isVip={isVip} />
 
           {/* SECTION Content */}
           {!userValid ? ( // this is what's shown before the user is validated

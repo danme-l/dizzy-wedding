@@ -33,7 +33,7 @@ function SmallMenuIcon({ openMenu, setOpenMenu }) {
 }
   
 // for mobile
-function SmallMenu({ theme, openMenu, setOpenMenu}) {
+function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
   const handleDrawerClose = () => setOpenMenu(false);
 
   return (
@@ -136,7 +136,24 @@ function SmallMenu({ theme, openMenu, setOpenMenu}) {
               <ListItemText primary={'RSVP'} />
             </ListItemButton>
           </ListItem>
+          <Divider/>
 
+
+          {/* ITEM 5: vip section */}
+          {isVip && 
+          <ListItem key='VIP' disablePadding>
+            <ListItemButton 
+              component={Link}
+              onClick={handleDrawerClose}
+              to="/vip"
+              sx={{
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'VIP'} />
+            </ListItemButton>
+          </ListItem>
+          }
 
       </List>
     </Drawer>
@@ -144,7 +161,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu}) {
 }
 
 // for computers and ipads and such
-function LargeMenu({ theme}) {
+function LargeMenu({ theme, isVip}) {
   const [anchorEl2, setAnchorEl2] = React.useState(null);
   const open2 = Boolean(anchorEl2);
   const handleClick2 = (e) => setAnchorEl2(e.currentTarget);
@@ -169,6 +186,7 @@ function LargeMenu({ theme}) {
       >
         About Us
       </MenuButtonLarge>
+
       <StyledMenu
         anchorEl={anchorEl2}
         open={open2}
@@ -192,12 +210,21 @@ function LargeMenu({ theme}) {
         to="/rsvp">
         RSVP
       </MenuButtonLarge>
+
+      {/* SECTION vip button */}
+      {isVip && 
+      <MenuButtonLarge
+        component={Link}
+        to="/vip">
+        VIP
+      </MenuButtonLarge>
+        }
     </Box>
   );
 };
 
 
-const NavBar = () => {
+const NavBar = ({isVip}) => {
   const theme = useTheme();
   const [openMenu, setOpenMenu] = React.useState(false);
 
@@ -234,10 +261,11 @@ const NavBar = () => {
               theme={theme}
               openMenu={openMenu}
               setOpenMenu={setOpenMenu}
+              isVip={isVip}
             />
           </>
         ) : (
-          <LargeMenu theme={theme} />
+          <LargeMenu theme={theme} isVip={isVip}/>
         )}
       </Toolbar>
     </AppBar>
