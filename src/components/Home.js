@@ -35,6 +35,7 @@ const Home = ({ guests, handleSignOut }) => {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
+    timeZone: 'UTC' // avoid timezone weirdness 
   };
 
   // date calculator to get number of days until the wedding
