@@ -21,10 +21,8 @@ import { ConfigProvider } from "./ConfigContext";
 
 
 const ProtectedRoute = ({ isVip, children }) => {
-  return isVip ? children : <Navigate to="/" />; // Redirect to home if not VIP
+  return isVip ? children : <Navigate to="/" />; // redirect to home if not VIP
 };
-
-
 
 const App = () => {
   const [userValid, setUserValid] = useState(false);
@@ -37,14 +35,6 @@ const App = () => {
 
   const handleInputChange = (event) => {
     setCode(event.target.value);
-  };
-
-  const checkForVipGuests = () => {
-    // aka check for mum and dad
-    // (or us)
-    console.log(guests); 
-    const vipExists = guests.some(guest => guest.is_vip);
-    setIsVip(vipExists);
   };
 
   const handleSubmit = async () => {
@@ -60,8 +50,6 @@ const App = () => {
         } else {
           setAppMode(null);
         }
-
-        checkForVipGuests();
 
       } else {
         setUserValid(false);
@@ -85,12 +73,20 @@ const App = () => {
           } else {
             setAppMode(null);
           }
-
-          checkForVipGuests();
         }
       })();
     }
   }, []);
+
+  // check for VIP guests
+  useEffect(() => {
+    if (guests && guests.length > 0) {
+      const vipExists = guests.some((guest) => guest.is_vip);
+      setIsVip(vipExists);
+    } else {
+      setIsVip(false);
+    }
+  }, [guests]);
 
   useEffect(() => {
     // using render free tier can make it take a long time to boot up the api
@@ -123,14 +119,12 @@ const App = () => {
     );
   }
 
-  console.log('App, VI?', isVip)
-
   return (
     <ConfigProvider appMode={appMode}>
       <Router>
         <Box>
-          {/* SECTION Nav bar */}
-          <NavBar isVip={isVip} />
+          {/* SECTION Nav bar, which won't be shown before the user is validated */}
+          {userValid && <NavBar isVip={isVip} />}
 
           {/* SECTION Content */}
           {!userValid ? ( // this is what's shown before the user is validated
