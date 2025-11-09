@@ -56,19 +56,20 @@ const Home = ({ guests, handleSignOut }) => {
             gap: 1
           }}>
             <Typography variant='h2'>
-              Welcome!
+              Welcome, {guestString}
             </Typography>
-            <Typography variant='h3' sx={{ m:2}}>
-              {guestString}
+            <br />
+            <Typography variant='h2'>
+              You are invited to the marriage of 
             </Typography>
             <br />
             <Typography variant="h1"> 
-              The Marriage of {config.groom.name} & {config.bride.name}
+              {config.groom.name} & {config.bride.name}
             </Typography>
-            <Typography variant='h2' mx={3}>
+            <Typography variant='h4'>
               {weddingDate.toLocaleDateString('en-CA', dateOptions)}
             </Typography>
-            <Typography variant='h2' mx={3}>
+            <Typography variant='h4'>
               {dateCalculate(weddingDate)}
             </Typography>
           </Box>
@@ -78,15 +79,17 @@ const Home = ({ guests, handleSignOut }) => {
             component="img"
             sx={{
               width: '84%',
-              m: 0
+              display: 'flex',
+              justifyContent: 'center',
+              m: '0 auto'  // Centers the image within the Box
             }}
             alt="Dan and Izzy"
             src={config.couplePhotoLinks[0]}
-            />
+          />
         </Grid>
       </Grid>
     </Container>
-    <Divider />
+    <Divider sx={{my:3}}/>
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         Wedding Details
@@ -105,13 +108,15 @@ const Home = ({ guests, handleSignOut }) => {
             component="img"
             sx={{
               width: '100%',
-              m: 2
+              display: 'flex',
+              justifyContent: 'center',
+              m: '0 auto'
             }}
             alt="Venue"
             src={config.wedding.venue.photoLinks[0]}
             />
     </Container>
-    <Divider />
+    <Divider sx={{my:3}}/>
     <Container align='center'>
       <Typography variant="h4" gutterBottom>
         About {config.wedding.venue.city}
@@ -123,7 +128,7 @@ const Home = ({ guests, handleSignOut }) => {
         Things to do
       </Typography>
       <CardCarousel />
-    <Divider />
+    <Divider sx={{my:3}}/>
     <FAQ />
     <Typography variant='body1'>
       Are you not {guestString}? Please help us out! Contact the bride and groom and tell us who the app thinks you are.

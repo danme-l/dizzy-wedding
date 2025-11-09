@@ -38,22 +38,23 @@ const theme = createTheme({
   typography: {
     fontFamily: "Georgia, serif",
     h1: {
-      fontFamily: '"Great Vibes", cursive',
-      fontSize: "3.1rem",
+      fontFamily: '"Alex Brush", cursive;',
+      fontSize: "3.3rem",
       fontWeight: 400,
       color: "#89AEB8",
     },
     h2: {
-      fontFamily: '"Great Vibes", cursive',
-      fontSize: "1.9rem",
+      fontFamily: '"Alex Brush", cursive;',
+      fontSize: "2.1rem",
       fontWeight: 400,
     },
     h3: {
-      fontFamily: '"Great Vibes", cursive',
+      fontFamily: '"Alex Brush", cursive;',
       fontSize: "1.75rem",
       fontWeight: 400,
     },
     body1: {
+      fontFamily: 'Belleza, Arial, sans-serif',
       fontSize: "1rem",
       color: "#333333",
     },
