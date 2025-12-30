@@ -84,42 +84,19 @@ function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
           </ListItem>
           <Divider/>
 
-          {/* ITEM 3: about us */}
-          <ListItem key='AboutUs' disablePadding>
-            <Accordion style={{m: 0, boxShadow: "none", width: "12em"}} square={true} disableGutters={true}
-              sx={{'&:before': {
-                display: 'none',
-              }}}>
-              <AccordionSummary
-                expandIcon={<ArrowDropDownIcon />}
-                aria-controls="panel2-content"
-                id="panel2-header">
-                <Typography
-                  disableElevation
-                  color="inherit"
-                  sx={{
-                    fontStyle: 'italic',
-                    textTransform: 'none',
-                  }}>
-                  About Us
-                </Typography>
-              </AccordionSummary>
 
-              {/* submenu, iterating over the details and creating links */}
-              <AccordionDetails>
-                {aboutusMenuArr.map((text, index) => (
-                  <Button key={text}
-                    component={Link}
-                    onClick={handleDrawerClose}
-                    fullWidth={true}
-                    sx={{
-                      justifyContent: 'flex-start',}}
-                    to={'/' + text.replace(/\s/g, '').toLowerCase()}>
-                    {text}
-                  </Button>
-                ))}
-              </AccordionDetails>
-            </Accordion>
+          {/* ITEM 3: Gallery */}
+          <ListItem key='Gallery' disablePadding>
+            <ListItemButton 
+              component={Link}
+              onClick={handleDrawerClose}
+              to="/gallery"
+              sx={{
+                fontStyle: 'italic',
+                textTransform: 'none',
+              }}>
+              <ListItemText primary={'Gallery'} />
+            </ListItemButton>
           </ListItem>
           <Divider/>
 
@@ -180,29 +157,12 @@ function LargeMenu({ theme, isVip}) {
         Details
       </MenuButtonLarge>
 
+      {/* SECTION gallery button */}
       <MenuButtonLarge
-        endIcon={<ArrowDropDownIcon />}
-        onClick={handleClick2}
-      >
-        About Us
+        component={Link}
+        to="/gallery">
+        Gallery
       </MenuButtonLarge>
-
-      <StyledMenu
-        anchorEl={anchorEl2}
-        open={open2}
-        onClose={handleClose2}
-      >
-        {aboutusMenuArr.map((text) => (
-          <MenuItem
-            key={text}
-            onClick={handleClose2}
-            component={Link}
-            to={(text.replace(/\s/g, '').toLowerCase())}
-          >
-            {text}
-          </MenuItem>
-        ))}
-      </StyledMenu>
 
       {/* SECTION rsvp button */}
       <MenuButtonLarge

@@ -1,0 +1,168 @@
+{
+  "bride": {
+    "name": "Isabel Hadziomerovic",
+    "email": "ihadziomerovic@gmail.com"
+  },
+  "groom": {
+    "name": "Daniel Meleras",
+    "email": "danielmeleras@proton.me"
+  },
+  "couplePhotoLinks": [
+    "https://i.postimg.cc/fT6t77H9/DSC-3975.jpg"
+  ],
+  "wedding": {
+    "date": "2026-05-02",
+    "venue": {
+        "name": "La Toundra",
+        "city": "Montreal",
+        "description": "The Wedding will be held at La Toundra, in the Floralies Gardens of Parc Jean Drapeau.",
+        "link": "https://www.parcjeandrapeau.com/en/la-toundra-hall-rental-montreal/",
+        "address": "1 Circuit Gilles Villeneuve, Montreal, Quebec",
+        "coordinates": {
+            "lat": "45.503694",
+            "long": "-73.529585"
+        },
+        "photoLinks": [
+            "https://i.postimg.cc/c42gtNbK/espaces-locatifs-la-toundra-salle-location-mariages-evenements-corporatifs-parc-jean-drapeau-montrea.jpg", 
+            "https://i.postimg.cc/RZFysDmB/toundra-reception.jpg",
+            "https://i.postimg.cc/28TgxfPG/floralies-gardens.jpg"
+        ],
+        "venueNotes": {
+            "cityNotes" : "Dan and Izzy became friends in Montreal in late 2018/early 2019. It is a city that remains near and dear to their hearts."
+        }
+    },
+    "hotel" : {
+        "name": "Hotel Alt",
+        "description": "The Bride and Groom and the wedding party will be staying at the Alt Hotel in Griffintown. They have kindly offered a discount for our guests to use to stay with us. ",
+        "address": "120, Rue Peel, Montréal, Québec, H3C 0L8",
+        "coordinates": {
+            "lat": "45.493007",
+            "long": "-73.557359"
+        },
+        "photoLinks": [
+            "https://i.postimg.cc/RZD8jLCn/alt-hotel.jpg"
+        ],
+        "links": {
+            "booking": "",
+            "main": "https://reservation.germainhotels.com/ibe/details.aspx?propertyid=17532&nights=2&checkin=05/01/2026&group=2605WEDDIN_001&lang=en-us&adults=1&childAges="
+        }
+    },
+    "schedule": [
+        {"time": "4:00", "activity":"Guest Arrival"},
+        {"time": "4:30", "activity":"Ceremony"},
+        {"time": "5:00", "activity":"Cocktail Hour"},
+        {"time": "6:30", "activity":"Dinner"},
+        {"time": "9:30", "activity":"Dance Party"},
+        {"time": "Midnight", "activity":"Late Night Snack"}
+    ],
+    "catering": {
+        "provider": {
+            "name": "Traiteur G",
+            "link": ""
+        },
+        "foodOptions": [
+            { "value": "chicken", "label": "Chicken Supreme" },
+            { "value": "lamb", "label": "Wine Braised Lamb Shank" },
+            { "value": "vegetarian", "label": "Eggplant Parmesan" }
+        ]
+    },
+    "faq": [
+        {
+        "question": "What is the dress code?",
+        "answer": "Formal attire requested. Ladies, that means a floor length dress. For the Gentlemen, a sharp suit."
+        },
+        {
+        "question": "What is the RSVP deadline?",
+        "answer": "Please RSVP by February 14."
+        },
+        {
+        "question": "Are kids invited?",
+        "answer": "We love your little ones, however we've decided to make this an adults only event."
+        },
+        {
+        "question": "What time should I arrive?",
+        "answer": "We recommend arriving around thirty minutes before the ceremony begins. Please arrive no later than ten minutes before the ceremony."
+        },
+        {
+        "question": "What's the best way to get to the venue?",
+        "answer": "We recommend taking an uber - the hotel is less than ten minutes away. The venue offers plenty of parking if you are coming by car."
+        },
+        {
+        "question": "Is there a registry?",
+        "answer": "As we are still living in France and lack a permanent home base, we won't be creating a registsry."
+        },
+        {
+        "question": "Is there an Open Bar?",
+        "answer": "Yes."
+        },
+        {
+        "question": "Can I bring a plus one?",
+        "answer": "While we wish we could invite everyone, we are only able to accommodate guests formally invited on your wedding invitation. If your invitation includes a plus one, they'll be listed on the RSVP page."
+        },
+        {
+        "question": "How did you make this website?",
+        "answer": "This is a PERN-stack web app. You can check the README over on Dan's Github if you are a nerd like us."
+        }
+    ]
+  },
+  "gallery": [
+    {"img": "https://i.postimg.cc/90NP3mj0/DSC-0090.jpg", "title":"Pumpkin Patch"}, 
+    {"img": "https://i.postimg.cc/ydjXPhQF/DSC-0112.jpg", "title":"Pumpkin Patch"}, 
+    {"img": "https://i.postimg.cc/ZR4xpscb/IMG-4172.jpg", "title":"Peggy's Cove, Nova Scotia"}, 
+    {"img": "https://i.postimg.cc/Wz4mfDCx/IMG-0009.jpg", "title":"Epernay, Champagne, France"}, 
+    {"img": "https://i.postimg.cc/mrQScW7p/IMG-0045.jpg", "title":"Hour 12 of hiking Volcan Baru, Panama"}, 
+    {"img": "https://i.postimg.cc/rwRjkrsk/IMG-0357.jpg", "title":"Hat Street, Panama City, Panama"}, 
+    {"img": "https://i.postimg.cc/BQVpkgqp/IMG-4174.jpg", "title":"Bay of Fundy, New Brunswick"}, 
+    {"img": "https://i.postimg.cc/gkJ4g5Pr/IMG-8657.jpg", "title":"Volcan Masaya, Nicaragua"}, 
+    {"img": "https://i.postimg.cc/jjVXdSnJ/IMG-9041.jpg", "title":"Ometepe Island, Nicaragua, in front of Volcan Concepcion"},
+    {"img": "https://i.postimg.cc/BbpHRN3W/img-81f.jpg", "title":"Cinque Terre, Italy"}, 
+    {"img": "https://i.postimg.cc/ZK3C9V2J/img-fe5.jpg", "title":"Boston, Massachussets"}, 
+    {"img": "https://i.postimg.cc/Jh7n2mnh/img-514.jpg", "title":"China Beach, Vancouver Island"}, 
+    {"img": "https://i.postimg.cc/dVj36DJX/img-e28.jpg", "title":"Ruins of Coba, Mayan Riviera, Mexico"}
+  ],
+  "cardCarousel": [
+        {
+            "name": "Old Montreal",
+            "info": "Wander the beautiful streets",
+            "imgLink": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.timeout.com%2Fimages%2F105465851%2Fimage.jpg&f=1&nofb=1&ipt=c80d577aa52043aa44747f9bd77e6aa9531440e130ed7d29fd2da6bd3c76f705",
+            "spotLink": false
+        },
+        {
+            "name": "Mont Royal Park",
+            "info": "Climb the mountain (or drive), walk around Beaver Lake, and take in the beautiful views",
+            "imgLink": "https://www.thegeographicalcure.com/wp-content/uploads/2021/10/img_61598d7c1d9f9.",
+            "spotLink": false
+
+        },
+        {
+            "name": "La Banquise",
+            "info": "Try the World's greatest poutine (sorry Julep fans, you are wrong)",
+            "imgLink": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.cntraveler.com%2Fphotos%2F5b6dab0c890b740fb9121ecb%2F16%3A9%2Fw_2560%2Cc_limit%2FLa-Banquise__2018_173.jpg&f=1&nofb=1&ipt=6dee73bb30a13f035db74f496ec9d196dee30d4a0b73b09abbca2dc795b56f02",
+            "spotLink": "https://labanquise.com/"
+        },
+        {
+            "name": "Drogheria Fine",
+            "info": "A Hadziomerovic favourite. Grab a delicious carton of fresh gnocchi and take some incredible jarred pasta sauce home with you.",
+            "imgLink": "https://lasalsadellanonna.com/wp-content/uploads/2019/02/13217427_1173106762722647_2984380847391492570_o.jpg",
+            "spotLink": "https://drogheriafine.website/"
+        }
+    ],
+  "aboutUs": {
+        "groomsmen": {
+            "names": [],
+            "photoLink": "https://i.postimg.cc/kgsM8ZcP/groomsmen.png"
+        },
+        "bridesmaids" :{
+            "names": [],
+            "photoLink":""
+        },
+        "groomFamily": {
+            "names": [],
+            "photoLink": ""
+        },
+        "brideFamily" :{
+            "names": [],
+            "photoLink":""
+        }
+    }
+}

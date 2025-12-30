@@ -22,17 +22,20 @@ export function ConfigProvider({ children, appMode }) {
           data = sampleConfig;
         }
         // local wedding file in dev mode
-        else if (process.env.NODE_ENV === 'development') {
+        else 
+          // (process.env.NODE_ENV === 'development')
+         {
           // only import the config in dev mode since it's git ignored
             const weddingConfig = await import('./config/wedding.json');
             data = weddingConfig;
-        } 
-        else {
-          // get config from the blob storage in prod
-          const res = await fetch(configUrl);
-          if (!res.ok) throw new Error(`HTTP ${res.status}`);
-          data = await res.json();
         }
+        // blob storage currently not working
+        // else {
+        //   // get config from the blob storage in prod
+        //   const res = await fetch(configUrl);
+        //   if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        //   data = await res.json();
+        // }
 
         setConfig(data);
       } catch (err) {

@@ -72,7 +72,10 @@ const Details = () => {
             imageAlt="Hotel"
             >
             <Typography variant='body1'>
-                {config.wedding.hotel.description}
+                {config.wedding.hotel.description} 
+            <Link href={config.wedding.hotel.links.main}>
+                Book your room here!
+            </Link>
             </Typography>
         </Section>
 
