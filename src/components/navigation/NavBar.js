@@ -49,10 +49,10 @@ function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
       </DrawerHeader>
       <Divider />
 
-      <List disablePadding>
+      <List>
 
         {/* ITEM 1: Home */}
-          <ListItem key='Home' disablePadding>
+          <ListItem key='Home'>
             <ListItemButton
               onClick={handleDrawerClose}
               component={Link}
@@ -69,7 +69,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
           <Divider/>
 
           {/* ITEM 2: details */}
-          <ListItem key='Details' disablePadding sx={{width: "100%"}}>
+          <ListItem key='Details' sx={{width: "100%"}}>
           <ListItemButton
               onClick={handleDrawerClose}
               component={Link}
@@ -86,7 +86,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
 
 
           {/* ITEM 3: Gallery */}
-          <ListItem key='Gallery' disablePadding>
+          <ListItem key='Gallery'>
             <ListItemButton 
               component={Link}
               onClick={handleDrawerClose}
@@ -101,7 +101,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
           <Divider/>
 
           {/* ITEM 4: rsvp */}
-          <ListItem key='RSVP' disablePadding>
+          <ListItem key='RSVP'>
             <ListItemButton 
               component={Link}
               onClick={handleDrawerClose}
@@ -118,7 +118,7 @@ function SmallMenu({ theme, openMenu, setOpenMenu, isVip}) {
 
           {/* ITEM 5: vip section */}
           {isVip && 
-          <ListItem key='VIP' disablePadding>
+          <ListItem key='VIP'>
             <ListItemButton 
               component={Link}
               onClick={handleDrawerClose}
