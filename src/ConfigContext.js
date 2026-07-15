@@ -26,7 +26,7 @@ export function ConfigProvider({ children, appMode }) {
           // (process.env.NODE_ENV === 'development')
          {
           // only import the config in dev mode since it's git ignored
-            const weddingConfig = await import('./config/wedding.json');
+            const weddingConfig = await import('./config/sample.json');
             data = weddingConfig;
         }
         // blob storage currently not working
@@ -47,7 +47,7 @@ export function ConfigProvider({ children, appMode }) {
     };
 
     fetchConfig();
-  }, [configUrl]);
+  }, [appMode,configUrl]);
 
   if (loading) return <p>Loading wedding info...</p>;
   if (error) return <p>Could not load wedding info.</p>;

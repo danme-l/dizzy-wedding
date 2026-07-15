@@ -38,42 +38,33 @@ const App = () => {
   };
 
   const handleSubmit = async () => {
-    if (code) {
-      const isValidUser = await fetchGuestGroup(code);
-      if (isValidUser) {
-        setUserValid(true);
-        localStorage.setItem("guestCode", code);  // store code in localStorage
-        
-        // set appMode depending on code
-        if (code === "sample123") {
-          setAppMode("sample");
-        } else {
-          setAppMode(null);
-        }
-
-      } else {
-        setUserValid(false);
-        alert("Oops, that didn't work. Check your code again!");
-      }
+    if (!code.trim()) {
+      alert("Please enter a code.");
+      return;
     }
+
+    // Always load the sample guest group
+    await fetchGuestGroup("sample123");
+
+    setUserValid(true);
+
+    // Preserve the entered code so the rest of the app still behaves normally
+    localStorage.setItem("guestCode", code);
+
+    // Always run in sample mode
+    setAppMode("sample");
   };
 
   useEffect(() => {
     const savedCode = localStorage.getItem("guestCode");
+
     if (savedCode) {
       (async () => {
-        const isValidUser = await fetchGuestGroup(savedCode);
-        if (isValidUser) {
-          setUserValid(true);
-          setCode(savedCode); // keep it in state too
+        await fetchGuestGroup("sample123");
 
-          // set appMode depending on saved code
-          if (savedCode === "sample123") {
-            setAppMode("sample");
-          } else {
-            setAppMode(null);
-          }
-        }
+        setUserValid(true);
+        setCode(savedCode);   // Still show whatever they typed last time
+        setAppMode("sample");
       })();
     }
   }, []);

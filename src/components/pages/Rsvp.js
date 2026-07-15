@@ -3,7 +3,7 @@ import { Typography,Modal, Box, TextField, FormLabel, Button, Radio, RadioGroup,
 import { useSubmitRSVP } from '../hooks/useSubmitRSVP';
 import { useConfig } from "../../ConfigContext"
 
-export default function Rsvp({ guests, refreshGuests, appMode }) {
+export default function Rsvp({ guests, refreshGuests }) {
   // states for the return array that gets posted
   const [attendance, setAttendance] = React.useState({});
   const [foodChoice, setFoodChoice] = React.useState({});
@@ -120,6 +120,21 @@ export default function Rsvp({ guests, refreshGuests, appMode }) {
 
   return (
     <div>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column', md: 'row' },
+          alignItems: 'center',     
+          justifyContent: 'center',
+          maxWidth: { xs: '100%',},
+          gap: 3,
+        }}
+      >
+        <Typography variant="body1" sx={{ textAlign: 'center' }}>
+          This is a demonstration.
+        </Typography>
+      </Box>
+
 
     <form onSubmit={handleSubmit}>
       {guestsToRender.map((g) => (
@@ -283,18 +298,18 @@ export default function Rsvp({ guests, refreshGuests, appMode }) {
               )}
             </Typography>
             {/* sample mode notifier */}
-            {appMode === "sample" &&
             <div>
               <hr />
               <Typography variant='body1'>
-                This is sample mode.
+                This is a demonstration.
               </Typography>
             </div>
-            }
-            <Button 
-              onClick={handleConfirm} color="primary" variant="contained" sx={{ mt: 2 }}
-              disabled={appMode === "sample"} // can't push in app mode
-              >
+            <Button
+              color="primary"
+              variant="contained"
+              sx={{ mt: 2 }}
+              disabled
+            >
               Confirm
             </Button>
             <Button onClick={handleClose} color="secondary" variant="contained" sx={{ mt: 2, ml: 2 }}>
